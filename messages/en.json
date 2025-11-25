@@ -1,0 +1,125 @@
+{
+  "Home": {
+    "title": "Welcome to Next.js!",
+    "description": "This is your localized app.",
+    "getStarted": "Get Started",
+    "alreadyHaveAccount": "I ALREADY HAVE AN ACCOUNT",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "heroDescription": "Test your indigenous knowledge, aptitude and reasoning in the language!",
+    "loginWithAuth":"Login in using social authentication",
+    "signupWithAuth":"Sign up using social authentication"
+  },
+
+  "Login": {
+    "title": "Login to Superfan",
+
+
+    "password": "Password",
+    "login": "Log in",
+    "forgotPassword": "Forgot password?",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign up",
+
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+
+
+    "validation_contactRequired": "This field is required",
+    "validation_invalidEmail": "Invalid email address",
+    "validation_invalidPhone": "Phone must contain only digits",
+    "validation_passwordMin": "Password must be at least 8 characters",
+    "validation_selectContactType": "Please select email or phone"
+  },
+
+  "SignUp": {
+    "title": "Sign up to Superfan",
+    "username": "Username",
+    "emailOrPhone": "Email or Phone number",
+    "password": "Password",
+    "passwordHint": "Minimum 8 characters.",
+    "submit": "Submit",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Log in here",
+
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+ 
+
+    "validation_contactRequired": "This field is required",
+    "validation_invalidEmail": "Invalid email address",
+    "validation_invalidPhone": "Phone must contain only digits",
+    "validation_passwordMin": "Password must be at least 8 characters",
+    "validation_selectContactType": "Please select email or phone"
+  },
+  
+
+
+  "ForgotPassword": {
+    "resetPassword": "Reset your password",
+    "enterContact": "Enter the {contactType} associated with your account to reset your password,",
+    "weWillSendCode": "we'll send you a code",
+    "phone": "phone",
+    "email": "email",
+    "phoneNumber": "Phone number",
+    "emailAddress": "Email address",
+    "sendCode": "Send code",
+    "back": "Back",
+    "enterCode": "Enter your code",
+    "ifContactMatches": "If <strong>{contact}</strong> matches your account, we've sent a code.",
+    "noCodeReceived": "Didn't get a code?"
+  },
+  
+    "GetStarted": {
+      "title": "What knowledge or reasoning do you want to test?",
+      "continue": "CONTINUE"
+    },
+    "SubjectToTest":{
+      "title":"Select a subject to test"
+
+    },
+    "TestLevel":{
+      "title":"What Test level would you like?"
+
+    },
+    "QuestionCounter":{
+      "title":"How many questions do you want to solve?"
+
+    },
+    "TimerCounter":{
+      "title":"In what time do you want to solve them?"
+
+    },
+    
+      "BankDetails": {
+        "title": "Add your bank info for payout",
+        "accountName": "Account Name",
+        "bankName": "Bank Name",
+        "accountNumber": "Account No",
+        "placeholderAccountName": "Enter account name",
+        "placeholderBankName": "Enter bank name",
+        "placeholderAccountNumber": "Enter account number",
+        "next": "Next",
+        "skip": "Skip"
+      },
+      "Reward":{
+        "title":"What's your reward for getting it right?",
+        "POINTS": "Points",
+        "CASH": "Cash"
+      },
+        "Wallet": {
+          "title": "Fund your wallet",
+          "amountLabel": "Amount",
+          "description": "When you create a deposit, your wallet and bank transfer details that must be considered immediately. You can’t create another deposit until the first one is completed or expires. Funds typically arrive in 1–2 hours.",
+          "next": "Next",
+          "skip": "Skip"
+        }
+      
+      
+      
+    
+    
+  
+  
+
+}
