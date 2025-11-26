@@ -24,8 +24,8 @@ const YorSelection = ({ onNext, onBack }: { onNext: () => void; onBack: () => vo
             : "border-gray-300 text-gray-900 hover:border-gray-800 hover:bg-black hover:text-white"
         }`}
       >
-        <div className="text-sm font-extrabold mt-2">{subject?.english}</div>
-        <div className="text-xs whitespace-pre-line mt-1">{subject?.yoruba}</div>
+        <div className="  mt-2">{subject?.english}</div>
+        <div className="font-normal whitespace-pre-line mt-1">{subject?.yoruba}</div>
       </button>
     );
   };

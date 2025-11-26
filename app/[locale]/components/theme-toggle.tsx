@@ -13,7 +13,7 @@ export function ThemeToggle() {
 
   return (
     <DropdownMenuSub>
-      <DropdownMenuSubTrigger className="w-max flex items-center p-2 cursor-pointer data-[state=open]:bg-gray-50 dark:data-[state=open]:bg-gray-800 data-[state=open]:[&>svg]:rotate-90 [&>svg]:transition-transform [&>svg]:duration-200">
+       <DropdownMenuSubTrigger className="w-max flex items-center p-2 cursor-pointer [&>svg]:rotate-90 [&>svg]:transition-transform [&>svg]:duration-200">
         <div className="flex dark:text-white items-center gap-2">
         <ColorModaIcon/>
           <span className="text-sm">Theme</span>

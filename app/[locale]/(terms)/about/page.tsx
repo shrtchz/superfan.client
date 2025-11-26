@@ -1,7 +1,7 @@
 const AboutPage = () => {
     return (
-      <div className="min-h-screen bg-white py-8 px-4 sm:px-6 lg:px-8">
-        <div className="">
+   
+        <div className="flex-1">
           {/* Page Title */}
           <div className=" mb-6">
             <h1 className="text-3xl font-bold text-gray-900">About the company</h1>
@@ -27,7 +27,7 @@ const AboutPage = () => {
             </p>
           </div>
         </div>
-      </div>
+    
     );
   };
   

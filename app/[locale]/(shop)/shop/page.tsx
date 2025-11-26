@@ -2,13 +2,15 @@
 import React, { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useCartStore } from "@/store/useCartStore";
+
 
 type Product = {
   id: number;
   title: string;
   price: string;
   images: string[];
-  colors: string[]; // Now this will store color names
+  colors: string[];
   sizes: string[];
   badge?: string;
 };
@@ -17,7 +19,7 @@ const PRODUCTS: Product[] = [
   {
     id: 1,
     title: "Selfin Hoodie",
-    price: "$37.50",
+    price: "NGN37.50",
     images: [
       "/download (1).jpeg",
       "/download.jpeg",
@@ -29,7 +31,7 @@ const PRODUCTS: Product[] = [
   { 
     id: 2,
     title: "Selfin T-shirt",
-    price: "$27.20",
+    price: "NGN27.20",
     images: ["/download.jpeg"],
     colors: ["Light Blue", "Silver", "Gray"],
     sizes: ["S","M","L","XL"],
@@ -37,7 +39,7 @@ const PRODUCTS: Product[] = [
   {
     id: 3,
     title: "Selfin Hoodie (Black)",
-    price: "$57.20",
+    price: "NGN57.20",
     images: ["/download (1).jpeg"],
     colors: ["Black", "Dark Gray", "Charcoal"],
     sizes: ["S","M","L","XL"],
@@ -45,7 +47,7 @@ const PRODUCTS: Product[] = [
   {
     id: 4,
     title: "Selfin sweatshirt",
-    price: "$51.74",
+    price: "NGN51.74",
     images: ["/download.jpeg"],
     colors: ["Dark Gray", "Graphite"],
     sizes: ["S","M","L"],
@@ -53,28 +55,17 @@ const PRODUCTS: Product[] = [
   {
     id: 5,
     title: "Selfin oversized t-shirt",
-    price: "$37.37",
+    price: "NGN37.37",
     images: ["/download (1).jpeg"],
     colors: ["Navy Blue", "Royal Blue", "Black"],
     sizes: ["S","M","L","XL","2XL"],
   }
 ];
 
-// Color mapping from name to hex code
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const COLOR_MAP: { [key: string]: string } = {
-  "White": "#ffffff",
-  "Light Gray": "#cfcfcf",
-  "Beige": "#e8dcc3",
-  "Light Blue": "#bfd7ff",
-  "Silver": "#e6e6e6",
-  "Gray": "#bcbcbc",
-  "Black": "#000000",
-  "Dark Gray": "#111111",
-  "Charcoal": "#333333",
-  "Graphite": "#222222",
-  "Navy Blue": "#1a4fbf",
-  "Royal Blue": "#3d6ee8",
+// Helper function to extract numeric price from string
+const getPriceFromString = (priceString: string): number => {
+  const numericString = priceString.replace(/[^0-9.]/g, '');
+  return parseFloat(numericString) || 0;
 };
 
 export default function ShopPage() {
@@ -87,8 +78,8 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen p-5 bg-white">
-      <div className="grid grid-cols-5 gap-6">
+    <div className="min-h-screen p-5 bg-white w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-6">
         {PRODUCTS.map((p) => (
           <article
             key={p.id}
@@ -128,6 +119,9 @@ function ProductModal({ product, open, onOpenChange }: { product: Product | null
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [qty, setQty] = useState(1);
+  
+  // Use the cart store
+  const { addToCart } = useCartStore();
 
   React.useEffect(() => {
     if (product) {
@@ -138,11 +132,34 @@ function ProductModal({ product, open, onOpenChange }: { product: Product | null
     }
   }, [product]);
 
+  const handleAddToCart = () => {
+    if (!product || !selectedColor || !selectedSize) return;
+
+    // Create cart item
+    const cartItem = {
+      id: `${product.id}-${selectedColor}-${selectedSize}`, // Unique ID based on product, color, and size
+      name: `${product.title} (${selectedColor}, ${selectedSize})`,
+      price: getPriceFromString(product.price),
+      quantity: qty,
+      image: product.images[0],
+      // You can add more properties like color, size, etc. if needed
+    };
+
+    // Add to cart
+    addToCart(cartItem);
+    
+    // Show success feedback
+    // alert(`Added ${qty}x ${product.title} (${selectedSize}, ${selectedColor}) to cart!`);
+    
+    // Optional: Close the modal after adding to cart
+    // onOpenChange(false);
+  };
+
   if (!product) return null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[90%] w-full h-[500px] gap-0 p-0 overflow-hidden">
+      <DialogContent className="sm:max-w-3xl w-full h-[500px] gap-0 p-0 overflow-hidden">
         <div className="flex h-full">
           {/* Left thumbnails */}
           <aside className="w-20 bg-white p-2 border-r">
@@ -160,16 +177,33 @@ function ProductModal({ product, open, onOpenChange }: { product: Product | null
           </aside>
 
           {/* Large Image */}
-          <div className="flex-1 bg-[#e9f0f2] p-4 flex items-center justify-center">
+          <div className="flex-1 bg-[#e9f0f2] p-4 flex flex-col gap-4 items-center justify-center">
             <img 
               src={product.images[selectedImage]} 
               alt={product.title} 
               className="max-h-full max-w-full object-contain" 
             />
+            <div className="flex items-center border rounded-lg overflow-hidden">
+              <button
+                onClick={() => setQty((q) => Math.max(1, q - 1))}
+                className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                aria-label="decrease quantity"
+              >
+                -
+              </button>
+              <div className="px-4 py-2 w-12 text-center">{qty}</div>
+              <button
+                onClick={() => setQty((q) => q + 1)}
+                className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                aria-label="increase quantity"
+              >
+                +
+              </button>
+            </div>
           </div>
 
           {/* Right details */}
-          <div className="w-1/3 p-4 space-y-2 overflow-y-auto">
+          <div className="flex-1 p-4 space-y-4 overflow-y-auto">
             <div className="flex justify-between items-start">
               <div>
                 {product.badge && (
@@ -180,7 +214,7 @@ function ProductModal({ product, open, onOpenChange }: { product: Product | null
                 <h2 className="mt-2 text-xl font-bold tracking-tight text-[#08333a]">
                   {product.title.toUpperCase()}
                 </h2>
-                <p className="mt-2 textlg font-semibold">{product.price}</p>
+                <p className="mt-2 text-lg font-semibold">{product.price}</p>
               </div>
             </div>
 
@@ -194,7 +228,7 @@ function ProductModal({ product, open, onOpenChange }: { product: Product | null
                   <button
                     key={colorName}
                     onClick={() => setSelectedColor(colorName)}
-                    className={`w-5 h-5  border rounded-full flex items-center justify-center ${selectedColor === colorName ? "ring-2 ring-black" : ""}`}
+                    className={`w-5 h-5 border rounded-full flex items-center justify-center ${selectedColor === colorName ? "ring-2 ring-black" : ""}`}
                     style={{ backgroundColor: colorName || "#cccccc" }}
                     title={colorName}
                     aria-label={`Color ${colorName}`}
@@ -219,28 +253,11 @@ function ProductModal({ product, open, onOpenChange }: { product: Product | null
               </div>
             </div>
 
-            {/* Quantity + Add to Cart */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center border rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setQty((q) => Math.max(1, q - 1))}
-                  className="px-3 py-2 hover:bg-gray-100 transition-colors"
-                  aria-label="decrease quantity"
-                >
-                  -
-                </button>
-                <div className="px-4 py-2 w-12 text-center">{qty}</div>
-                <button
-                  onClick={() => setQty((q) => q + 1)}
-                  className="px-3 py-2 hover:bg-gray-100 transition-colors"
-                  aria-label="increase quantity"
-                >
-                  +
-                </button>
-              </div>
-
+            {/* Add to Cart Button */}
+            <div className="flex items-center w-full gap-4">
               <Button
-                onClick={() => alert(`Added ${qty}x ${product.title} (${selectedSize}, ${selectedColor}) to cart`)}
+                onClick={handleAddToCart}
+                disabled={!selectedColor || !selectedSize}
                 className="flex-1 py-3 rounded-full font-semibold transition"
                 variant="outline"
               >
@@ -251,7 +268,7 @@ function ProductModal({ product, open, onOpenChange }: { product: Product | null
             {/* Product details bullet list */}
             <div>
               <h3 className="text-sm font-medium text-gray-700">Product Details</h3>
-              <ul className="mt3 text-sm text-gray-600 list-disc list-inside space-y-1">
+              <ul className="mt-3 text-sm text-gray-600 list-disc list-inside space-y-1">
                 <li>65% ring-spun cotton, 35% polyester</li>
                 <li>Charcoal Heather is 60% ring-spun cotton, 40% polyester</li>
                 <li>Carbon Grey is 55% ring-spun cotton, 45% polyester</li>

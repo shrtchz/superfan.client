@@ -2,12 +2,12 @@ import React from 'react';
 
 const PrivacyPolicy: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="">
+    <div className="flex-1">
+    
       
 
         {/* Content */}
-        <div className="p-6 space-y-8 text-gray-700">
+        <div className="p space-y-8 text-gray-700">
           {/* Title */}
           <div className="textcenter borderb pb-6">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Privacy Policy</h2>
@@ -397,7 +397,7 @@ const PrivacyPolicy: React.FC = () => {
           </section>
 
         </div>
-      </div>
+    
     </div>
   );
 };

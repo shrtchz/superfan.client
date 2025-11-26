@@ -482,7 +482,7 @@ export default function QuizPage() {
                         ? "dark:bg-white rounded-md bg-black/70 text-white dark:text-black"
                         : ""
                     }`}
-                  onClick={() => setIsImageCollapsed(false)}
+                  onClick={() => setIsImageCollapsed(true)}
                 >
                   Expand Media
                 </DropdownMenuItem>
@@ -493,9 +493,9 @@ export default function QuizPage() {
                       ? "dark:bg-white rounded-md bg-black/70 text-white dark:text-black"
                       : ""
                   }`}
-                  onClick={() => setHideReward(false)}
+                  onClick={() => setHideReward(!hideReward)}
                 >
-                  Remove Reward
+                  {hideReward ? "Remove Reward":"Undo Remove"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -531,30 +531,28 @@ export default function QuizPage() {
         </div>
 
         {/* Show image for isori questions */}
-        {current.image && (
-          <div className={`relative flex flex-col items-center justify-center p-2 py-4 ${!isImageCollapsed && "border-b"} 0 h-max w-full`}>
-            <button
-              className="absolute top-0 right-0 hover:bg-black hover:text-white px-2 text-sm dark:text-white text-black py-1 border rounded-bl-md border-r-0 border-t-0"
-              onClick={()=>{
-                setIsImageCollapsed(true)
-              }}
-            >
-               Collapse
-            </button>
+        {current.image && isImageCollapsed && (
+  <div className={`relative flex flex-col items-center justify-center p-2 py-4 border-b h-max w-full`}>
+    <button
+      className="absolute top-0 right-0 hover:bg-black hover:text-white px-2 text-sm dark:text-white text-black py-1 border rounded-bl-md border-r-0 border-t-0"
+      onClick={() => {
+        setIsImageCollapsed(false)
+      }}
+    >
+      Collapse
+    </button>
 
-            {!isImageCollapsed && (
-              <div className="p-2 w-[99%] flex justify-center items-center">
-                <Image
-                  src={current.image || "/placeholder.svg"}
-                  alt="Question image"
-                  width={300}
-                  height={150}
-                  className="rounded-md object-cover h-[150px] w-auto"
-                />
-              </div>
-            )}
-          </div>
-        )}
+    <div className="p-2 w-[99%] flex justify-center items-center">
+      <Image
+        src={current.image || "/placeholder.svg"}
+        alt="Question image"
+        width={300}
+        height={150}
+        className="rounded-md object-cover h-[150px] w-auto"
+      />
+    </div>
+  </div>
+)}
 
         {/* ===== ANSWER AREA ===== */}
         <div className="space-y-4 mb-32">
