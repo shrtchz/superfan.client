@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 // import Image from "next/image";
@@ -13,60 +14,18 @@ export function Footer() {
 
 
   return (
-    <footer className="mb2 w-full border-t border-b h-[31px] flex items-center   py4">
-           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <footer className=" w-full border-t border-b h-[31px] flex items-center justify-center py4">
+           <div className=" w-[90%]  py-4 flex ">
 
-        <div className="flex justify-between items-center w-full ">
-          {/* Left side - Copyright */}
-          <div className="text-sm  flex gap-1 h-max items-center text-gray-900 whitespace-nowrap pl-9 2xl:pl-8">
+        <div className="px-1 grid  grid-cols-4 w-full ">
+        <div className="pl-7 col-span-1 text-sm  flex gap-1 h-max items-center text-gray-900 whitespace-nowrap ">
             © {currentYear} 
             <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
             <p className="uppercase">Superfan NG</p>
           </div>
-
-          {/* Center - Social Media Icons */}
-          {/* <div className="flex items-center space-x-3">
-          
-             <Link 
-              href="https://facebook.com/your-profile" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-900 hover:text-black transition-colors"
-            >
-           <div className="">
-            <Image src={"/facebook-svgrepo-com.svg"} alt="fb" height={20} width={20}/>
-           </div>
-            </Link>
-            <Link 
-              href="https://x.com/your-profile" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-900 hover:text-black transition-colors"
-            >
-             <FaXTwitter />
-            </Link>
-             <Link 
-              href="https://wa.me/your-number" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className=" text-green-700 transition-colors"
-            >
-                         <Image src={"/whatsapp-svgrepo-com (1).svg"} alt="fb" height={20} width={20}/>
-
-            </Link>
-            <Link 
-              href="https://wa.me/your-number" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className=" text-green-700 transition-colors"
-            >
-                         <Image src={"/instagram-svgrepo-com (2).svg"} alt="fb" height={20} width={20}/>
-
-            </Link>
-          </div> */}
-
+<div className="col-span-2"></div>
           {/* Right side - Navigation Links */}
-          <div className="flex items-center gap-2 text-sm text-gray-600 ">
+          <div className="flex justify-end -span-1 flex gap-1 text-sm text-gray-600 ">
             <Link 
               href={`/${locale}/about`} 
               className="font-medium text-gray-900 transition-colors whitespace-nowrap"

@@ -95,14 +95,14 @@ const GetStartedSelection: React.FC<Props> = ({
           <div className="grid grid-cols-3 gap-4 mb-8 w-full max-w-lg h-[390px] overflow-scroll px-2 pb-10">
             {displayItems?.map((item) => (
               renderItem ? (
-                <div key={item} onClick={() => handleSelect(item)} className="cursor-pointer">
+                <div key={item} onClick={() => handleSelect(item)} className="cursor-pointer ">
                   {renderItem(item, selectedItem === item)}
                 </div>
               ) : (
                 <button
                   key={item}
                   onClick={() => handleSelect(item)}
-                  className={`w-32 h-40 border-2 rounded-lg font-medium transition-colors ${
+                  className={`w-32 h-40 border-2 text-base rounded-lg font-medium transition-colors ${
                     selectedItem === item
                       ? "border-black bg-black text-white"
                       : "border-gray-300 text-gray-900 hover:border-gray-800 hover:bg-black hover:text-white"

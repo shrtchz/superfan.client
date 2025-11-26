@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React from "react";
 import QuizPage from "../Components/QuizPage";
@@ -9,11 +10,11 @@ const Dashboard = () => {
     const locale=params.locale;
     // cocnnfhf
     
-    const router=useRouter()
+    // const router=useRouter()
   return (
-    <div className="relative w-full flex  h-full dark:text-white text-black">
+    <div className="relative    w-full flex  h-full dark:text-white text-black">
       <QuizPage />
-      <button
+      {/* <button
       onClick={()=>router.push(`/${locale}/opon`)}
       
       className="w-20 px-2 rounded-full flex items-center gap-x-2 border border-gray h-8 absolute bottom-2 right-2">
@@ -21,7 +22,7 @@ const Dashboard = () => {
           <OponIcon />
         </div>
         <p>Opon</p>
-      </button>
+      </button> */}
     </div>
   );
 };

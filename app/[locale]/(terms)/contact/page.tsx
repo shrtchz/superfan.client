@@ -7,10 +7,16 @@ import {  FaXTwitter } from "react-icons/fa6";
 
 const ContactPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="flex-1 text-black">
+      {/* Header */}
+      <div className=" mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          Contact Us
+        </h1>
+      </div>
+      <div className="">
         {/* Header Section */}
-        <div className="text-left mb-12">
+        <div className="text-left mb-5">
           <p className="text-gray-700 text-lg leading-relaxed mb-6">
             We are committed to make our website best it can be, but sometimes
             our human team can miss things our extra notice, and think about.
@@ -23,17 +29,17 @@ const ContactPage: React.FC = () => {
         </div>
 
         {/* Contact Information Section */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 pb-2">
+        <div className="mb-5">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2 pb-2">
             Our contact information:
           </h2>
 
           {/* Feedback Contact */}
-          <div className="mb-10">
+          <div className="mb-2">
             <h3 className="text-xl font-bold  mb-3">
               Feedback Contact
             </h3>
-            <div className="pl-4 py-2 mb-4">
+            <div className="pl-4 py-2 mb-2">
               <a
                 href="mailto:Feedback@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -54,7 +60,7 @@ const ContactPage: React.FC = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               Legal and Taskroom Contact
             </h3>
-            <div className=" pl-4 py-2 mb-4">
+            <div className=" pl-4 py-2 mb-2">
               <a
                 href="mailto:Regit@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -62,7 +68,7 @@ const ContactPage: React.FC = () => {
                 legal@superfan.ng
               </a>
             </div>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-gray-700 leading-relaxed mb-2">
               We list contact from licences filling the criteria from our
               Licensing page. If we have mistaken or distributed messages,
               please visit our website at www.licensing.com. This is not a
@@ -79,7 +85,7 @@ const ContactPage: React.FC = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               Advertisement Contact
             </h3>
-            <div className="  pl-4 py-2 mb-4">
+            <div className="  pl-4 py-2 mb-2">
               <a
                 href="mailto:info@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -87,13 +93,13 @@ const ContactPage: React.FC = () => {
                 ads@superfan.ng
               </a>
             </div>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-gray-700 leading-relaxed mb-2">
               We offer inquiries ways to provide your business and products, its
               clients and respectful manner to our customers. We also include
               online advertising, promotional blogs posts, social media about
               color and weekly mail campaign mentions.
             </p>
-            <div className=" p-4 rounded">
+            <div className=" p4 rounded">
               <p className=" text-sm">
                 Keep in mind once our goal is to supply this contact, we will
                 not sell your contact directly on our platform, or premium
@@ -104,11 +110,11 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* General Contact */}
-          <div className="mb-10">
+          <div className="mb-2">
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               General Contact
             </h3>
-            <div className="l-4 py-2 mb-4">
+            <div className="pl-4 py-2 mb-2">
               <a
                 href="mailto:info@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -126,7 +132,7 @@ const ContactPage: React.FC = () => {
 
         {/* Social Media Section */}
         <div className="">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
             Social Media Content
           </h3>
 

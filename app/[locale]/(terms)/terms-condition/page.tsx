@@ -14,9 +14,9 @@ const page: React.FC<Props> = ({
   maxHeight = '70vh'
 }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="flex-1">
       {/* Header */}
-      <div className="text-center mb-6">
+      <div className=" mb-6">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
           Terms of Use
         </h1>
@@ -24,7 +24,7 @@ const page: React.FC<Props> = ({
 
       {/* Scrollable Content */}
       <div 
-        className="bg-white rounded-lg shadow-inner border border-gray-200 p-6 mb-6 overflow-y-auto"
+        className="  mb-6 overflow-y-auto"
         style={{ maxHeight }}
       >
         <div className="space-y-4">

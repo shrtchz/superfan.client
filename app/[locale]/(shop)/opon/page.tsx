@@ -67,7 +67,9 @@ export default function MessageInput() {
   };
 
   return (
-    <div className="flex flex-col gap-4 dark:text-white text-black items-center w-full mt-10">
+    <div className="flex flex-col justify-center gap-4 dark:text-white text-black itemscenter w-full flex-1 h-full border border-t-0 border-b-0 ">
+ <div className={`w-full justifycenter flex items-center gap-4 flex-col h-[30%]  relative`}>
+
       <div className="flex h-max items-center gap-2">
         <div className="h-6 w-6">
           <OponIcon />
@@ -142,6 +144,7 @@ export default function MessageInput() {
           </DropdownMenuPortal>
         </DropdownMenu>
       </div>
+ </div>
       
       {/* Premium Upgrade Dialog */}
       <Dialog open={premiumDialogOpen} onOpenChange={setPremiumDialogOpen}>
