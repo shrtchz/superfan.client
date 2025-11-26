@@ -2,7 +2,7 @@ import { ThemeProvider } from "next-themes";
 // import { AuthFooter } from "../components/AuthFooter";
 import AuthNavbar from "../components/AuthNavbar";
 import { PodcastProvider } from "./context/PodcastContext";
-import PodcastDialog from "./Components/PodCastDialog";
+// import PodcastDialog from "./Components/PodCastDialog";
 import { Footer } from "../components/Footer";
 import AuthSidebar from "../components/AuthSidebar";
 

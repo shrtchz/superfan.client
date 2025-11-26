@@ -1,10 +1,10 @@
 import { ThemeProvider } from "next-themes";
 // import { AuthFooter } from "../components/AuthFooter";
-import AuthNavbar from "../components/AuthNavbar";
+// import AuthNavbar from "../components/AuthNavbar";
 import { PodcastProvider } from "../(dashboard)/context/PodcastContext";
 import PodcastDialog from "../(dashboard)/Components/PodCastDialog";
 import { Footer } from "../components/Footer";
-import  ShopNavbar  from "./components/ShopNav";
+// import  ShopNavbar  from "./components/ShopNav";
 import AuthSidebar from "../components/AuthSidebar";
 import Header from "./components/Header";
 
