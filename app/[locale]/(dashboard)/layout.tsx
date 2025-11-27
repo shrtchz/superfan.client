@@ -5,6 +5,7 @@ import { PodcastProvider } from "./context/PodcastContext";
 // import PodcastDialog from "./Components/PodCastDialog";
 import { Footer } from "../components/Footer";
 import AuthSidebar from "../components/AuthSidebar";
+import AdPlayer from "./Components/AdsPlayer";
 
 
 export default function AuthLayout({
@@ -33,7 +34,11 @@ export default function AuthLayout({
 
             {children}
             </div>
-            <div className="col-span-1"></div>
+            <div className="col-span-1 pt-2">
+       
+      <AdPlayer/>
+
+            </div>
             </div>
           </main>
 
