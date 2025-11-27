@@ -4,7 +4,7 @@ import AdPlayer from '../Components/AdsPlayer'
 
 const page = () => {
   return (
-    <div className="relative bg-red-400">
+    <div className="relative ">
 
     <Dashboard/>
     
