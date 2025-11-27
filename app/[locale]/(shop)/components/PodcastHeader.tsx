@@ -41,12 +41,12 @@ import {
   } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import ShopIcon from "@/public/icons/ShopIcon";
-import PodcastIcon from "@/public/icons/PodcastIcon";
+// import PodcastIcon from "@/public/icons/PodcastIcon";
 
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { ThemeToggle } from "../../components/theme-toggle";
-import { usePodcast } from "../../(dashboard)/context/PodcastContext";
+// import { usePodcast } from "../../(dashboard)/context/PodcastContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import GiftIcon from "@/public/icons/GiftIcon";
@@ -139,7 +139,7 @@ export default function PodcastHeader() {
       const [scoreboardDialogOpen, setScoreboardDialogOpen] = useState(false);
       const [manageAccountDialogOpen, setManageAccountDialogOpen] = useState(false);
       const [isTestMenuOpen, setIsTestMenuOpen] = useState(false);
-      const { openPodcast } = usePodcast();
+      // const { openPodcast } = usePodcast();
     
       const router = useRouter();
       const params = useParams();
@@ -369,7 +369,7 @@ export default function PodcastHeader() {
   <div className="flex h-max items-center gap-2">
   <div className="w-full flex  gap-2 items-center">
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Superfan podcast</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 Fascinating stories in easy-to-follow lingual
               </p>
             </div>
@@ -539,26 +539,7 @@ export default function PodcastHeader() {
                    </div>
                    <span className="text-sm">Scoreboard</span>
                  </DropdownMenuItem>
-                 <button
-                 onClick={()=>router.push(`/${locale}/shop`)}
-                 className="flex h-max items-center gap-2 px-2">
-                   <div className="h-5 w-5 ">
-
-                   <ShopIcon/>
-                   </div>
-                   <p>Shop</p>
-
-                 </button>
-                 <button 
-                     onClick={openPodcast}
-                 className="flex h-max items-center gap-2 px-2">
-                   <div className="h-5 w-5">
-
-                   <PodcastIcon/>
-</div>
-                   <p>Podcast</p>
-
-                 </button>
+                
                </div>
              </div>
 
@@ -595,12 +576,143 @@ export default function PodcastHeader() {
                 <circle cx="12" cy="13" r="3" />
               </svg>
             </button>
+            <Dialog
+        open={manageAccountDialogOpen}
+        onOpenChange={setManageAccountDialogOpen}
+      >
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-xl p-0 gap-0 overflow-hidden"
+        >
+          <DialogHeader className="relative p-4 pb-4 flex flex-row justifybetween h-max items-center">
+            {/* Camera Icon on Far Right */}
+            <button className="h-14 w-14 rounded-full flex items-center justify-center border border-black dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="text-gray-600 dark:text-gray-400"
+              >
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+                <circle cx="12" cy="13" r="3" />
+              </svg>
+            </button>
             <DialogTitle className="text-sm font-bold ">
               <div className="">
                 <p>Babat Lawrence</p>
                 <p className="font-normal">batumdeoluyemi@yahoo.com</p>
               </div>
             </DialogTitle>
+            <div className="absolute top-4 right-4">
+              <button
+                className="h-8 w-8 rounded-full flex items-center justify-center hover:bg-gray-100 border"
+                onClick={() => setManageAccountDialogOpen(false)}
+              >
+                <X />
+              </button>
+            </div>
+          </DialogHeader>
+          <hr className="w-full " />
+
+          <div className="px-6 pb-6 space-y-2">
+            {/* Profile Information - Two column layout */}
+            <div className="grid grid-cols-2 gap-6 ">
+              {/* Left Column */}
+              <div className="space-y-4">
+                {/* Name Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-medium">
+                    Name
+                  </Label>
+                  <Input id="name" className="w-full" />
+                </div>
+
+                {/* Email Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-medium">
+                    Email
+                  </Label>
+                  <div className="flex items-center gap-2">
+                    <Input id="email" className="w-full" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="space-y-4">
+                {/* Username Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="username" className="text-sm font-medium">
+                    Username
+                  </Label>
+                  <Input id="username" className="w-full" />
+                </div>
+
+                {/* Phone Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-sm font-medium">
+                    Phone
+                  </Label>
+                  <Input id="phone" className="w-full" />
+                </div>
+              </div>
+            </div>
+
+            {/* Password Section - Two column layout */}
+            <div className="grid grid-cols-2 pt-2.5 gap-6">
+              {/* Current Password */}
+              <div className="space-y-2">
+                <Label
+                  htmlFor="currentPassword"
+                  className="text-sm font-medium"
+                >
+                  Current password
+                </Label>
+                <Input
+                  id="currentPassword"
+                  type="password"
+                  className="w-full"
+                />
+              </div>
+
+              {/* New Password */}
+              <div className="space-y-2">
+                <Label htmlFor="newPassword" className="text-sm font-medium">
+                  New password
+                </Label>
+                <Input id="newPassword" type="password" className="w-full" />
+              </div>
+            </div>
+          </div>
+          {/* Action Buttons - Reversed order as shown in image */}
+          <hr className="w-full" />
+          <div className="flex w-full py-2 justify-center gap-4 px-6">
+            <div className="w-full rounded-full border text-black dark:text-white   hover:bg-black !hover:text-white">
+              <button
+                onClick={() => {
+                  console.log("Saving profile changes...");
+                  setManageAccountDialogOpen(false);
+                }}
+                className="w-full dark:text-white  hover:text-white h-12  font-semibold"
+              >
+                Save changes
+              </button>
+            </div>
+            {/* <div className="border-r h-full"></div>
+            <div className="!w-[49%]">
+              <button
+                onClick={() => setManageAccountDialogOpen(false)}
+                className="w-full 00 hover:bg-white bg-transparent dark:bg-black/80 text-black dark:text-white h-12 text-lg font-semibold"
+              >
+                Cancel
+              </button>
+            </div> */}
+          </div>
+        </DialogContent>
+      </Dialog>
             <div className="absolute top-4 right-4">
               <button className="h-8 w-8 rounded-full flex items-center justify-center hover:bg-gray-100 border" onClick={()=>setManageAccountDialogOpen(false)}>
                 <X/>

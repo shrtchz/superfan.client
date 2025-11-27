@@ -1,9 +1,10 @@
 "use client";
 
-import HomeIcon from "@/public/icons/HomeIcon";
+import HmIcon from "@/public/icons/HmIcon";
 import OponIcon from "@/public/icons/OponIcon";
 import PodcastIcon from "@/public/icons/PodcastIcon";
-import ShopIcon from "@/public/icons/ShopIcon";
+import ShopBagIcon from "@/public/icons/ShopBagIcon";
+// import ShopIcon from "@/public/icons/ShopIcon";
 import Link from "next/link";
 import { useParams ,useRouter} from "next/navigation";
 // import {  } from "next/router";
@@ -11,7 +12,7 @@ import React from "react";
 
 const links = [
     {
-        icon: <HomeIcon />,
+        icon: <HmIcon />,
         name: "Home",
         href: "/dashboard"
     },
@@ -21,7 +22,7 @@ const links = [
         href: "/opon"
     },
     {
-        icon: <ShopIcon />,
+        icon: <ShopBagIcon />,
         name: "Shop",
         href: "/shop"
     },

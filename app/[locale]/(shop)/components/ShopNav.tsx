@@ -380,16 +380,16 @@ export default function ShopNavbar() {
           <div className="col-span-1 ">
             <Link
               href={`/${locale}`}
-              className="flex flex1 w-full   flex1 items-center space-x-2"
+              className="flex flex1 w-full mt-1.5  flex1 items-center space-x-2"
             >
               <Image
                 src="/GAME WHITE AND BLACK 2-1.svg"
                 alt="Logo"
-                width={200}
+                width={220}
                 height={150}
                 priority
               />
-              d
+              
             </Link>
           </div>
           <div className="col-span-3 ">

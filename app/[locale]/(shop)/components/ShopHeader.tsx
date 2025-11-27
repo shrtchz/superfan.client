@@ -51,6 +51,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import GiftIcon from "@/public/icons/GiftIcon";
 import { CartIcon }from "./CartIcon";
+import CollectionIcon from "@/public/icons/CollectionIcon";
 
 // Define the scoreboard data type
 interface ScoreboardEntry {
@@ -368,8 +369,8 @@ export default function ShopHeader() {
           {/* Left side - Logo/Brand */}
           <div className="flex items-center gap-8">
             <div className="text-xl font-bold flex h-max items-center gap-2">
-              <div className="h-5 w-5">
-                <GiftIcon/>
+              <div className="h-10 w-10">
+               <CollectionIcon/>
               </div>
               Merch Items</div>
             
@@ -384,8 +385,8 @@ export default function ShopHeader() {
               
               {/* Currency Dropdown */}
               <DropdownMenu >
-                <DropdownMenuTrigger asChild className="px-0 w-14">
-                  <Button variant="ghost" size="sm" className="flex items-center px-0  h-8">
+                <DropdownMenuTrigger asChild className="px- w-20">
+                  <Button variant="ghost" size="sm" className="border flex items-center px-2  h-10">
                     <span className="font-medium text-xl">NGN</span>
                     {/* <span className="text-muted-foreground">v</span> */}
                     <ChevronDown className="h-3 w-3 opacity-50" />
@@ -564,26 +565,7 @@ export default function ShopHeader() {
                    </div>
                    <span className="text-sm">Scoreboard</span>
                  </DropdownMenuItem>
-                 <button
-                 onClick={()=>router.push(`/${locale}/shop`)}
-                 className="flex h-max items-center gap-2 px-2">
-                   <div className="h-5 w-5 ">
-
-                   <ShopIcon/>
-                   </div>
-                   <p>Shop</p>
-
-                 </button>
-                 <button 
-                     onClick={openPodcast}
-                 className="flex h-max items-center gap-2 px-2">
-                   <div className="h-5 w-5">
-
-                   <PodcastIcon/>
-</div>
-                   <p>Podcast</p>
-
-                 </button>
+            
                </div>
              </div>
 
@@ -602,11 +584,17 @@ export default function ShopHeader() {
           </div>
         </div>
         {/* Manage Account Dialog */}
-      <Dialog open={manageAccountDialogOpen} onOpenChange={setManageAccountDialogOpen}>
-        <DialogContent showCloseButton={false} className="sm:max-w-xl p-0 gap-0 overflow-hidden">
+        <Dialog
+        open={manageAccountDialogOpen}
+        onOpenChange={setManageAccountDialogOpen}
+      >
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-xl p-0 gap-0 overflow-hidden"
+        >
           <DialogHeader className="relative p-4 pb-4 flex flex-row justifybetween h-max items-center">
             {/* Camera Icon on Far Right */}
-            <button className="h-10 w-10 rounded-full flex items-center justify-center border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <button className="h-14 w-14 rounded-full flex items-center justify-center border border-black dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <svg
                 width="20"
                 height="20"
@@ -627,8 +615,11 @@ export default function ShopHeader() {
               </div>
             </DialogTitle>
             <div className="absolute top-4 right-4">
-              <button className="h-8 w-8 rounded-full flex items-center justify-center hover:bg-gray-100 border" onClick={()=>setManageAccountDialogOpen(false)}>
-                <X/>
+              <button
+                className="h-8 w-8 rounded-full flex items-center justify-center hover:bg-gray-100 border"
+                onClick={() => setManageAccountDialogOpen(false)}
+              >
+                <X />
               </button>
             </div>
           </DialogHeader>
@@ -636,7 +627,7 @@ export default function ShopHeader() {
 
           <div className="px-6 pb-6 space-y-2">
             {/* Profile Information - Two column layout */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 ">
               {/* Left Column */}
               <div className="space-y-4">
                 {/* Name Field */}
@@ -644,10 +635,7 @@ export default function ShopHeader() {
                   <Label htmlFor="name" className="text-sm font-medium">
                     Name
                   </Label>
-                  <Input
-                    id="name"
-                    className="w-full"
-                  />
+                  <Input id="name" className="w-full" />
                 </div>
 
                 {/* Email Field */}
@@ -656,10 +644,7 @@ export default function ShopHeader() {
                     Email
                   </Label>
                   <div className="flex items-center gap-2">
-                    <Input
-                      id="email"
-                      className="w-full"
-                    />
+                    <Input id="email" className="w-full" />
                   </div>
                 </div>
               </div>
@@ -671,10 +656,7 @@ export default function ShopHeader() {
                   <Label htmlFor="username" className="text-sm font-medium">
                     Username
                   </Label>
-                  <Input
-                    id="username"
-                    className="w-full"
-                  />
+                  <Input id="username" className="w-full" />
                 </div>
 
                 {/* Phone Field */}
@@ -682,19 +664,19 @@ export default function ShopHeader() {
                   <Label htmlFor="phone" className="text-sm font-medium">
                     Phone
                   </Label>
-                  <Input
-                    id="phone"
-                    className="w-full"
-                  />
+                  <Input id="phone" className="w-full" />
                 </div>
               </div>
             </div>
 
             {/* Password Section - Two column layout */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 pt-2.5 gap-6">
               {/* Current Password */}
               <div className="space-y-2">
-                <Label htmlFor="currentPassword" className="text-sm font-medium">
+                <Label
+                  htmlFor="currentPassword"
+                  className="text-sm font-medium"
+                >
                   Current password
                 </Label>
                 <Input
@@ -709,24 +691,20 @@ export default function ShopHeader() {
                 <Label htmlFor="newPassword" className="text-sm font-medium">
                   New password
                 </Label>
-                <Input
-                  id="newPassword"
-                  type="password"
-                  className="w-full"
-                />
+                <Input id="newPassword" type="password" className="w-full" />
               </div>
             </div>
           </div>
           {/* Action Buttons - Reversed order as shown in image */}
           <hr className="w-full" />
           <div className="flex w-full py-2 justify-center gap-4 px-6">
-            <div className="w-full rounded-full border text-black dark:text-white border-gray-300  hover:bg-black !hover:text-white">
+            <div className="w-full rounded-full border text-black dark:text-white   hover:bg-black !hover:text-white">
               <button
                 onClick={() => {
-                  console.log("Saving profile changes...")
-                  setManageAccountDialogOpen(false)
+                  console.log("Saving profile changes...");
+                  setManageAccountDialogOpen(false);
                 }}
-                className="w-full dark:text-white text-gray-500 text h-12 text-lg font-semibold"
+                className="w-full dark:text-white  hover:text-white h-12  font-semibold"
               >
                 Save changes
               </button>

@@ -78,7 +78,7 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen p-5 bg-white w-full">
+    <div className="flex flex-col justify-center gap-4 dark:text-white text-black itemscenter w-full flex-1 h-full border border-t-0 border-b-0 ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-6">
         {PRODUCTS.map((p) => (
           <article
