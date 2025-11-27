@@ -3,7 +3,7 @@ import IgIcon from "@/public/icons/IgIcon";
 import WhatsAppIcon from "@/public/icons/WhatsAppIcon";
 
 import React from "react";
-import {  FaXTwitter } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 
 const ContactPage: React.FC = () => {
   return (
@@ -36,10 +36,8 @@ const ContactPage: React.FC = () => {
 
           {/* Feedback Contact */}
           <div className="mb-2">
-            <h3 className="text-xl font-bold  mb-3">
-              Feedback Contact
-            </h3>
-            <div className="pl-4 py-2 mb-2">
+            <h3 className="text-xl font-bold  mb-3">Feedback Contact</h3>
+            <div className=" py-2 mb-2">
               <a
                 href="mailto:Feedback@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -60,7 +58,7 @@ const ContactPage: React.FC = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               Legal and Taskroom Contact
             </h3>
-            <div className=" pl-4 py-2 mb-2">
+            <div className="  py-2 mb-2">
               <a
                 href="mailto:Regit@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -75,7 +73,7 @@ const ContactPage: React.FC = () => {
               notice, your solicitor will be processed and we will inform you
               about it if this Plan 7 business days.
             </p>
-            <p className=" font-medium px-3 py-1 rounded inline-block">
+            <p className=" font-medium  py-1 rounded inline-block">
               Usually we answer this requests in the same day.
             </p>
           </div>
@@ -85,7 +83,7 @@ const ContactPage: React.FC = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               Advertisement Contact
             </h3>
-            <div className="  pl-4 py-2 mb-2">
+            <div className="   py-2 mb-2">
               <a
                 href="mailto:info@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -114,7 +112,7 @@ const ContactPage: React.FC = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               General Contact
             </h3>
-            <div className="pl-4 py-2 mb-2">
+            <div className=" py-2 mb-2">
               <a
                 href="mailto:info@targetfutureg"
                 className=" text-lg font-medium transition-colors"
@@ -123,9 +121,9 @@ const ContactPage: React.FC = () => {
               </a>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              If your reason to contact doesn&apos;t fit any other category, get in
-              touch with us with this email. Keep in mind answer to this email
-              might be known than others.
+              If your reason to contact doesn&apos;t fit any other category, get
+              in touch with us with this email. Keep in mind answer to this
+              email might be known than others.
             </p>
           </div>
         </div>
@@ -133,20 +131,20 @@ const ContactPage: React.FC = () => {
         {/* Social Media Section */}
         <div className="">
           <h3 className="text-xl font-bold text-gray-900 mb-2">
-            Social Media Content
+            Social Media Contact(s)
           </h3>
 
           <div className="flex space-x-6 mb-6">
-          <div className="h-4 w-4">
-<FbIcon/>
-</div>
-
-            <FaXTwitter />
-
-            <div className="h-4 w-4">
+            <div className="h-8 w-8">
+              <FbIcon />
+            </div>
+            <div className="h-8 w-8">
+              <FaXTwitter className="h-full w-full" />
+            </div>
+            <div className="h-8 w-8">
               <WhatsAppIcon />
             </div>
-            <div className="h-4 w-4">
+            <div className="h-8 w-8">
               <IgIcon />
             </div>
           </div>

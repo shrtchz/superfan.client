@@ -8,7 +8,7 @@ const AboutPage = () => {
           </div>
   
           {/* Content Section */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none space-y-4">
             <p className="text-gray-700 mb6 leading-relaxed">
               Superfan NG is a Nigerian edtech platform that offers aptitude tests in
               quantitative and qualitative reasoning in indigenous knowledge.

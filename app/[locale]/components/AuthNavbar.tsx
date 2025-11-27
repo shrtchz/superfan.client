@@ -381,8 +381,8 @@ export default function AuthNavbar() {
     { id: "advanced", label: "Advanced" },
   ];
 
-  const getLabel = (items: any[], id: string | null) => {
-    if (!id) return "N/A";
+  const getLabel = (items: any[], id: string ) => {
+    if (!id) return "Language";
     return items.find((item) => item.id === id)?.label;
   };
 
@@ -430,22 +430,23 @@ export default function AuthNavbar() {
     <>
       <nav className=" w-full border-t border-b h-[80px] text-black flex items-center justify-center py4">
         <div className=" w-[90%]  py-4 flex ">
-          <div className="px-1 grid  grid-cols-5 w-full ">
-            <div className="col-span-1 h-10 mt-2 ">
-              <Link
-                href={`/${locale}`}
-                className="flex flex1 w-full   flex1 items-center space-x-2"
-              >
-                <Image
-                  src="/GAME WHITE AND BLACK 2-1.svg"
-                  alt="Logo"
-                  width={200}
-                  height={10}
-                  priority
-                />
-              </Link>
-            </div>
-            <div className="col-span-3 w-full flex items-center justify-center py-3">
+          <div className="px-1 grid  grid-cols-4 w-full ">
+          <div className="col-span-1 ">
+            <Link
+              href={`/${locale}`}
+              className="flex flex1 w-full mt-1.5  flex1 items-center space-x-2"
+            >
+              <Image
+                src="/GAME WHITE AND BLACK 2-1.svg"
+                alt="Logo"
+                width={220}
+                height={150}
+                priority
+              />
+              
+            </Link>
+          </div>
+            <div className="col-span-2 w-full flex items-center justify-center py-3">
             <div className="flex-1  w-full flex flex-col justify-start items-center text-black dark:text-white ">
       <div className={`w-md xl:w-lg max-w-2xl h-full  border-b-0 overflow-hidden relative`}>
               {/* CENTER SECTION */}
@@ -453,8 +454,8 @@ export default function AuthNavbar() {
                 <div className="flex gap-2 h-max items-center">
                   <p>Test</p>
                   <div className="h-8 flex flex-row justify-between ">
-                    <div className="data-[size=default]:h-8 !bg-inherit border-[#2f3336] text-black dark:text-white xl:px-2 px-1 xl:gap-1 gap-0 w-20 text-xs xl:text-sm border rounded-md h-8 flex items-center justifycenter">
-                      {language ? getLabel(languages, language) : "Yoruba"}
+                    <div className="data-[size=default]:h-8 !bg-inherit border-[#2f3336] text-black dark:text-white xl:px-2 px-1 xl:gap-1 text-black gap-0 w-20 text-xs xl:text-sm border rounded-md h-8 flex items-center justifycenter">
+                      {language ? getLabel(languages, language) : "Language"}
                     </div>
                   </div>
                 </div>
@@ -468,7 +469,7 @@ export default function AuthNavbar() {
               </div>
               </div>
             </div>
-            <div className="col-span-1 flex  h-max items-center py-3 xl:translate-x-0 -translate-x-6">
+            <div className="col-span-1 flex  h-max items-center py-3 xl:translate-x-0 -translate-x-6  justify-end">
               {/* RIGHT SECTION */}
               <div className="flex h-max items-center">
                 <div className="flex flex-1 h-max items-center gap- ">
@@ -476,7 +477,7 @@ export default function AuthNavbar() {
                   <div className="flex  text-sm xl:text-base items-center text-black dark:text-white  w-max h-8 px-3 gap-2">
                     <p>Questions Count</p>
                     <div className="border-[#2f3336] rounded-md border h-full flex items-center justify-center px-2">
-                      {questionCount}
+                      {questionCount?questionCount:0}
                     </div>
                   </div>
                 </div>
@@ -708,7 +709,7 @@ export default function AuthNavbar() {
         >
           <DialogHeader className="relative p-4 pb-4 flex flex-row justifybetween h-max items-center">
             {/* Camera Icon on Far Right */}
-            <button className="h-10 w-10 rounded-full flex items-center justify-center border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <button className="h-14 w-14 rounded-full flex items-center justify-center border border-black dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <svg
                 width="20"
                 height="20"
@@ -741,7 +742,7 @@ export default function AuthNavbar() {
 
           <div className="px-6 pb-6 space-y-2">
             {/* Profile Information - Two column layout */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 ">
               {/* Left Column */}
               <div className="space-y-4">
                 {/* Name Field */}
@@ -784,7 +785,7 @@ export default function AuthNavbar() {
             </div>
 
             {/* Password Section - Two column layout */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 pt-2.5 gap-6">
               {/* Current Password */}
               <div className="space-y-2">
                 <Label
@@ -812,13 +813,13 @@ export default function AuthNavbar() {
           {/* Action Buttons - Reversed order as shown in image */}
           <hr className="w-full" />
           <div className="flex w-full py-2 justify-center gap-4 px-6">
-            <div className="w-full rounded-full border text-black dark:text-white border-gray-300  hover:bg-black !hover:text-white">
+            <div className="w-full rounded-full border text-black dark:text-white   hover:bg-black !hover:text-white">
               <button
                 onClick={() => {
                   console.log("Saving profile changes...");
                   setManageAccountDialogOpen(false);
                 }}
-                className="w-full dark:text-white text-gray-500 text h-12 text-lg font-semibold"
+                className="w-full dark:text-white  hover:text-white h-12  font-semibold"
               >
                 Save changes
               </button>

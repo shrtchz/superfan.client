@@ -379,15 +379,15 @@ export default function PodcastNavbar() {
     <div className=" w-full border-t border-b h-[80px] text-black flex items-center justify-center py4">
       <div className=" w-[90%]  py-4 flex ">
         <div className="px-1 grid  grid-cols-4 w-full ">
-          <div className="col-span-1 ">
+        <div className="col-span-1 ">
             <Link
               href={`/${locale}`}
-              className="flex flex1 w-full   flex1 items-center space-x-2"
+              className="flex flex1 w-full mt-1.5  flex1 items-center space-x-2"
             >
               <Image
                 src="/GAME WHITE AND BLACK 2-1.svg"
                 alt="Logo"
-                width={200}
+                width={220}
                 height={150}
                 priority
               />

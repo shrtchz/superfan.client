@@ -144,7 +144,7 @@ export default function Podcastg() {
             </p>
             {/* Watch on YouTube Button */}
           </div>
-          <div className="flex justify-center flex-col items-center gap-4 ">
+          <div className="flex justify-center flex-col items-center gap-4 border-b border-gray-200  dark:border-gray-700 pb-10">
             <button
               onClick={handleWatchOnYouTube}
            
@@ -155,7 +155,7 @@ export default function Podcastg() {
               Watch 
             </button>
           </div>
-            <hr  className="bg-gray-50/70 mt-10"/>
+            {/* <hr  className="border-b border-gray-200 h-[] dark:border-gray-700 mt-10"/> */}
 
          
         </div>

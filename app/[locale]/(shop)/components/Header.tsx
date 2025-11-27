@@ -14,7 +14,7 @@ const Header = () => {
             location.includes("opon")?
             <AINavbar/>
 :
-location.includes("opon")?<ShopNavbar/>:<PodcastNavbar/>
+location.includes("shop")?<ShopNavbar/>:<PodcastNavbar/>
         }
     </div>
   )
