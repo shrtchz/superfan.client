@@ -361,6 +361,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
   const handleApply = () => {
     if (language && level && subject && questionCount && timer) {
       setIsTestMenuOpen(false)
+      router.push(`/${locale}/dashboard`)
       console.log("[v0] Selections applied:", {
         language,
         level,
@@ -412,17 +413,17 @@ type RewardFilter = 'cash' | 'points' | 'none';
                     onClick={() => setIsTestMenuOpen(!isTestMenuOpen)}
 
 
-                    className="hover:bg-black hover:text-white border rounded-full h-10 w-full flex justify-center items-center bg-transparent" >
+                    className="hover:bg-black border-gray-300 hover:text-white border rounded-full h-10 w-full flex justify-center items-center bg-transparent" >
                     Start a Test
                 </button>
 
           {isTestMenuOpen && (
             <div className="absolute top-10 left-0 h-[400px] overflow-auto z-50">
               {/* Main Card with Accordion */}
-              <div className="bg-card rounded-2xl shadow-lg border border-border overflow-hidden  w-80">
+              <div className="bg-card rounded-2xl shadow-lg border border-none borderborder overflow-hidden  w-80">
                 <Accordion type="single" collapsible className="w-full">
                   {/* Language */}
-                  <AccordionItem value="language" className="border-b border-border last:border-b-0">
+                  <AccordionItem value="language" className="borderb border-gray-300 last:border-b-0">
                     <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
                       <div className="flex flex-col items-start justify-between w-full gap-2">
                         <span className="font-semibold text-foreground text-left">Language</span>
@@ -439,7 +440,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
                           <button
                             key={item.id}
                             onClick={() => setLanguage(item.id)}
-                            className={`w-full text-left border-t px-4 py-3 transition-all duration-200 flex 
+                            className={`w-full text-left border-gray-300 border-t px-4 py-3 transition-all duration-200 flex 
                       dark:text-white text-black items-center justify-between hover:bg-muted/50 ${
                               language === item.id ? "bg-primary/10" : ""
                             }`}
@@ -453,7 +454,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
                   </AccordionItem>
 
                   {/* Test Level with Nested Subjects - FIXED TOGGLE FUNCTIONALITY */}
-                  <AccordionItem value="testLevel" className="border-b border-border last:border-b-0">
+                  <AccordionItem value="testLevel" className="border-b border-gray-300 border last:border-b-0">
                     <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
                       <div className="flex flex-col items-start justify-between w-full gap-2">
                         <span className="font-semibold text-foreground text-left">Test Level</span>
@@ -465,14 +466,14 @@ type RewardFilter = 'cash' | 'points' | 'none';
                         )}
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 pt-2">
+                    <AccordionContent className="px6 pb-4 pt-2">
                       <div className="space-y-2">
                         {testLevels.map((testLevel) => (
-                          <div key={testLevel.id} className="border-b border-border/50 last:border-b-0">
+                          <div key={testLevel.id} className="border-b border-gray-300 last:border-b-0">
                             {/* Test Level Header with Toggle */}
                             <button
                               onClick={() => handleTestLevelToggle(testLevel.id)}
-                              className={`w-full text-left py-3 px-4 transition-all duration-200 flex items-center justify-between hover:bg-muted/30 ${
+                              className={`w-full text-left py-3 px-6 transition-all duration-200 flex items-center justify-between hover:bg-muted/30 ${
                                 openTestLevel === testLevel.id ? "bg-muted/30" : ""
                               }`}
                             >
@@ -520,7 +521,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
                   </AccordionItem>
 
                   {/* Questions Range */}
-                  <AccordionItem value="range" className="border-b border-border last:border-b-0">
+                  <AccordionItem value="range" className="border-b border-gray-300 last:border-b-0">
                     <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
                       <div className="flex flex-col items-start justify-between w-full gap-2">
                         <span className="font-semibold text-foreground text-left">Question Count</span>
@@ -531,13 +532,13 @@ type RewardFilter = 'cash' | 'points' | 'none';
                         )}
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 pt-2">
+                    <AccordionContent className="px- pb-4 pt-2">
                       <div className="space-y-2">
                         {questionRanges.map((item) => (
                           <button
                             key={item.id}
                             onClick={() => setQuestionCount(item.label)}
-                            className={`w-full text-left px-6 py-2 border-t transition-all duration-200 flex 
+                            className={`w-full text-left px-6 py-2 border-gray-300 border-t transition-all duration-200 flex 
                              dark:text-white text-black items-center justify-between hover:bg-muted/50 ${
                               questionCount === item.label ? "bg-primary/10" : ""
                             }`}
@@ -551,7 +552,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
                   </AccordionItem>
 
                   {/* Timer/Duration */}
-                  <AccordionItem value="duration" className="border-b border-border last:border-b-0">
+                  <AccordionItem value="duration" className="border-b border-gray-300 last:border-b-0">
                     <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
                       <div className="flex flex-col items-start justify-between w-full gap-2">
                         <span className="font-semibold text-foreground text-left">Duration</span>
@@ -562,13 +563,13 @@ type RewardFilter = 'cash' | 'points' | 'none';
                         )}
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 pt-2">
+                    <AccordionContent className="px6 pb-4 pt-2">
                       <div className="space-y-2">
                         {durations.map((item) => (
                           <button
                             key={item.id}
                             onClick={() => setTimer(item.label)}
-                            className={`w-full text-left px-4 py-2 border-t transition-all duration-200 flex 
+                            className={`w-full text-left px-6 py-2 border-gray-300 border-t transition-all duration-200 flex 
                              dark:text-white text-black items-center justify-between hover:bg-muted/50 font-medium ${
                               timer === item.label ? "bg-primary/5" : ""
                             }`}
@@ -585,7 +586,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
                 <button
                   onClick={handleApply}
                   disabled={!allSelected}
-                  className="w-full flex items-center px-6 border-t h-10 justify-center hover:text-white hover:bg-black text-black   font-semibold"
+                  className="w-full flex items-center px-6 border-gray-300 border-t h-10 justify-center hover:text-white hover:bg-black text-black   font-semibold"
                 >
                   Apply Selection
                 </button>

@@ -12,17 +12,9 @@ const Dashboard = () => {
     
     // const router=useRouter()
   return (
-    <div className="relative    w-full flex  h-full dark:text-white text-black">
+    <div className="relative -translate-x-3.5 bg-red-900 2xl:-translate-x-18   w-full flex  h-full dark:text-white text-black">
       <QuizPage />
-      {/* <button
-      onClick={()=>router.push(`/${locale}/opon`)}
-      
-      className="w-20 px-2 rounded-full flex items-center gap-x-2 border border-gray h-8 absolute bottom-2 right-2">
-        <div className="h-4 w-4">
-          <OponIcon />
-        </div>
-        <p>Opon</p>
-      </button> */}
+     
     </div>
   );
 };

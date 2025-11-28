@@ -6,7 +6,6 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
   Play,
   Pause,
-  Repeat,
   Volume2,
   Maximize2,
   VolumeX,
@@ -25,12 +24,34 @@ export default function AdPlayer() {
   const modalVideoRef = useRef<HTMLVideoElement | null>(null);
 
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true); // Start muted for auto-play
   const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [open, setOpen] = useState(false);
   const [modalLoaded, setModalLoaded] = useState(false);
+  const [autoPlayAttempted, setAutoPlayAttempted] = useState(false);
+
+  // Auto-play when component mounts (muted)
+  useEffect(() => {
+    const v = cardVideoRef.current;
+    if (!v || autoPlayAttempted) return;
+
+    const playVideo = async () => {
+      try {
+        // Start muted to allow auto-play
+        v.muted = true;
+        await v.play();
+        setPlaying(true);
+        setAutoPlayAttempted(true);
+      } catch (err) {
+        console.log("Auto-play failed:", err);
+        setPlaying(false);
+      }
+    };
+
+    playVideo();
+  }, [autoPlayAttempted]);
 
   // Track card video progress
   useEffect(() => {
@@ -39,13 +60,22 @@ export default function AdPlayer() {
 
     const onTime = () => setProgress(v.currentTime);
     const onLoaded = () => setDuration(v.duration || 0);
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    const onEnd = () => setPlaying(false);
 
     v.addEventListener("timeupdate", onTime);
     v.addEventListener("loadedmetadata", onLoaded);
+    v.addEventListener("play", onPlay);
+    v.addEventListener("pause", onPause);
+    v.addEventListener("ended", onEnd);
 
     return () => {
       v.removeEventListener("timeupdate", onTime);
       v.removeEventListener("loadedmetadata", onLoaded);
+      v.removeEventListener("play", onPlay);
+      v.removeEventListener("pause", onPause);
+      v.removeEventListener("ended", onEnd);
     };
   }, []);
 
@@ -72,23 +102,29 @@ export default function AdPlayer() {
       // Try to play modal when it's ready
       if (modalLoaded) {
         modal.currentTime = card.currentTime;
-        modal.play().catch(() => {});
+        modal.play().catch(() => { });
       }
     } else {
       // Closing modal
       modal.pause();
       card.currentTime = modal.currentTime;
-      card.play().catch(() => {});
+      // Only resume if it was playing before
+      if (playing) {
+        card.play().catch(() => { });
+      }
     }
-  }, [open, modalLoaded]);
+  }, [open, modalLoaded, playing]);
 
   const togglePlay = () => {
     const v = cardVideoRef.current;
     if (!v) return;
 
     if (v.paused) {
-      v.play();
-      setPlaying(true);
+      v.play().then(() => {
+        setPlaying(true);
+      }).catch(err => {
+        console.log("Play failed:", err);
+      });
     } else {
       v.pause();
       setPlaying(false);
@@ -99,16 +135,23 @@ export default function AdPlayer() {
     const v = cardVideoRef.current;
     if (!v) return;
     v.currentTime = 0;
-    v.play();
-    setPlaying(true);
+    v.play().then(() => {
+      setPlaying(true);
+    }).catch(err => {
+      console.log("Replay failed:", err);
+    });
   };
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const v = cardVideoRef.current;
-    if (!v) return;
+    if (!v || !duration) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const pct = (e.clientX - rect.left) / rect.width;
     v.currentTime = pct * duration;
+  };
+
+  const toggleMute = () => {
+    setMuted(!muted);
   };
 
   const format = (s: number) => {
@@ -121,14 +164,14 @@ export default function AdPlayer() {
   };
 
   return (
-    <Card className="w-[330px] rounded-2xl p-0 shadow-lg overflow-hidden border">
+    <Card className="w-[330px] rounded-2xl p-0 shadow-lg overflow-hidden border-gray-300 border">
       <CardContent className="p-0">
 
         {/* Header */}
-        <div className="flex itemscenter justify-between px-2 py-2 text-xs text-gray-600">
+        <div className="flex items-center justify-between px-2 py-2 text-xs text-gray-600">
           <div className="flex items-center gap-1 font-semibold">
             <img
-              src="/logo-placeholder.png"
+              src="/ngflag.png"
               alt="gov logo"
               className="w-6 h-6 object-contain"
             />
@@ -137,20 +180,22 @@ export default function AdPlayer() {
               <p className="text-[10px]">Sponsored</p>
             </div>
           </div>
-          <p className="text-gray-500">Advertisement</p>
+          <div className="flex gap-1 h-max items-center">
+            <p className="text-gray-500">Advertisement</p>
 
-          {/* Popover */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-4 w-4 p-0 text-gray-600">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="text-sm">
-              <DropdownMenuItem>Remove Ad</DropdownMenuItem>
-              <DropdownMenuItem>Report this Ad</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            {/* Popover */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-4 w-4 p-0 text-gray-600">
+                  <MoreHorizontal className="" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="text-sm border-gray-300">
+                <DropdownMenuItem>Remove Ad</DropdownMenuItem>
+                <DropdownMenuItem>Report this Ad</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
 
         {/* CARD VIDEO */}
@@ -161,44 +206,41 @@ export default function AdPlayer() {
             poster="/coverpost.png"
             src="/podcast.mp4"
             preload="metadata"
+            autoPlay
+            muted={true} // Start muted to allow auto-play
+            playsInline
+            loop // Add loop to keep playing
           />
+
+          {/* Auto-play overlay indicator */}
+          {!autoPlayAttempted && (
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <div className="text-white text-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-2"></div>
+                <p className="text-sm">Loading video...</p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Controls */}
         <div className="flex items-center justify-between px-3 py-3 border-t bg-white">
           <div className="flex items-center gap-2">
-          <Button variant="ghost" className="p-2" onClick={handleReplay}>
-              {/* <Repeat /> */}
-              <RefreshCwIcon/>
+            <Button variant="ghost" className="p-2" onClick={handleReplay}>
+              <RefreshCwIcon size={16} />
             </Button>
             <Button variant="ghost" className="p-1" onClick={togglePlay}>
-              {playing ? <Pause /> : <Play />}
+              {playing ? <Pause size={16} /> : <Play size={16} />}
             </Button>
-
-           
 
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
                 className="p-1"
-                onClick={() => setMuted((m) => !m)}
+                onClick={toggleMute}
               >
-                {muted || volume === 0 ? <VolumeX /> : <Volume2 />}
+                {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
               </Button>
-
-              {/* <input
-                type="range"
-                min={0}
-                max={1}
-                step={0.01}
-                value={volume}
-                onChange={(e) => {
-                  const v = Number(e.target.value);
-                  setVolume(v);
-                  setMuted(v === 0);
-                }}
-                className="h-2 w-24"
-              /> */}
             </div>
           </div>
 
@@ -213,7 +255,7 @@ export default function AdPlayer() {
             }}>
               <DialogTrigger asChild>
                 <Button variant="ghost" className="p-2">
-                  <Maximize2 />
+                  <Maximize2 size={16} />
                 </Button>
               </DialogTrigger>
 
@@ -225,9 +267,9 @@ export default function AdPlayer() {
                     className="absolute inset-0 w-full h-full object-cover"
                     src="/podcast.mp4"
                     preload="auto"
+                    muted={muted}
                     onLoadedMetadata={() => setModalLoaded(true)}
                   />
-                  
                 </div>
               </DialogContent>
             </Dialog>
@@ -241,7 +283,7 @@ export default function AdPlayer() {
             onClick={handleProgressClick}
           >
             <div
-              className="h-full bg-green-600"
+              className="h-full bg-green-600 transition-all duration-100"
               style={{
                 width: duration ? `${(progress / duration) * 100}%` : "0%",
               }}

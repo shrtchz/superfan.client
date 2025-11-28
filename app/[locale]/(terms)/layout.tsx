@@ -14,13 +14,15 @@ export default function TermsLayout({
       <Navbar />
 
       {/* Main Content - Takes up remaining space */}
-      <main className="flex-1 w-full flex   mt-1">
-        <div className="container mx-auto px-14 py-4 flex justifybetween">
-            <div className="w-40">
+      <main className="flex-1 w-full flex justify-center  ">
+        <div className="w-[90%] grid gap-2 grid-cols-4">
+          <div className="col-span-1">
+            <Sidebar />
+          </div>
+          <div className="col-span-3 w-full">
 
-          <Sidebar />
-            </div>
-          {children}
+            {children}
+          </div>
         </div>
       </main>
 
