@@ -26,7 +26,7 @@ export default function Podcastg() {
 
   if (isPipMode) {
     return (
-      <div className="flex flex-col justify-center gap-4 dark:text-white text-black itemscenter w-full flex-1 h-full border border-t-0 border-b-0 ">
+      <div className="flex flex-col justify-center gap-4 dark:text-white text-black itemscenter w-full flex-1 h-full border border-t-0 border-b-0 border-gray-300 ">
         {/* PIP Header */}
         <div className="flex items-center justify-between p-3 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center space-x-2">
@@ -97,7 +97,7 @@ export default function Podcastg() {
   }
 
   return (
-    <div className="flex flex-col justify-center gap-4 dark:text-white text-black items-center w-full flex-1 h-full border border-t-0 border-b-0 ">
+    <div className="flex flex-col justify-center gap-4 dark:text-white text-black items-center w-full flex-1 h-full border border-t-0 border-b-0 border-gray-300">
     <div className="h-full w-[60%]">
     
         <div className="w-full flex items-center justify-ccenter p-6 border-gray-200 dark:border-gray-700">
@@ -152,7 +152,7 @@ export default function Podcastg() {
               className="border  bg-black text-white rounded-full px-2 w-2/3 h-10"
             >
           
-              Watch 
+              Watch Episode 1
             </button>
           </div>
             {/* <hr  className="border-b border-gray-200 h-[] dark:border-gray-700 mt-10"/> */}

@@ -375,10 +375,10 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="flex-1  w-full flex flex-col justify-start items-center text-black dark:text-white ">
-      <div className={`w-md xl:w-lg max-w-2xl h-full border border-t-0 border-b-0 overflow-hidden relative`}>
+    <div className="flex-1  w-full flex flex-col justify-center bg-red-400 items-center text-black dark:text-white ">
+      <div className={`w-md xl:w-lg max-w-2xl h-full border border-gray-300 border-t-0 border-b-0 overflow-hidden relative`}>
         {/* ===== TOP HEADER ===== */}
-        <div className={`flex justify-between items-center px-5 py-2 pb-4 text-[13px] font-bold border-b `}>
+        <div className={`flex justify-between items-center px-5 py-2 pb-4 text-[13px] font-bold border-b border-gray-300`}>
           <div className="relative dark:text-white text-lg text-black w-max ">
             <span className="w-max font-bold uppercase ">{getQuestionTypeDisplayName(selectedQuestionType)}</span>
             <span className="w-max text-sm font-bold ">
@@ -402,9 +402,9 @@ export default function QuizPage() {
                   <MoreHorizontal size={16} />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bgblack border textwhite min-w-[120px]">
+              <DropdownMenuContent className="bgblack border border-gray-300 textwhite min-w-[120px]">
                 <span>Reward</span>
-                <DropdownMenuSeparator className="h-[0.5px] w-full"/>
+                <DropdownMenuSeparator className="h-[0.5px] w-full bg-gray-300"/>
                 <DropdownMenuItem
                   className={`cursor-pointer 
                     ${
@@ -443,7 +443,7 @@ export default function QuizPage() {
         </div>
 
         {/* ===== QUESTION BOX ===== */}
-        <div className="flex justify-between px-6 py-2 h-24 relative border-b">
+        <div className="flex justify-between px-6 py-2 h-24 relative border-gray-300 border-b">
           <div className="space-y-2 text-black dark:text-white w-full">
             <div className="w-full flex h-max items-center justify-between">
             <div className="flex h-max gap-2 items-center ">
@@ -451,18 +451,15 @@ export default function QuizPage() {
                 Question {currentQuestionIndex + 1} of {filteredQuestions.length}
               </span>
 
-              {hideReward &&
+                {selectedAccountType !== "none" && !hideReward && (current.cash || current.points) && (
+                  <>
+                    <div className="h-2 w-2 bg-gray-300 rounded-full"></div>
+                    <div className="text-sm capitalize">
+                      {selectedAccountType === "cash" ? `NGN${current.cash?.toLocaleString()}` : `${current.points}PTS`}
+                    </div>
+                  </>
+                )}
               
-              <>
-              
-              {current.amount && (
-                <div className="text-sm capitalize">
-                  {selectedAccountType === "cash" ? `NGN${current.cash?.toLocaleString()}` : `${current.points}PTS`}
-                </div>
-              )}
-              </>
-              
-              }
               
             </div>
             <DropdownMenu>
@@ -473,7 +470,7 @@ export default function QuizPage() {
                   <MoreHorizontal size={16} />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bgblack border textwhite min-w-[120px]">
+                <DropdownMenuContent className="bgblack border border-gray-300 textwhite min-w-[120px]">
                
                 <DropdownMenuItem
                   className={`cursor-pointer 
@@ -486,7 +483,7 @@ export default function QuizPage() {
                 >
                   Expand Media
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="h-[0.5px] w-full"/>
+                <DropdownMenuSeparator className="h-[0.5px] w-full border-b border-gray-300"/>
                 <DropdownMenuItem
                   className={`cursor-pointer  ${
                     selectedAccountType === "points"
@@ -532,9 +529,9 @@ export default function QuizPage() {
 
         {/* Show image for isori questions */}
         {current.image && isImageCollapsed && (
-  <div className={`relative flex flex-col items-center justify-center p-2 py-4 border-b h-max w-full`}>
+  <div className={`relative flex flex-col items-center justify-center p-2 py-4 border-gray-300 border-b h-max w-full`}>
     <button
-      className="absolute top-0 right-0 hover:bg-black hover:text-white px-2 text-sm dark:text-white text-black py-1 border rounded-bl-md border-r-0 border-t-0"
+              className="absolute top-0 right-0 hover:bg-black hover:text-white px-2 text-sm dark:text-white text-black border-gray-300 py-1 border rounded-bl-md border-r-0 border-t-0"
       onClick={() => {
         setIsImageCollapsed(false)
       }}
@@ -558,7 +555,7 @@ export default function QuizPage() {
         <div className="space-y-4 mb-32">
           {isInputQuestion ? (
             <div className="flex flex-col items-center">
-              <div className="h-20 text-black border-black border-t-0 border-l-0 border-r-0 border w-full">
+              <div className="h-20 text-black border-gray-300 border-t-0 border-l-0 border-r-0 border w-full">
                 <input
                   id="answer-input"
                   type="text"
@@ -589,7 +586,7 @@ export default function QuizPage() {
                     key={i}
                     className={`relative
                     flex items-center w-full group
-                    border border-l-0 border-r-0 border-t-0 py-1 px-4 
+                    border border-l-0  border-gray-300 border-r-0 border-t-0 py-1 px-4 
                     font-extrabold text-[15px]
                     transition-all min-h-[60px]
                     ${
@@ -639,7 +636,7 @@ export default function QuizPage() {
         </div>
 
         {/* ===== FOOTER AREA ===== */}
-        <div className="absolute bottom-0 left-0 w-full border-t">
+        <div className="absolute bottom-0 left-0 w-full border-gray-300 border-t">
           <div className="flex w-full items-center justify-center h-14">
             <button
               className="h-full font-bold text-[14px] w-full text-black dark:text-white tracking-wide transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
@@ -647,7 +644,7 @@ export default function QuizPage() {
             >
               Submit
             </button>
-            <div className="border-r h-full"></div>
+            <div className="border-r border-gray-300 h-full"></div>
 
             <button
               className="h-full font-bold text-[14px] w-full text-black dark:text-white tracking-wide transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"

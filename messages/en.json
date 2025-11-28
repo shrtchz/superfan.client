@@ -41,6 +41,7 @@
     "submit": "Submit",
     "alreadyHaveAccount": "Already have an account?",
     "login": "Log in here",
+    "fullName":"Full Name",
 
     "emailLabel": "Email",
     "phoneLabel": "Phone",

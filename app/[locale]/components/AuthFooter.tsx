@@ -9,7 +9,7 @@ export function AuthFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mb2 w-full border-t border-b h-[31px] flex items-center py4">
+    <footer className="mb2 w-full border-t border-gray-300 border-b h-[31px] flex items-center py4">
            <div className="contaier w-full mxauto px-4 py-4 flex items-center justify-between">
 
         <div className="flex justify-between items-center w-full ">
