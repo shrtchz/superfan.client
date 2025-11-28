@@ -67,7 +67,7 @@ export default function MessageInput() {
   };
 
   return (
-    <div className="flex flex-col justify-center gap-4 dark:text-white text-black itemscenter w-full flex-1 h-full border border-t-0 border-b-0 ">
+    <div className="flex flex-col justify-center gap-4 dark:text-white text-black itemscenter w-full flex-1 h-full border border-t-0 border-b-0 border-gray-300">
  <div className={`w-full justifycenter flex items-center gap-4 flex-col h-[30%]  relative`}>
 
       <div className="flex h-max items-center gap-2">

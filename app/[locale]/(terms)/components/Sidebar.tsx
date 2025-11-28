@@ -7,7 +7,8 @@ const Sidebar = () => {
     const params=useParams();
       const locale=params.locale;
   return (
-    <div className=' flex w-40'>
+    <div className=" w-40  translate-x-8 text-black">
+
         <div className=" gap-2 text- flex flex-col">
             <Link 
               href={`/${locale}/about`} 

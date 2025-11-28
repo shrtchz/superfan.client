@@ -1,25 +1,41 @@
 import * as React from "react";
 import { SVGProps } from "react";
 const AwardIcon = (props: SVGProps<SVGSVGElement>) => (
+
   <svg
-    // width="800px"
-    // height="800px"
-    viewBox="0 0 24 24"
-    fill="none"
+ 
+    viewBox="0 0 30 30"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <rect width={24} height={24} fill="" />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M6 9C6 5.68629 8.68629 3 12 3C15.3137 3 18 5.68629 18 9C18 12.3137 15.3137 15 12 15C8.68629 15 6 12.3137 6 9Z"
-      fill="currentColor"
-    />
-    <path
-      d="M7.10992 14.0087L6.14635 16.8994C5.28723 19.4767 8.02267 21.7775 10.4147 20.4895L11.5261 19.891C11.8221 19.7316 12.1784 19.7316 12.4743 19.891L13.5858 20.4895C15.9778 21.7775 18.7133 19.4767 17.8541 16.8994L16.8905 14.0083C15.6287 15.2406 13.903 16 12 16C10.0972 16 8.37167 15.2407 7.10992 14.0087Z"
-      fill="currentColor"
-    />
+    <defs>
+      <style>
+        {
+          ".cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}"
+        }
+      </style>
+    </defs>
+    <title />
+    <g data-name="Layer 2" id="Layer_2">
+      <g id="Interface-Light">
+        <g id="interface-light-rating-star-1">
+          <rect
+            className="cls-1"
+            height={29}
+            rx={3}
+            width={29}
+            x={0.5}
+            y={0.5}
+          />
+          <path
+            className="cls-1"
+            d="M15.68,8.49,17,12.12a.74.74,0,0,0,.65.5l3.69.15a.76.76,0,0,1,.42,1.35l-2.9,2.39a.78.78,0,0,0-.25.8l1,3.72a.73.73,0,0,1-1.09.84L15.4,19.72a.69.69,0,0,0-.8,0l-3.08,2.15A.73.73,0,0,1,10.43,21l1-3.72a.78.78,0,0,0-.25-.8l-2.9-2.39a.76.76,0,0,1,.42-1.35l3.69-.15a.74.74,0,0,0,.65-.5l1.28-3.63A.72.72,0,0,1,15.68,8.49Z"
+          />
+        </g>
+      </g>
+    </g>
   </svg>
 );
+
+  
 export default AwardIcon;

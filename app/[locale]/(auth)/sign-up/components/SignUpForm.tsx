@@ -32,7 +32,7 @@ export function SignUpForm() {
   // Zod schema with translations
   const signUpSchema = z
     .object({
-      username: z.string().min(1, t("validation_contactRequired")),
+      fullName: z.string().min(1, t("validation_contactRequired")),
       contactType: z.enum(["email", "phone"], { message: t("validation_selectContactType") }),
       contact: z.string().min(1, t("validation_contactRequired")),
       password: z.string().min(8, t("validation_passwordMin")),
@@ -64,7 +64,7 @@ export function SignUpForm() {
   const form = useForm<SignUpFormValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      username: "",
+      fullName: "",
       contactType: "email",
       contact: "",
       password: "",
@@ -89,13 +89,13 @@ export function SignUpForm() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 px-6">
-          {/* Username Field */}
+          {/* fullName Field */}
           <FormField
             control={form.control}
-            name="username"
+            name="fullName"
             render={({ field }) => (
               <FormItem className="shadow-inner border border-gray-900 rounded-md gap-0 px-2 pt-1">
-                <FormLabel>{t("username")}</FormLabel>
+                <FormLabel>{t("fullName")}</FormLabel>
                 <FormControl>
                   <Input {...field} className="border-0 px-0 shadow-none focus-visible:ring-0" />
                 </FormControl>
@@ -103,7 +103,7 @@ export function SignUpForm() {
             )}
             />
             <FormMessage>
-              {form.formState.errors.username?.message || null}
+              {form.formState.errors.fullName?.message || null}
             </FormMessage>
 
           {/* Contact Type + Input */}

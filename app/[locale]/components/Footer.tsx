@@ -14,7 +14,7 @@ export function Footer() {
 
 
   return (
-    <footer className=" w-full border-t border-b h-[31px] flex items-center justify-center py4">
+    <footer className=" w-full border-t border-gray-300 border-b h-[31px] flex items-center justify-center py4">
            <div className=" w-[90%]  py-4 flex ">
 
         <div className="px-1 grid  grid-cols-4 w-full ">

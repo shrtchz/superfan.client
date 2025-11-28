@@ -46,7 +46,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="w-full border-t border-b h-[80px] text-black flex items-center justify-center py4">
+    <nav className="w-full border-t border-b border-gray-300 h-[80px] text-black flex items-center justify-center py4">
       <div className="w-[90%] py-4 flex">
         <div className="px-1 grid grid-cols-4 w-full">
           
@@ -71,9 +71,9 @@ export function Navbar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="sm"
-                  className="flex items-center text-black space-x-2 bg-transparent"
+                  className="flex border-gray-300 items-center text-black space-x-2 bg-transparent"
                 >
                   <span className="hidden sm:inline">{currentLanguage.name}</span>
                   <ChevronDown className="w-4 h-4" />
