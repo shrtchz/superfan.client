@@ -364,10 +364,10 @@ export default function PodcastHeader() {
       };
   return (
   
-      <div className="w-full px4">
+      <div className="w-full px4 ">
         {/* Top Bar */}
-        <div className="w-full flex items-center justify-between py-3">
-  <div className="flex h-max items-center gap-2">
+        <div className="w-full flex items-center justifybetween py-3">
+  <div className="flex w-full h-max items-center gap-2">
   <div className="w-full flex  gap-2 items-center">
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">Superfan podcast:</h1>
               <p className="text-xl fontbold text-gray-900 dark:text-white">

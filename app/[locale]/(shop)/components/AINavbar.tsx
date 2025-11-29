@@ -63,6 +63,7 @@ import { ThemeToggle } from "../../components/theme-toggle";
 import { usePodcast } from "../../(dashboard)/context/PodcastContext";
 import ShopHeader from "./ShopHeader";
 import AIHeader from "./AIHeader";
+import Logo from "@/public/icons/Logo";
 
 // Define the scoreboard data type
 interface ScoreboardEntry {
@@ -375,22 +376,17 @@ export default function AINavbar() {
   };
 
   return (
-    <div className=" w-full border-t border-gray-300 border-b h-[80px] text-black flex items-center justify-center py4">
-      <div className=" w-[90%]  py-4 flex ">
-        <div className="px-1 grid  grid-cols-4 w-full ">
-        <div className="col-span-1 ">
+    <div className=" w-full border-t border-b  border-gray-300 h-[80px] text-black flex items-center justify-center py4">
+      <div className="w-full xl:w-[90%]  py-4 flex ">
+        <div className=" grid  grid-cols-4 w-full ">
+          <div className="col-span-1 w-full h-full flex items-center">
             <Link
               href={`/${locale}`}
-              className="flex flex1 w-full mt-1.5  flex1 items-center space-x-2"
+              className="flex mt-4 xl:mt-0  w-full h-full  flex1 items-center p-0 gap-0 m-0 "
             >
-              <Image
-                src="/GAME WHITE AND BLACK 2-1.svg"
-                alt="Logo"
-                width={220}
-                height={150}
-                priority
-              />
-              
+              <div className="h-full w-full 2xl:-translate-x-12 xl:-translate-x-4 ">
+                <Logo />
+              </div>
             </Link>
           </div>
           <div className="col-span-3 ">

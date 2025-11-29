@@ -164,11 +164,11 @@ export default function AdPlayer() {
   };
 
   return (
-    <Card className="w-[330px] rounded-2xl p-0 shadow-lg overflow-hidden border-gray-300 border">
+    <Card className="w-full rounded-2xl p-0 shadow-lg overflowhidden border-gray-300 border">
       <CardContent className="p-0">
 
         {/* Header */}
-        <div className="flex items-center justify-between px-2 py-2 text-xs text-gray-600">
+        <div className="flex items-center gap- justify-between px-2 py-2 text-xs text-gray-600">
           <div className="flex items-center gap-1 font-semibold">
             <img
               src="/ngflag.png"
@@ -176,17 +176,17 @@ export default function AdPlayer() {
               className="w-6 h-6 object-contain"
             />
             <div>
-              <p>Government of Naija</p>
+              <p className="text-xs xl:text-base">Government of Naija</p>
               <p className="text-[10px]">Sponsored</p>
             </div>
           </div>
-          <div className="flex gap-1 h-max items-center">
-            <p className="text-gray-500">Advertisement</p>
+          <div className="flex gap-1 text-xs h-max items-center">
+            <p className="text-gray-500 xl:flex hidden">Advertisement</p>
 
             {/* Popover */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-4 w-4 p-0 text-gray-600">
+                <Button variant="ghost" className=" p-0 text-gray-600">
                   <MoreHorizontal className="" />
                 </Button>
               </DropdownMenuTrigger>
@@ -224,37 +224,36 @@ export default function AdPlayer() {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-between px-3 py-3 border-t bg-white">
+        <div className="flex items-center  gap-2 justify-between xl:px-3 py-3 border-t bg-white">
           <div className="flex items-center gap-2">
-            <Button variant="ghost" className="p-2" onClick={handleReplay}>
+            <Button variant="ghost" className="p-1" size={"icon-sm"} onClick={handleReplay}>
               <RefreshCwIcon size={16} />
             </Button>
-            <Button variant="ghost" className="p-1" onClick={togglePlay}>
+            <Button variant="ghost" className="p-1" size={"icon-sm"} onClick={togglePlay}>
               {playing ? <Pause size={16} /> : <Play size={16} />}
             </Button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center xl:gap-2">
               <Button
                 variant="ghost"
-                className="p-1"
+                className="p-1" size={"icon-sm"}
                 onClick={toggleMute}
               >
                 {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
               </Button>
             </div>
-          </div>
-
-          <div className="flex items-center gap-3 text-xs text-gray-600">
+          <div className="flex items-center gap-3  text-xs text-gray-600">
             <span>
               {format(progress)} / {format(duration)}
             </span>
 
+          </div>
             <Dialog open={open} onOpenChange={(v) => {
               setOpen(v);
               if (!v) setModalLoaded(false);
             }}>
               <DialogTrigger asChild>
-                <Button variant="ghost" className="p-2">
+                <Button variant="ghost" className="p-1" size={"icon-sm"}>
                   <Maximize2 size={16} />
                 </Button>
               </DialogTrigger>
@@ -274,10 +273,11 @@ export default function AdPlayer() {
               </DialogContent>
             </Dialog>
           </div>
+
         </div>
 
         {/* Progress bar */}
-        <div className="px-4 py-2 bg-white">
+        <div className="px-4 py-0.5 xl:py-2 bg-white">
           <div
             className="h-2 bg-gray-200 rounded cursor-pointer overflow-hidden"
             onClick={handleProgressClick}
@@ -292,7 +292,7 @@ export default function AdPlayer() {
         </div>
 
         {/* Footer */}
-        <div className="px-4 py-3 text-xs text-gray-700 bg-white">
+        <div className="xl:px-4 xl:py-3 text-xs text-gray-700 bg-white">
           <div className="flex items-start justify-between gap-3">
             <p className="flex-1">
               We help job seekers develop the skills they need to support
