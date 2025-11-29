@@ -12,7 +12,7 @@ const Dashboard = () => {
     
     // const router=useRouter()
   return (
-    <div className="relative -translate-x-3.5 bg-red-900 2xl:-translate-x-18   w-full flex  h-full dark:text-white text-black">
+    <div className="relative    w-full flex  h-full dark:text-white text-black">
       <QuizPage />
      
     </div>

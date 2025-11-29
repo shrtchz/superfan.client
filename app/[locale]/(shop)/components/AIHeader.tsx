@@ -369,7 +369,7 @@ export default function AIHeader() {
     setPremiumDialogOpen(true);
   };
   return (
-    <div className="w-full px4">
+    <div className="w-full px4 ">
       {/* Top Bar */}
       <div className="w-full flex items-center justify-between py-3">
         {/* Left side - Logo/Brand */}
