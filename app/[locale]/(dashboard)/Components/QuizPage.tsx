@@ -375,8 +375,8 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="flex-1  w-full flex flex-col justify-center bg-red-400 items-center text-black dark:text-white ">
-      <div className={`w-md xl:w-lg max-w-2xl h-full border border-gray-300 border-t-0 border-b-0 overflow-hidden relative`}>
+    <div className="flex-1  w-full  flex flex-col justify-center  items-center text-black dark:text-white ">
+      <div className={`w-md xl:w-lg max-w-2xl 2xl:w-3xl h-full border border-gray-300 border-t-0 border-b-0 overflow-hidden relative`}>
         {/* ===== TOP HEADER ===== */}
         <div className={`flex justify-between items-center px-5 py-2 pb-4 text-[13px] font-bold border-b border-gray-300`}>
           <div className="relative dark:text-white text-lg text-black w-max ">

@@ -47,7 +47,7 @@ export function Navbar() {
 
   return (
     <nav className="w-full border-t border-b border-gray-300 h-[80px] text-black flex items-center justify-center py4">
-      <div className="w-[90%] py-4 flex">
+      <div className="w-full xl:w-[90%] py-4 flex">
         <div className="px-1 grid grid-cols-4 w-full">
           
           {/* LOGO */}

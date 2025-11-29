@@ -9,7 +9,7 @@ const Header = () => {
     const location=usePathname()
     
   return (
-    <div>
+    <div className='w-full h-max'>
         {
             location.includes("opon")?
             <AINavbar/>
