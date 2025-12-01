@@ -64,6 +64,8 @@ import { usePodcast } from "../../(dashboard)/context/PodcastContext";
 import ShopHeader from "./ShopHeader";
 import AIHeader from "./AIHeader";
 import Logo from "@/public/icons/Logo";
+import { useTheme } from "next-themes";
+import DarkLogo from "@/public/icons/DarkLogo";
 
 // Define the scoreboard data type
 interface ScoreboardEntry {
@@ -87,10 +89,11 @@ export default function AINavbar() {
   const urlPath = pathname.replace(`/${languageCode}`, "");
 
   const languages = {
-    en: { code: "en", name: "English" },
-    fr: { code: "fr", name: "Français" },
-    // de: { code: "de", name: "Deutsch" },
-  } as const;
+		en: { code: "en", name: "English" },
+		fr: { code: "fr", name: "Français" },
+		yr: { code: "yr", name: "Yoruba" },
+		// de: { code: "de", name: "Deutsch" },
+	} as const;
 
   type Locale = keyof typeof languages;
 
@@ -135,7 +138,9 @@ export default function AINavbar() {
   const [value, setValue] = useState<string>("");
   const [applySelection, setApplySelection] = useState(false);
   const [isModeDropdownOpen, setIsModeDropdownOpen] = useState(false);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  // const [theme, setTheme] = useState<"dark" | "light">("dark");
+	const { theme, setTheme, resolvedTheme } = useTheme();
+
   const [isPremium, setIsPremium] = useState(false);
   const [walletEnabled, setWalletEnabled] = useState(true);
   const [premiumDialogOpen, setPremiumDialogOpen] = useState(false);
@@ -376,25 +381,26 @@ export default function AINavbar() {
   };
 
   return (
-    <div className=" w-full border-t border-b  border-gray-300 h-[80px] text-black flex items-center justify-center py4">
-      <div className="w-full xl:w-[90%]  py-4 flex ">
-        <div className=" grid  grid-cols-4 w-full ">
-          <div className="col-span-1 w-full h-full flex items-center">
-            <Link
-              href={`/${locale}`}
-              className="flex mt-4 xl:mt-0  w-full h-full  flex1 items-center p-0 gap-0 m-0 "
-            >
-              <div className="h-full w-full 2xl:-translate-x-12 xl:-translate-x-4 ">
-                <Logo />
-              </div>
-            </Link>
-          </div>
-          <div className="col-span-3 ">
-            <AIHeader/>
-          </div>
-        
-        </div>
-      </div>
-    </div>
-  );
+		<div className=" w-full border-t border-b  border-gray-300 h-[80px] text-black flex items-center justify-center py4">
+			<div className="w-full xl:w-[90%]  py-4 flex ">
+				<div className=" grid  grid-cols-4 w-full ">
+					<div className="col-span-1 w-full h-full flex items-center">
+						<Link
+							href={`/${locale}`}
+							className="flex mt-3 xlmt-0    flex1 items-center p-0 gap-0 m-0 "
+						>
+							<div className="h-16 w-54 2xl:-translate-x-10 xl:-translate-x-0 ">
+								<div className="h-16 w-54 2xl:-translate-x-10 xl:-translate-x-0 ">
+									{theme === "dark" ? <DarkLogo /> : <Logo />}
+								</div>
+							</div>
+						</Link>
+					</div>
+					<div className="col-span-3 ">
+						<AIHeader />
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

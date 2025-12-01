@@ -14,7 +14,7 @@ export default function TermsLayout({
       <Navbar />
 
       {/* Main Content - Takes up remaining space */}
-      <main className="flex-1 w-full flex justify-center  ">
+      <main className="flex-1 w-full flex justify-center mt-4 ">
         <div className="w-[90%] grid gap-2 grid-cols-4">
           <div className="col-span-1">
             <Sidebar />

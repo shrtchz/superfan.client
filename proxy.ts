@@ -9,6 +9,6 @@ export default createMiddleware({
 export const config = {
   matcher: [
     "/",                // redirect root → /en or default
-    "/(en|fr|de)/:path*" // only handle valid locale routes
+    "/(en|fr|de|yr)/:path*" // only handle valid locale routes
   ]
 };

@@ -2,7 +2,7 @@ import * as React from "react";
 import { SVGProps } from "react";
 const OponIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    fill="#000000"
+    fill="currentColor"
 
     viewBox="0 0 512 512"
     xmlns="http://www.w3.org/2000/svg"
