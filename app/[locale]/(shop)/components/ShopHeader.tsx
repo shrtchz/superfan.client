@@ -75,10 +75,11 @@ export default function ShopHeader() {
       const urlPath = pathname.replace(`/${languageCode}`, "");
     
       const languages = {
-        en: { code: "en", name: "English" },
-        fr: { code: "fr", name: "Français" },
-        // de: { code: "de", name: "Deutsch" },
-      } as const;
+				en: { code: "en", name: "English" },
+				fr: { code: "fr", name: "Français" },
+				yr: { code: "yr", name: "Yoruba" },
+				// de: { code: "de", name: "Deutsch" },
+			} as const;
     
       type Locale = keyof typeof languages;
     
@@ -387,8 +388,8 @@ export default function ShopHeader() {
               {/* Currency Dropdown */}
               <DropdownMenu >
                 <DropdownMenuTrigger asChild className="px- w-20">
-                  <Button variant="ghost" size="sm" className="border flex items-center px-2  h-10">
-                    <span className="font-medium text-xl">NGN</span>
+                  <Button variant="ghost" size="sm" className="flex items-center px-2  h-8 border-0">
+                    <span className="font-medium text-2xl">NGN</span>
                     {/* <span className="text-muted-foreground">v</span> */}
                     <ChevronDown className="h-3 w-3 opacity-50" />
                   </Button>

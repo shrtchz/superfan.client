@@ -49,6 +49,7 @@ export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
           </button>
         </DialogHeader>
 
+      <hr  className="border-gray border border-b"/>
         <div className="space-y-2 p-3">
           {/* SHIPPING SECTION */}
           <div className="space-y-4">
@@ -57,7 +58,6 @@ export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
               <h3 className="text-lg font-semibold">SHIPPING</h3>
             </div>
 
-      
               <div className="space-y-2 w-full">
                 {/* <Label htmlFor="fullName">Full name</Label> */}
                 <Input id="fullName" placeholder="Enter your full name" />

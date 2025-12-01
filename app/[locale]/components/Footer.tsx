@@ -14,46 +14,44 @@ export function Footer() {
 
 
   return (
-
-    <footer className=" w-full border-t border-b  border-gray-300 h-[80px] text-black flex items-center justify-center py4">
-      <div className="w-full xl:w-[90%]  py-4 flex ">
-
-        <div className="px1 grid  grid-cols-4 w-full ">
-        <div className="pl-7 col-span-1 text-sm  flex gap-1 h-max items-center text-gray-900 whitespace-nowrap ">
-            © {currentYear} 
-            <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
-            <p className="uppercase">Superfan NG</p>
-          </div>
-<div className="col-span-2"></div>
-          {/* Right side - Navigation Links */}
-          <div className="flex justify-end -span-1 flex gap-1 text-sm text-gray-600 ">
-            <Link 
-              href={`/${locale}/about`} 
-              className="font-medium text-gray-900 transition-colors whitespace-nowrap"
-            >
-              About
-            </Link>
-            <Link 
-              href={`/${locale}/terms-condition`} 
-              className="font-medium text-gray-900 transition-colors whitespace-nowrap"
-            >
-              Terms of Use
-            </Link>
-            <Link 
-              href={`/${locale}/privacy`}
-              className="font-medium text-gray-900 transition-colors whitespace-nowrap"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              href={`/${locale}/contact`} 
-              className="font-medium text-gray-900 transition-colors whitespace-nowrap"
-            >
-              Contact
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+		<footer className=" w-full border-t border-b  border-gray-300 dark:border-gray-500 h-[80px] text-black flex items-center justify-center py4">
+			<div className="w-full xl:w-[90%]  py-4 flex ">
+				<div className="px1 grid  grid-cols-4 w-full ">
+					<div className="pl-7 col-span-1 text-sm  flex gap-1 h-max items-center text-gray-900 dark:text-white whitespace-nowrap ">
+						© {currentYear}
+						<div className="h-1 w-1 bg-gray-300 dark:bg-gray-500 rounded-full"></div>
+						<p className="uppercase">Superfan NG</p>
+					</div>
+					<div className="col-span-2"></div>
+					{/* Right side - Navigation Links */}
+					<div className="flex justify-end -span-1 flex gap-1 text-sm text-gray-600 dark:text-white ">
+						<Link
+							href={`/${locale}/about`}
+							className="font-medium text-gray-900 dark:text-white transition-colors whitespace-nowrap"
+						>
+							About
+						</Link>
+						<Link
+							href={`/${locale}/terms-condition`}
+							className="font-medium text-gray-900 dark:text-white transition-colors whitespace-nowrap"
+						>
+							Terms of Use
+						</Link>
+						<Link
+							href={`/${locale}/privacy`}
+							className="font-medium text-gray-900 dark:text-white transition-colors whitespace-nowrap"
+						>
+							Privacy Policy
+						</Link>
+						<Link
+							href={`/${locale}/contact`}
+							className="font-medium text-gray-900 dark:text-white transition-colors whitespace-nowrap"
+						>
+							Contact
+						</Link>
+					</div>
+				</div>
+			</div>
+		</footer>
+	);
 }

@@ -23,9 +23,11 @@ export function Navbar() {
   const urlPath = pathname.replace(`/${languageCode}`, "");
 
   const languages = {
-    en: { code: "en", name: "English" },
-    fr: { code: "fr", name: "Français" },
-  } as const;
+		en: { code: "en", name: "English" },
+		fr: { code: "fr", name: "Français" },
+		yr: { code: "yr", name: "Yoruba" },
+		// de: { code: "de", name: "Deutsch" },
+	} as const;
 
   type Locale = keyof typeof languages;
 
