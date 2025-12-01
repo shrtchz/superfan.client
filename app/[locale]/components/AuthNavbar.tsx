@@ -60,6 +60,8 @@ import { usePodcast } from "../(dashboard)/context/PodcastContext";
 import Link from "next/link";
 import UserAvatar from "./UserAvatar";
 import Logo from "@/public/icons/Logo";
+import { useTheme } from "next-themes";
+import DarkLogo from "@/public/icons/DarkLogo";
 
 // Define the scoreboard data type
 interface ScoreboardEntry {
@@ -97,7 +99,9 @@ export default function AuthNavbar() {
 	const [value, setValue] = useState<string>("");
 	const [applySelection, setApplySelection] = useState(false);
 	const [isModeDropdownOpen, setIsModeDropdownOpen] = useState(false);
-	const [theme, setTheme] = useState<"dark" | "light">("dark");
+	// const [theme, setTheme] = useState<"dark" | "light">("dark");
+	const { theme, setTheme, resolvedTheme } = useTheme();
+	// alert(theme);
 	const [isPremium, setIsPremium] = useState(false);
 	const [walletEnabled, setWalletEnabled] = useState(true);
 	const [premiumDialogOpen, setPremiumDialogOpen] = useState(false);
@@ -429,67 +433,68 @@ export default function AuthNavbar() {
 	};
 
 	return (
-	
-			<nav className=" w-full border-t border-b  border-gray-300 h-[80px] text-black flex items-center justify-center py4">
-				<div className="w-full xl:w-[90%]  py-4 flex ">
-					<div className=" grid  grid-cols-4 w-full ">
-						<div className="col-span-1 w-full h-full flex items-center">
-							<Link
-								href={`/${locale}`}
-								className="flex  w-full h-full  flex1 items-center p-0 gap-0 m-0 "
-							>
-								<div className="h-full w-full 2xl:-translate-x-12 xl:-translate-x-4 ">
-									<Logo />
-								</div>
-							</Link>
-						</div>
-          <div className="col-span-2 2xl:ml-12 2 w-full flex items-center justifycenter py-3">
-							<div className="flex1  wfull flex flex-col justifystart items-center text-black dark:text-white ">
-								<div
-                className={`w-md xl:w-lg max-w-2xl 2xl:w-3xl h-full  border-b-0 overflow-hidden relative`}
-								>
-									{/* CENTER SECTION */}
-									<div className="flex h-max items-center justify-between ">
-										<div className="flex gap-2 h-max items-center">
-											<p>Test</p>
-											<div className="h-8 flex flex-row justify-between ">
-												<div className="data-[size=default]:h-8 border-gray-300 !bg-inherit border-[#2f3336] text-black dark:text-white xl:px-2 px-1 xl:gap-1 text-black gap-0 w-20 text-xs xl:text-sm bo border rounded-md h-8 flex items-center justifycenter">
-													{language
-														? getLabel(languages, language, "Language")
-														: "Language"}
-												</div>
-											</div>
-										</div>
-										<div className="w-20 gap-2 border-[#2f3336] text-black dark:text-white rounded-full h-8 flex items-center justify-center">
-											<div className="h-8 w-8">
-												<TimerIcon />
-											</div>
-											<p>{timer ? timer : 0}m</p>
-										</div>
-									</div>
-								</div>
+		<nav className=" w-full border-t border-b  dark:border-gray-500 border-gray-300 dark:border-gray-500 h-[80px] text-black flex items-center justify-center py4">
+			<div className="w-full xl:w-[90%]  py-4 flex ">
+				<div className=" grid  grid-cols-4 w-full ">
+					<div className="col-span-1 w-full h-full flex items-center">
+						<Link
+							href={`/${locale}`}
+							className="flex mt-3 xlmt-0    flex1 items-center p-0 gap-0 m-0 "
+						>
+							<div className="h-16 w-54 2xl:-translate-x-10 xl:-translate-x-0 ">
+								{theme === "dark" ?
+									<DarkLogo/>:
+								<Logo />
+								}
 							</div>
-						</div>
-						<div className="col-span-1  flex h-full items-center py3 xltranslate-x-0 -translatex6  justify-end">
-							{/* RIGHT SECTION */}
-							<div className="flex h-full items-center ">
-								<div className="flex flex1 h-full items-center gap- ">
-									{/* Questions Count Display */}
-									<div className="flex  text-sm xl:text-base items-center text-black dark:text-white  w-max h-8 px-3 gap-2">
-										<p>Questions Count</p>
-										<div className="border-gray-300 rounded-md border h-full flex items-center justify-center px-2">
-											{questionCount ? questionCount : 0}
+						</Link>
+					</div>
+					<div className="col-span-2 2xl:ml-12 2 w-full flex items-center justifycenter py-3">
+						<div className="flex1  wfull flex flex-col justifystart items-center text-black dark:text-white ">
+							<div
+								className={`w-md xl:w-lg max-w-2xl 2xl:w-3xl h-full  border-b-0 overflow-hidden relative`}
+							>
+								{/* CENTER SECTION */}
+								<div className="flex h-max items-center justify-between ">
+									<div className="flex gap-2 h-max items-center">
+										<p>Test</p>
+										<div className="h-8 flex flex-row justify-between ">
+											<div className="data-[size=default]:h-8 border-gray-300 dark:border-gray-500 !bg-inherit border-[#2f3336] dark:border-gray-500 text-black dark:text-white xl:px-2 px-1 xl:gap-1 text-black gap-0 w-20 text-xs xl:text-sm bo border rounded-md h-8 flex items-center justifycenter">
+												{language
+													? getLabel(languages, language, "Language")
+													: "Language"}
+											</div>
 										</div>
 									</div>
+									<div className="w-20 gap-2 border-[#2f3336] dark:border-gray-500 text-black dark:text-white rounded-full h-8 flex items-center justify-center">
+										<div className="h-8 w-8">
+											<TimerIcon />
+										</div>
+										<p>{timer ? timer : 0}m</p>
+									</div>
 								</div>
-
-								{/* AVATAR WITH DROPDOWN */}
-								<UserAvatar />
 							</div>
 						</div>
 					</div>
+					<div className="col-span-1  flex h-full items-center py3 xltranslate-x-0 -translatex6  justify-end">
+						{/* RIGHT SECTION */}
+						<div className="flex h-full items-center ">
+							<div className="flex flex1 h-full items-center gap- ">
+								{/* Questions Count Display */}
+								<div className="flex  text-sm xl:text-base items-center text-black dark:text-white  w-max h-8 px-3 gap-2">
+									<p>Questions Count</p>
+									<div className="border-gray-300 dark:border-gray-500 rounded-md border h-full flex items-center justify-center px-2">
+										{questionCount ? questionCount : 0}
+									</div>
+								</div>
+							</div>
+
+							{/* AVATAR WITH DROPDOWN */}
+							<UserAvatar />
+						</div>
+					</div>
 				</div>
-			</nav>
-		
+			</div>
+		</nav>
 	);
 }

@@ -393,209 +393,266 @@ type RewardFilter = 'cash' | 'points' | 'none';
     setSubject(subjectId)
   }
     return (
-        <div className=" w-40  translate-x-8 text-black">
-            <div className="gap-2 flex flex-col">
-                {links.map((link, id) => {
-                    return (
-                        <Link href={`/${locale}${link.href}`} key={id}>
-                            <div className="flex items-center gap-2 py-2 hover:bg-gray-100 rounded">
-                                <div className="h-6 w-6">
-                                    {link.icon}
-                                </div>
-                                <p>{link.name}</p>
-                            </div>
-                        </Link>
-                    );
-                })}
-            </div>
-            <div className="mt-4 w-full relative">
-                <button
-                    onClick={() => setIsTestMenuOpen(!isTestMenuOpen)}
+			<div className=" w-40  translate-x-8 text-black">
+				<div className="gap-2 flex flex-col">
+					{links.map((link, id) => {
+						return (
+							<Link
+								href={`/${locale}${link.href}`}
+								key={id}
+							>
+								<div className="flex items-center dark:text-white dark:hover:text-black gap-2 py-2 hover:bg-gray-100 rounded">
+									<div className="h-6 w-6">{link.icon}</div>
+									<p>{link.name}</p>
+								</div>
+							</Link>
+						);
+					})}
+				</div>
+				<div className="mt-4 w-full relative ">
+					<button
+						onClick={() => setIsTestMenuOpen(!isTestMenuOpen)}
+						className="hover:bg-black dark:text-white dark:border-gray-500 dark:border-gray-500 border-gray-300 hover:text-white border rounded-full h-10 w-full flex justify-center items-center bg-transparent"
+					>
+						Start a Test
+					</button>
 
-
-                    className="hover:bg-black border-gray-300 hover:text-white border rounded-full h-10 w-full flex justify-center items-center bg-transparent" >
-                    Start a Test
-                </button>
-
-          {isTestMenuOpen && (
-            <div className="absolute top-10 left-0 h-[400px] overflow-auto z-50">
-              {/* Main Card with Accordion */}
-              <div className="bg-card rounded-2xl shadow-lg border border-none borderborder overflow-hidden  w-80">
-                <Accordion type="single" collapsible className="w-full">
-                  {/* Language */}
-                  <AccordionItem value="language" className="borderb border-gray-300 last:border-b-0">
-                    <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
-                      <div className="flex flex-col items-start justify-between w-full gap-2">
-                        <span className="font-semibold text-foreground text-left">Language</span>
-                        {language && (
-                          <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-md">
-                            {getLabel(languages, language)}
-                          </span>
-                        )}
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-4 pt-2">
-                      <div className="space-y-2">
-                        {languages.map((item) => (
-                          <button
-                            key={item.id}
-                            onClick={() => setLanguage(item.id)}
-                            className={`w-full text-left border-gray-300 border-t px-4 py-3 transition-all duration-200 flex 
+					{isTestMenuOpen && (
+						<div className="absolute top-10 left-0 h-[400px]  overflow-auto  !z-50">
+							{/* Main Card with Accordion */}
+							<div className="dark:bg-black bg-white rounded-2xl  border-2 dark:border-gray-500 border-gray-300 borderborder overflow-hidden  w-70">
+								<Accordion
+									type="single"
+									collapsible
+									className="w-full"
+								>
+									{/* Language */}
+									<AccordionItem
+										value="language"
+										className="borderb dark:border-gray-500 border-gray-300 last:border-b-0"
+									>
+										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
+											<div className="flex flex-col items-start justify-between w-full gap-2">
+												<span className="font-semibold text-foreground text-left">
+													Language
+												</span>
+												{language && (
+													<span className="text-xs font-medium text-primary  px2 py-1 rounded-md">
+														{getLabel(languages, language)}
+													</span>
+												)}
+											</div>
+										</AccordionTrigger>
+										<AccordionContent className="pb-4 pt-2">
+											<div className="space-y-2">
+												{languages.map((item) => (
+													<button
+														key={item.id}
+														onClick={() => setLanguage(item.id)}
+														className={`w-full text-left dark:border-gray-500 border-gray-300 border-t px-4 py-3 transition-all duration-200 flex 
                       dark:text-white text-black items-center justify-between hover:bg-muted/50 ${
-                              language === item.id ? "bg-primary/10" : ""
-                            }`}
-                          >
-                            <span className="font-medium">{item.label}</span>
-                            {language === item.id && <Check size={18} />}
-                          </button>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
+												language === item.id ? "bg-primary/10" : ""
+											}`}
+													>
+														<span className="font-medium">{item.label}</span>
+														{language === item.id && <Check size={18} />}
+													</button>
+												))}
+											</div>
+										</AccordionContent>
+									</AccordionItem>
 
-                  {/* Test Level with Nested Subjects - FIXED TOGGLE FUNCTIONALITY */}
-                  <AccordionItem value="testLevel" className="border-b border-gray-300 border last:border-b-0">
-                    <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
-                      <div className="flex flex-col items-start justify-between w-full gap-2">
-                        <span className="font-semibold text-foreground text-left">Test Level</span>
-                        {level && (
-                          <span className="text-xs font-medium dark:text-white text-black px-2 py-1 rounded-md capitalize">
-                            {testLevels.find((t) => t.id === level)?.label}
-                            {subject && ` • ${getLabel(allLevelOptions, subject)}`}
-                          </span>
-                        )}
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px6 pb-4 pt-2">
-                      <div className="space-y-2">
-                        {testLevels.map((testLevel) => (
-                          <div key={testLevel.id} className="border-b border-gray-300 last:border-b-0">
-                            {/* Test Level Header with Toggle */}
-                            <button
-                              onClick={() => handleTestLevelToggle(testLevel.id)}
-                              className={`w-full text-left py-3 px-6 transition-all duration-200 flex items-center justify-between hover:bg-muted/30 ${
-                                openTestLevel === testLevel.id ? "bg-muted/30" : ""
-                              }`}
-                            >
-                              <div className="flex items-center dark:text-white text-black  justify-between w-full">
-                                <span className={`font-medium text-sm ${level === testLevel.id ? "text-primary" : ""}`}>
-                                  {testLevel.label}
-                                </span>
-                                <div className="flex items-center gap-2">
-                                  {level === testLevel.id && <Check size={16} />}
-                                  <ChevronDown 
-                                    size={16} 
-                                    className={`transition-transform duration-200 ${
-                                      openTestLevel === testLevel.id ? "rotate-180" : ""
-                                    }`}
-                                  />
-                                </div>
-                              </div>
-                            </button>
+									{/* Test Level with Nested Subjects - FIXED TOGGLE FUNCTIONALITY */}
+									<AccordionItem
+										value="testLevel"
+										className="border-b dark:border-gray-500 border-gray-300 border last:border-b-0"
+									>
+										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
+											<div className="flex flex-col items-start justify-between w-full gap-2">
+												<span className="font-semibold text-foreground text-left">
+													Test Level
+												</span>
+												{level && (
+													<span className="text-xs font-medium dark:text-white text-black  py-1 rounded-md capitalize">
+														{testLevels.find((t) => t.id === level)?.label}
+														{subject &&
+															` • ${getLabel(allLevelOptions, subject)}`}
+													</span>
+												)}
+											</div>
+										</AccordionTrigger>
+										<AccordionContent className="px6 pb-4 pt-2">
+											<div className="space-y-2">
+												{testLevels.map((testLevel) => (
+													<div
+														key={testLevel.id}
+														className="border-b dark:border-gray-500 border-gray-300 last:border-b-0"
+													>
+														{/* Test Level Header with Toggle */}
+														<button
+															onClick={() =>
+																handleTestLevelToggle(testLevel.id)
+															}
+															className={`w-full text-left py-3 px-6 transition-all duration-200 flex items-center justify-between hover:bg-muted/30 ${
+																openTestLevel === testLevel.id
+																	? "bg-muted/30"
+																	: ""
+															}`}
+														>
+															<div className="flex items-center dark:text-white text-black  justify-between w-full">
+																<span
+																	className={`font-medium text-sm ${
+																		level === testLevel.id ? "text-primary" : ""
+																	}`}
+																>
+																	{testLevel.label}
+																</span>
+																<div className="flex items-center gap-2">
+																	{level === testLevel.id && (
+																		<Check size={16} />
+																	)}
+																	<ChevronDown
+																		size={16}
+																		className={`transition-transform duration-200 ${
+																			openTestLevel === testLevel.id
+																				? "rotate-180"
+																				: ""
+																		}`}
+																	/>
+																</div>
+															</div>
+														</button>
 
-                            {/* Subjects for this level - Conditionally rendered */}
-                            {openTestLevel === testLevel.id && (
-                              <div className="pb-3 pt-1">
-                                <div className="space-y-1">
-                                  {levelOptions[testLevel.id as keyof typeof levelOptions]?.map((item) => (
-                                    <button
-                                      key={item.id}
-                                      onClick={() => handleSubjectSelect(testLevel.id, item.id)}
-                                      className={`w-full text-left px-6 py-2 text-sm dark:text-white text-black rounded transition-all duration-200 flex items-center justify-between hover:bg-muted/50 ${
-                                        subject === item.id && level === testLevel.id 
-                                          ? "bg-primary/10 text-primary" 
-                                          : ""
-                                      }`}
-                                    >
-                                      <span className="font-medium">{item.label}</span>
-                                      {subject === item.id && level === testLevel.id && <Check size={16} />}
-                                    </button>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
+														{/* Subjects for this level - Conditionally rendered */}
+														{openTestLevel === testLevel.id && (
+															<div className="pb-3 pt-1">
+																<div className="space-y-1">
+																	{levelOptions[
+																		testLevel.id as keyof typeof levelOptions
+																	]?.map((item) => (
+																		<button
+																			key={item.id}
+																			onClick={() =>
+																				handleSubjectSelect(
+																					testLevel.id,
+																					item.id
+																				)
+																			}
+																			className={`w-full text-left px-6 py-2 text-sm dark:text-white text-black rounded transition-all duration-200 flex items-center justify-between hover:bg-muted/50 ${
+																				subject === item.id &&
+																				level === testLevel.id
+																					? "bg-primary/10 text-primary"
+																					: ""
+																			}`}
+																		>
+																			<span className="font-medium">
+																				{item.label}
+																			</span>
+																			{subject === item.id &&
+																				level === testLevel.id && (
+																					<Check size={16} />
+																				)}
+																		</button>
+																	))}
+																</div>
+															</div>
+														)}
+													</div>
+												))}
+											</div>
+										</AccordionContent>
+									</AccordionItem>
 
-                  {/* Questions Range */}
-                  <AccordionItem value="range" className="border-b border-gray-300 last:border-b-0">
-                    <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
-                      <div className="flex flex-col items-start justify-between w-full gap-2">
-                        <span className="font-semibold text-foreground text-left">Question Count</span>
-                        {questionCount && (
-                          <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-md">
-                            {questionCount}
-                          </span>
-                        )}
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px- pb-4 pt-2">
-                      <div className="space-y-2">
-                        {questionRanges.map((item) => (
-                          <button
-                            key={item.id}
-                            onClick={() => setQuestionCount(item.label)}
-                            className={`w-full text-left px-6 py-2 border-gray-300 border-t transition-all duration-200 flex 
+									{/* Questions Range */}
+									<AccordionItem
+										value="range"
+										className="border-b dark:border-gray-500 border-gray-300 last:border-b-0"
+									>
+										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
+											<div className="flex flex-col items-start justify-between w-full gap-2">
+												<span className="font-semibold text-foreground text-left">
+													Question Count
+												</span>
+												{questionCount && (
+													<span className="text-xs font-medium text-primary  py-1 rounded-md">
+														{questionCount}
+													</span>
+												)}
+											</div>
+										</AccordionTrigger>
+										<AccordionContent className="px- pb-4 pt-2">
+											<div className="space-y-2">
+												{questionRanges.map((item) => (
+													<button
+														key={item.id}
+														onClick={() => setQuestionCount(item.label)}
+														className={`w-full text-left px-6 py-2 dark:border-gray-500 border-gray-300 border-t transition-all duration-200 flex 
                              dark:text-white text-black items-center justify-between hover:bg-muted/50 ${
-                              questionCount === item.label ? "bg-primary/10" : ""
-                            }`}
-                          >
-                            <span className="font-medium">{item.label}</span>
-                            {questionCount === item.label && <Check size={18} />}
-                          </button>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
+																questionCount === item.label
+																	? "bg-primary/10"
+																	: ""
+															}`}
+													>
+														<span className="font-medium">{item.label}</span>
+														{questionCount === item.label && (
+															<Check size={18} />
+														)}
+													</button>
+												))}
+											</div>
+										</AccordionContent>
+									</AccordionItem>
 
-                  {/* Timer/Duration */}
-                  <AccordionItem value="duration" className="border-b border-gray-300 last:border-b-0">
-                    <AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
-                      <div className="flex flex-col items-start justify-between w-full gap-2">
-                        <span className="font-semibold text-foreground text-left">Duration</span>
-                        {timer && (
-                          <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-md">
-                            {timer}
-                          </span>
-                        )}
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px6 pb-4 pt-2">
-                      <div className="space-y-2">
-                        {durations.map((item) => (
-                          <button
-                            key={item.id}
-                            onClick={() => setTimer(item.label)}
-                            className={`w-full text-left px-6 py-2 border-gray-300 border-t transition-all duration-200 flex 
+									{/* Timer/Duration */}
+									<AccordionItem
+										value="duration"
+										className="border-b dark:border-gray-500 border-gray-300 last:border-b-0"
+									>
+										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
+											<div className="flex flex-col items-start justify-between w-full gap-2">
+												<span className="font-semibold text-foreground text-left">
+													Duration
+												</span>
+												{timer && (
+													<span className="text-xs font-medium text-primary  py-1 rounded-md">
+														{timer}
+													</span>
+												)}
+											</div>
+										</AccordionTrigger>
+										<AccordionContent className="px6 pb-4 pt-2">
+											<div className="space-y-2">
+												{durations.map((item) => (
+													<button
+														key={item.id}
+														onClick={() => setTimer(item.label)}
+														className={`w-full text-left px-6 py-2 dark:border-gray-500 border-gray-300 border-t transition-all duration-200 flex 
                              dark:text-white text-black items-center justify-between hover:bg-muted/50 font-medium ${
-                              timer === item.label ? "bg-primary/5" : ""
-                            }`}
-                          >
-                            <span>{item.label}</span>
-                            {timer === item.label && <Check size={16} />}
-                          </button>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-                {/* Apply Button */}
-                <button
-                  onClick={handleApply}
-                  disabled={!allSelected}
-                  className="w-full flex items-center px-6 border-gray-300 border-t h-10 justify-center hover:text-white hover:bg-black text-black   font-semibold"
-                >
-                  Apply Selection
-                </button>
-              </div>
-            </div>
-          )}
-            </div>
-        </div>
-    );
+																timer === item.label ? "bg-primary/5" : ""
+															}`}
+													>
+														<span>{item.label}</span>
+														{timer === item.label && <Check size={16} />}
+													</button>
+												))}
+											</div>
+										</AccordionContent>
+									</AccordionItem>
+								</Accordion>
+								{/* Apply Button */}
+								<button
+									onClick={handleApply}
+									disabled={!allSelected}
+									className="w-full flex items-center px-6 dark:border-gray-500 border-gray-300 border-t h-10 justify-center hover:text-white hover:bg-black dark:text-white dark:hover:text-black dark:hover:bg-white text-black   font-semibold"
+								>
+									Apply Selection
+								</button>
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
+		);
 };
 
 export default AuthSidebar;

@@ -164,33 +164,36 @@ export default function AdPlayer() {
   };
 
   return (
-    <Card className="w-full rounded-2xl p-0 shadow-lg overflowhidden border-gray-300 border">
+    <Card className=" p-0 w-full rounded-2xl p-0 shadow-lg overflowhidden dark:border-gray-500 border-gray-300 dark:border-gray-500 border">
       <CardContent className="p-0">
 
         {/* Header */}
-        <div className="flex items-center gap- justify-between px-2 py-2 text-xs text-gray-600">
+        <div className="flex itemscenter gap- justify-between px-2 py-2 text-xs text-gray-600">
           <div className="flex items-center gap-1 font-semibold">
+            <div className="h-8 w-8 flex items-center justify-center rounded-full border dark:border-gray-500 border-gray-300 dark:border-gray-500">
+
             <img
               src="/ngflag.png"
               alt="gov logo"
               className="w-6 h-6 object-contain"
-            />
+              />
+              </div>
             <div>
               <p className="text-xs xl:text-base">Government of Naija</p>
               <p className="text-[10px]">Sponsored</p>
             </div>
           </div>
-          <div className="flex gap-1 text-xs h-max items-center">
-            <p className="text-gray-500 xl:flex hidden">Advertisement</p>
+          <div className="flex gap1 text-xs h-max itemscenter">
+            <p className="text-gray-500 xl:flex hidden">Ad</p>
 
             {/* Popover */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className=" p-0 text-gray-600">
+                <Button variant="ghost" className="h-max w-1 p-0 px-0 py-0 text-gray-600">
                   <MoreHorizontal className="" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="text-sm border-gray-300">
+              <DropdownMenuContent className="text-sm dark:border-gray-500 border-gray-300 dark:border-gray-500">
                 <DropdownMenuItem>Remove Ad</DropdownMenuItem>
                 <DropdownMenuItem>Report this Ad</DropdownMenuItem>
               </DropdownMenuContent>
@@ -224,12 +227,12 @@ export default function AdPlayer() {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center  gap-2 justify-between xl:px-3 py-3 border-t bg-white">
+        <div className="flex items-center  gap-2 justify-between xl:px-3 py-3 border-t dark:bg-black bg-white">
           <div className="flex items-center gap-2">
-            <Button variant="ghost" className="p-1" size={"icon-sm"} onClick={handleReplay}>
+            <Button variant="ghost" className="p-1 dark:" size={"icon-sm"} onClick={handleReplay}>
               <RefreshCwIcon size={16} />
             </Button>
-            <Button variant="ghost" className="p-1" size={"icon-sm"} onClick={togglePlay}>
+            <Button variant="ghost" className="p-1 dark:" size={"icon-sm"} onClick={togglePlay}>
               {playing ? <Pause size={16} /> : <Play size={16} />}
             </Button>
 
@@ -253,13 +256,13 @@ export default function AdPlayer() {
               if (!v) setModalLoaded(false);
             }}>
               <DialogTrigger asChild>
-                <Button variant="ghost" className="p-1" size={"icon-sm"}>
+                <Button variant="ghost" className="p-1 dark:" size={"icon-sm"}>
                   <Maximize2 size={16} />
                 </Button>
               </DialogTrigger>
 
               {/* MODAL VIDEO */}
-              <DialogContent className="w-full max-w-4xl p-0 rounded-2xl bg-black">
+              <DialogContent className="w-full max-w-4xl p-0 rounded-2xl dar bg-black">
                 <div className="relative w-full h-[60vh] bg-black">
                   <video
                     ref={modalVideoRef}
@@ -277,7 +280,7 @@ export default function AdPlayer() {
         </div>
 
         {/* Progress bar */}
-        <div className="px-4 py-0.5 xl:py-2 bg-white">
+        <div className="px-4 py-0.5 xl:py-2 dark:bg-black bg-white">
           <div
             className="h-2 bg-gray-200 rounded cursor-pointer overflow-hidden"
             onClick={handleProgressClick}
@@ -292,13 +295,13 @@ export default function AdPlayer() {
         </div>
 
         {/* Footer */}
-        <div className="xl:px-4 xl:py-3 text-xs text-gray-700 bg-white">
+        <div className="xl:px-4 rounded-2xl xl:py- text-xs dark:text-white text-gray-700 dark:bg-black bg-white">
           <div className="flex items-start justify-between gap-3">
             <p className="flex-1">
               We help job seekers develop the skills they need to support
               businesses like yours.
             </p>
-            <Button className="whitespace-nowrap rounded-full">Learn more</Button>
+            <Button className="whitespace-nowrap dark:bg-inherit dark:text-white dark:border border-gray-500 dark:hover:bg-background dark:hover:text-white rounded-full">Learn more</Button>
           </div>
         </div>
       </CardContent>

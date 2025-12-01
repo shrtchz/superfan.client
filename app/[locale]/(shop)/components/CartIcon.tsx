@@ -24,7 +24,7 @@ export function CartIcon() {
         onClick={() => setIsCartOpen(true)}
         className="relative"
       >
-                           <HandbagIcon className="size-8"/>
+                           <HandbagIcon className="size-6"/>
 
         {itemCount > 0 && (
           <span className="absolute -top-1 -right-1 h-5 w-5 bg-black text-white text-xs rounded-full flex items-center justify-center">

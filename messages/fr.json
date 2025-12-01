@@ -6,45 +6,46 @@
     "alreadyHaveAccount": "J'AI DÉJÀ UN COMPTE",
     "login": "Connexion",
     "signUp": "Créer un compte",
-    "heroDescription": "Testez vos connaissances indigènes, votre aptitude et votre raisonnement dans la langue !",
-    "loginWithAuth": "Connectez-vous avec l’authentification sociale",
-    "signupWithAuth": "Inscrivez-vous avec l’authentification sociale"
+    "heroDescription": "Test d'aptitude pour vérifier vos connaissances, votre logique et votre raisonnement de manière ludique !",
+    "loginWithAuth": "Connexion via l’authentification sociale",
+    "signupWithAuth": "Inscription via l’authentification sociale"
   },
 
   "Login": {
     "title": "Connexion à Superfan",
     "password": "Mot de passe",
-    "login": "Se connecter",
+    "login": "Connexion",
     "forgotPassword": "Mot de passe oublié ?",
-    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "dontHaveAccount": "Vous n’avez pas de compte ?",
     "signUp": "Créer un compte",
     "emailLabel": "Email",
     "phoneLabel": "Téléphone",
 
     "validation_contactRequired": "Ce champ est obligatoire",
     "validation_invalidEmail": "Adresse email invalide",
-    "validation_invalidPhone": "Le téléphone doit contenir uniquement des chiffres",
-    "validation_passwordMin": "Le mot de passe doit contenir au moins 8 caractères",
+    "validation_invalidPhone": "Le numéro doit contenir uniquement des chiffres",
+    "validation_passwordMin": "Le mot de passe doit comporter au moins 8 caractères",
     "validation_selectContactType": "Veuillez choisir email ou téléphone"
   },
 
   "SignUp": {
-    "title": "Créer un compte Superfan",
-    "username": "Nom d'utilisateur",
+    "title": "Inscription à Superfan",
+    "username": "Nom d’utilisateur",
     "emailOrPhone": "Email ou numéro de téléphone",
     "password": "Mot de passe",
     "passwordHint": "Minimum 8 caractères.",
-    "submit": "Valider",
+    "submit": "Soumettre",
     "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "login": "Connectez-vous ici",
     "fullName": "Nom complet",
+
     "emailLabel": "Email",
     "phoneLabel": "Téléphone",
-
+    
     "validation_contactRequired": "Ce champ est obligatoire",
     "validation_invalidEmail": "Adresse email invalide",
-    "validation_invalidPhone": "Le téléphone doit contenir uniquement des chiffres",
-    "validation_passwordMin": "Le mot de passe doit contenir au moins 8 caractères",
+    "validation_invalidPhone": "Le numéro doit contenir uniquement des chiffres",
+    "validation_passwordMin": "Le mot de passe doit comporter au moins 8 caractères",
     "validation_selectContactType": "Veuillez choisir email ou téléphone"
   },
 
@@ -64,7 +65,7 @@
   },
 
   "GetStarted": {
-    "title": "Quel savoir indigène ou raisonnement souhaitez-vous tester ?",
+    "title": "Quel savoir ou raisonnement souhaitez-vous tester ?",
     "continue": "CONTINUER"
   },
 
@@ -77,11 +78,11 @@
   },
 
   "QuestionCounter": {
-    "title": "Combien de questions souhaitez-vous résoudre ?"
+    "title": "Combien de questions voulez-vous résoudre ?"
   },
 
   "TimerCounter": {
-    "title": "En combien de temps souhaitez-vous les résoudre ?"
+    "title": "En combien de temps voulez-vous les résoudre ?"
   },
 
   "BankDetails": {
@@ -97,15 +98,15 @@
   },
 
   "Reward": {
-    "title": "Quelle est votre récompense pour avoir réussi ?",
+    "title": "Quelle est votre récompense si vous réussissez ?",
     "POINTS": "Points",
     "CASH": "Argent"
   },
 
   "Wallet": {
-    "title": "Approvisionnez votre portefeuille",
+    "title": "Alimentez votre portefeuille",
     "amountLabel": "Montant",
-    "description": "Quand vous créez un dépôt, votre portefeuille et les détails du virement bancaire doivent être traités immédiatement. Vous ne pouvez pas créer un autre dépôt tant que le premier n’est pas terminé ou expiré. Les fonds arrivent généralement en 1 à 2 heures.",
+    "description": "Lorsque vous créez un dépôt, vos informations de portefeuille et de virement bancaire doivent être traitées immédiatement. Vous ne pouvez pas créer un nouveau dépôt tant que le premier n’est pas terminé ou expiré. Les fonds arrivent généralement sous 1 à 2 heures.",
     "next": "Suivant",
     "skip": "Ignorer"
   }
