@@ -164,13 +164,13 @@ export default function AdPlayer() {
   };
 
   return (
-    <Card className=" p-0 w-full rounded-2xl p-0 shadow-lg overflowhidden dark:border-gray-500 border-gray-300 dark:border-gray-500 border">
+    <Card className=" p-0 w-full rounded-2xl p-0 shadow-lg overflowhidden  border dark:border-white/20">
       <CardContent className="p-0">
 
         {/* Header */}
-        <div className="flex itemscenter gap- justify-between px-2 py-2 text-xs text-gray-600">
-          <div className="flex items-center gap-1 font-semibold">
-            <div className="h-8 w-8 flex items-center justify-center rounded-full border dark:border-gray-500 border-gray-300 dark:border-gray-500">
+        <div className="flex itemscenter gap- justify-between px-2 py-2 text-xs text-gray-600 dark:text-white">
+          <div className="flex items-center gap-2 font-semibold">
+            <div className="h-8 w-8 flex items-center justify-center rounded-full border border-gray-400/30">
 
             <img
               src="/ngflag.png"
@@ -184,16 +184,16 @@ export default function AdPlayer() {
             </div>
           </div>
           <div className="flex gap1 text-xs h-max itemscenter">
-            <p className="text-gray-500 xl:flex hidden">Ad</p>
+            <p className="text-gray-500  dark:text-white xl:flex hidden">Ad</p>
 
             {/* Popover */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-max w-1 p-0 px-0 py-0 text-gray-600">
+                <Button variant="ghost" className="h-max w-1 p-0 px-0 py-0 dark:text-white text-gray-600">
                   <MoreHorizontal className="" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="text-sm dark:border-gray-500 border-gray-300 dark:border-gray-500">
+              <DropdownMenuContent className="text-sm ">
                 <DropdownMenuItem>Remove Ad</DropdownMenuItem>
                 <DropdownMenuItem>Report this Ad</DropdownMenuItem>
               </DropdownMenuContent>
@@ -295,7 +295,8 @@ export default function AdPlayer() {
         </div>
 
         {/* Footer */}
-        <div className="xl:px-4 rounded-2xl xl:py- text-xs dark:text-white text-gray-700 dark:bg-black bg-white">
+          <hr className="border-gray-400/30"/>
+        <div className="xl:px-4 mt-2 rounded-2xl xl:py- text-xs dark:text-white text-gray-700 dark:bg-black bg-white">
           <div className="flex items-start justify-between gap-3">
             <p className="flex-1">
               We help job seekers develop the skills they need to support

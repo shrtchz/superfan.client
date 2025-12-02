@@ -365,7 +365,7 @@ export default function ShopHeader() {
       };
   return (
   
-      <div className="w-full px4">
+      <div className="w-full px4 dark:text-white">
         {/* Top Bar */}
         <div className="w-full flex items-center justify-between py-3">
           {/* Left side - Logo/Brand */}

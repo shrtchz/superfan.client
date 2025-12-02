@@ -92,6 +92,7 @@ export default function AuthNavbar() {
 		selectedAccountType,
 		setSelectedAccountType,
 		accumulatedAmounts,
+		currentQuestionIndex,
 	} = useQuizStore();
 
 	// Local state for UI components
@@ -433,7 +434,7 @@ export default function AuthNavbar() {
 	};
 
 	return (
-		<nav className=" w-full border-t border-b  dark:border-gray-500 border-gray-300 dark:border-gray-500 h-[80px] text-black flex items-center justify-center py4">
+		<nav className=" w-full border-t border-b    h-[80px] text-black flex items-center justify-center py4">
 			<div className="w-full xl:w-[90%]  py-4 flex ">
 				<div className=" grid  grid-cols-4 w-full ">
 					<div className="col-span-1 w-full h-full flex items-center">
@@ -442,10 +443,7 @@ export default function AuthNavbar() {
 							className="flex mt-3 xlmt-0    flex1 items-center p-0 gap-0 m-0 "
 						>
 							<div className="h-16 w-54 2xl:-translate-x-10 xl:-translate-x-0 ">
-								{theme === "dark" ?
-									<DarkLogo/>:
-								<Logo />
-								}
+								{theme === "dark" ? <DarkLogo /> : <Logo />}
 							</div>
 						</Link>
 					</div>
@@ -459,18 +457,20 @@ export default function AuthNavbar() {
 									<div className="flex gap-2 h-max items-center">
 										<p>Test</p>
 										<div className="h-8 flex flex-row justify-between ">
-											<div className="data-[size=default]:h-8 border-gray-300 dark:border-gray-500 !bg-inherit border-[#2f3336] dark:border-gray-500 text-black dark:text-white xl:px-2 px-1 xl:gap-1 text-black gap-0 w-20 text-xs xl:text-sm bo border rounded-md h-8 flex items-center justifycenter">
+											<div className="data-[size=default]:h-8  !bg-inherit border-gray-400/30   text-black dark:text-white xl:px-2 px-1 xl:gap-1 text-black gap-0 w-20 text-xs xl:text-sm bo border rounded-md h-8 flex items-center justifycenter">
 												{language
 													? getLabel(languages, language, "Language")
 													: "Language"}
 											</div>
 										</div>
 									</div>
-									<div className="w-20 gap-2 border-[#2f3336] dark:border-gray-500 text-black dark:text-white rounded-full h-8 flex items-center justify-center">
+									<div className="w-20 gap-2 border-gray-400/30   text-black dark:text-white rounded-full h-8 flex items-center justify-center">
 										<div className="h-8 w-8">
 											<TimerIcon />
 										</div>
-										<p>{timer ? timer : 0}m</p>
+										<p>
+											{/* {timer ? timer : 0} */}
+											0m</p>
 									</div>
 								</div>
 							</div>
@@ -483,8 +483,10 @@ export default function AuthNavbar() {
 								{/* Questions Count Display */}
 								<div className="flex  text-sm xl:text-base items-center text-black dark:text-white  w-max h-8 px-3 gap-2">
 									<p>Questions Count</p>
-									<div className="border-gray-300 dark:border-gray-500 rounded-md border h-full flex items-center justify-center px-2">
-										{questionCount ? questionCount : 0}
+									<div className=" rounded-md border border-gray-400/30  h-full flex items-center justify-center px-2">
+										{/* {questionCount ? questionCount : 0}
+										 */}
+										{currentQuestionIndex +1 }
 									</div>
 								</div>
 							</div>

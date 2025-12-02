@@ -189,7 +189,12 @@ export default function QuizPage() {
 
 	const handleEndTest = (): void => {
 		console.log("Test ended and submitted");
+		setCurrentQuestionIndex(0);
+		setSelectedOption(null);
+		setInputAnswer("");
+		resetAllAnswers();
 		setIsEndTestDialogOpen(false);
+		setShowScorecard(false);
 	};
 
 	const handleRefresh = (): void => {
@@ -427,11 +432,11 @@ export default function QuizPage() {
 	return (
 		<div className="flex-1 w-full flex flex-col justify-center items-center text-black dark:text-white">
 			<div
-				className={`w-md xl:w-lg max-w-2xl 2xl:w-3xl h-full border border-gray-300 dark:border-gray-500 border-t-0 border-b-0 overflow-hidden relative`}
+				className={`w-md xl:w-lg max-w-2xl 2xl:w-3xl h-full border  border-t-0 border-b-0 overflow-hidden relative`}
 			>
 				{/* ===== TOP HEADER ===== */}
 				<div
-					className={`flex justify-between items-center px-5 py-2 pb-4 text-[13px] font-bold border-b border-gray-300 dark:border-gray-500`}
+					className={`flex justify-between items-center px-5 py-2 pb-4 text-[13px] font-bold border-b `}
 				>
 					<div className="relative dark:text-white text-lg text-black w-max">
 						<span className="w-max font-bold uppercase">
@@ -462,7 +467,7 @@ export default function QuizPage() {
 									<MoreHorizontal size={16} />
 								</button>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="bg-black border border-gray-300 dark:border-gray-500 text-white min-w-[120px]">
+							<DropdownMenuContent className="dark:bg-black border  dark:text-white min-w-[120px]">
 								<span>Reward</span>
 								<DropdownMenuSeparator className="h-[0.5px] w-full bg-gray-300" />
 								<DropdownMenuItem
@@ -503,7 +508,7 @@ export default function QuizPage() {
 				</div>
 
 				{/* ===== QUESTION BOX ===== */}
-				<div className="flex justify-between px-6 py-2 h-24 relative border-gray-300 dark:border-gray-500 border-b">
+				<div className="flex justify-between px-6 py-2 h-24 relative  border-b">
 					<div className="space-y-2 text-black dark:text-white w-full">
 						<div className="w-full flex h-max items-center justify-between">
 							<div className="flex h-max gap-2 items-center">
@@ -533,7 +538,7 @@ export default function QuizPage() {
 										<MoreHorizontal size={16} />
 									</button>
 								</DropdownMenuTrigger>
-								<DropdownMenuContent className="bg-black border border-gray-300 dark:border-gray-500 text-white min-w-[120px]">
+								<DropdownMenuContent className="dark:bg-black border border-gray-400/30  min-w-[120px]">
 									<DropdownMenuItem
 										className={`cursor-pointer 
                       ${
@@ -545,11 +550,11 @@ export default function QuizPage() {
 									>
 										Expand Media
 									</DropdownMenuItem>
-									<DropdownMenuSeparator className="h-[0.5px] w-full border-b border-gray-300 dark:border-gray-500" />
+									<DropdownMenuSeparator className="h-[0.5px] w-full border-b " />
 									<DropdownMenuItem
 										className={`cursor-pointer  ${
 											selectedAccountType === "points"
-												? "dark:bg-white rounded-md bg-black/70 text-white dark:text-black"
+												? "bg-white rounded-md dark:bg-black text-white dark:text-black"
 												: ""
 										}`}
 										onClick={() => setHideReward(!hideReward)}
@@ -595,10 +600,10 @@ export default function QuizPage() {
 				{/* Show image for isori questions */}
 				{current.image && isImageCollapsed && (
 					<div
-						className={`relative flex flex-col items-center justify-center p-2 py-4 border-gray-300 dark:border-gray-500 border-b h-max w-full`}
+						className={`relative flex flex-col items-center justify-center p-2 py-4  border-b h-max w-full`}
 					>
 						<button
-							className="absolute top-0 right-0 hover:bg-black hover:text-white px-2 text-sm dark:text-white text-black border-gray-300 dark:border-gray-500 py-1 border rounded-bl-md border-r-0 border-t-0"
+							className="absolute top-0 right-0 hover:bg-black hover:text-white px-2 text-sm dark:text-white text-black  py-1 border rounded-bl-md border-r-0 border-t-0"
 							onClick={() => {
 								setIsImageCollapsed(false);
 							}}
@@ -624,7 +629,7 @@ export default function QuizPage() {
 						<div className="flex flex-col items-center">
 							{/* Input field with conditional Tailwind CSS classes */}
 							<div
-								className={`h-20 w-full border transition-all duration-300 `}
+								className={`h-20 w-full border-b transition-all duration-300 `}
 							>
 								<input
 									id="answer-input"
@@ -645,7 +650,7 @@ export default function QuizPage() {
 												? currentUserAnswer.isCorrect
 													? "text-green-800 bg-green-50 placeholder:text-green-600"
 													: "text-red-800 bg-red-50 placeholder:text-red-600"
-												: "text-black dark:text-white bg-transparent placeholder:text-gray-400 dark:placeholder:text-gray-500"
+												: "text-black dark:text-white bg-transparent placeholder:text-black dark:placeholder:text-white"
 										}
                   `}
 									aria-label="Answer input"
@@ -717,7 +722,7 @@ export default function QuizPage() {
 										key={i}
 										className={`relative
                       flex items-center w-full group
-                      border border-l-0 border-gray-300 dark:border-gray-500 border-r-0 border-t-0 py-1 px-4 
+                      border border-l-0  border-r-0 border-t-0 py-1 px-4 
                       font-extrabold text-[15px]
                       transition-all duration-200 min-h-[60px]
                       ${
@@ -781,7 +786,7 @@ export default function QuizPage() {
 				</div>
 
 				{/* ===== FOOTER AREA ===== */}
-				<div className="absolute bottom-0 left-0 w-full border-gray-300 dark:border-gray-500 border-t">
+				<div className="absolute bottom-0 left-0 w-full  border-t">
 					<div className="flex w-full items-center justify-center h-14">
 						<button
 							className="h-full font-bold text-[14px] w-full text-black dark:text-white tracking-wide transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
@@ -789,7 +794,7 @@ export default function QuizPage() {
 						>
 							Submit
 						</button>
-						<div className="border-r border-gray-300 dark:border-gray-500 h-full"></div>
+						<div className="border-r  h-full"></div>
 
 						<button
 							className="h-full font-bold text-[14px] w-full text-black dark:text-white tracking-wide transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
@@ -903,7 +908,7 @@ export default function QuizPage() {
 						</div>
 						<button
 							onClick={() => setShowAnswerDialog(false)}
-							className="w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-400 transition-colors"
+							className="w-8 h-8 rounded-full border-2  flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-400 transition-colors"
 							aria-label="Close dialog"
 						>
 							<X size={16} />
@@ -1020,7 +1025,7 @@ export default function QuizPage() {
 					<DialogFooter className="w-full">
 						<div className="flex flex-col gap-2 w-full items-center">
 							<button
-								className="hover:text-white border border-gray-300 dark:border-gray-500 hover:bg-black dark:bg-white text-black px-6 py-2 w-[90%] rounded-full font-bold transition-colors"
+								className="hover:text-white border  hover:bg-black dark:bg-white text-black px-6 py-2 w-[90%] rounded-full font-bold transition-colors"
 								onClick={() => setIsEndTestDialogOpen(false)}
 							>
 								Continue your Test

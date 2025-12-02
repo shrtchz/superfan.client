@@ -90,7 +90,7 @@ const InputVerificationModal: React.FC<{
 					</div>
 					<button
 						onClick={handleClose}
-						className="w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-400 transition-colors"
+						className="w-8 h-8 rounded-full border-2  flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-400 transition-colors"
 						aria-label="Close dialog"
 					>
 						<X size={16} />
