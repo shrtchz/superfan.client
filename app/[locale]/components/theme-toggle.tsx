@@ -26,7 +26,7 @@ export function ThemeToggle() {
           <DropdownMenuItem
             onClick={() => setTheme("light")}
             className={`
-              ${isLight ? "bg-black/70 dark:bg-blue-900 text-white dark:text-blue-300" : ""}
+              ${isLight ? "bg-black/70 dark:bg-gray-100 text-white dark:text-gray-300" : ""}
               rounded-md cursor-pointer
             `}
           >

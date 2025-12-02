@@ -32,7 +32,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
   return (
     <html lang={locale} className={rubik.variable}>
-      <body className="bg-white">
+      <body className="bg-white dark:bg-black">
       {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"

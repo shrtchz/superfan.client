@@ -27,7 +27,7 @@ export function CartIcon() {
                            <HandbagIcon className="size-6"/>
 
         {itemCount > 0 && (
-          <span className="absolute -top-1 -right-1 h-5 w-5 bg-black text-white text-xs rounded-full flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 h-5 w-5 bg-black dark:bg-white dark:text-black text-white text-xs rounded-full flex items-center justify-center">
             {itemCount > 99 ? '99+' : itemCount}
           </span>
         )}

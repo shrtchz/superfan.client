@@ -177,7 +177,7 @@ export default function PodcastDialog() {
               onClick={handleWatchOnYouTube}
            
               
-              className="border rounded-md h-6 px-2"
+              className="border rounded-md h-6 px-2 "
             >
           
               Watch 
