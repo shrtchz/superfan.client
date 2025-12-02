@@ -137,8 +137,8 @@ export default function ShopNavbar() {
   const [value, setValue] = useState<string>("");
   const [applySelection, setApplySelection] = useState(false);
   const [isModeDropdownOpen, setIsModeDropdownOpen] = useState(false);
-  // const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const{theme}=useTheme()
+  // const{theme}=useTheme()
+  const { theme, resolvedTheme } = useTheme();
   const [isPremium, setIsPremium] = useState(false);
   const [walletEnabled, setWalletEnabled] = useState(true);
   const [premiumDialogOpen, setPremiumDialogOpen] = useState(false);
@@ -379,7 +379,7 @@ export default function ShopNavbar() {
   };
 
   return (
-		<div className=" w-full border-t border-b  border-gray-300 h-[80px] text-black flex items-center justify-center py4">
+		<div className=" w-full  border-b    h-[80px] text-black flex items-center justify-center py4">
 			<div className="w-full xl:w-[90%]  py-4 flex ">
 				<div className=" grid  grid-cols-4 w-full ">
 					<div className="col-span-1 w-full h-full flex items-center">

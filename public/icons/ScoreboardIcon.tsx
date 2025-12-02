@@ -3,7 +3,7 @@ import { SVGProps } from "react";
 const ScoreboardIcon = (props: SVGProps<SVGSVGElement>) => (
  
   <svg
-    fill="vurrentColor"
+    fill="currentColor"
    
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"

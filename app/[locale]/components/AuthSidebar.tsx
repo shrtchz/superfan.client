@@ -412,15 +412,15 @@ type RewardFilter = 'cash' | 'points' | 'none';
 				<div className="mt-4 w-full relative ">
 					<button
 						onClick={() => setIsTestMenuOpen(!isTestMenuOpen)}
-						className="hover:bg-black dark:text-white dark:border-gray-500 dark:border-gray-500 border-gray-300 hover:text-white border rounded-full h-10 w-full flex justify-center items-center bg-transparent"
+						className="hover:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black  hover:text-white border border-gray-400/30   rounded-full h-10 w-full flex justify-center items-center bg-transparent"
 					>
 						Start a Test
 					</button>
 
 					{isTestMenuOpen && (
-						<div className="absolute top-10 left-0 h-[400px]  overflow-auto  !z-50">
+						<div className="absolute top-10 left-0   !z-50">
 							{/* Main Card with Accordion */}
-							<div className="dark:bg-black bg-white rounded-2xl  border-2 dark:border-gray-500 border-gray-300 borderborder overflow-hidden  w-70">
+							<div className="dark:bg-black bg-white rounded-2xl overflow-auto   border-2  borderborder h-[400px]   w-70">
 								<Accordion
 									type="single"
 									collapsible
@@ -429,7 +429,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 									{/* Language */}
 									<AccordionItem
 										value="language"
-										className="borderb dark:border-gray-500 border-gray-300 last:border-b-0"
+										className="borderb  last:border-b-0"
 									>
 										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
 											<div className="flex flex-col items-start justify-between w-full gap-2">
@@ -449,7 +449,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 													<button
 														key={item.id}
 														onClick={() => setLanguage(item.id)}
-														className={`w-full text-left dark:border-gray-500 border-gray-300 border-t px-4 py-3 transition-all duration-200 flex 
+														className={`w-full text-left  border-t px-4 py-3 transition-all duration-200 flex 
                       dark:text-white text-black items-center justify-between hover:bg-muted/50 ${
 												language === item.id ? "bg-primary/10" : ""
 											}`}
@@ -465,7 +465,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 									{/* Test Level with Nested Subjects - FIXED TOGGLE FUNCTIONALITY */}
 									<AccordionItem
 										value="testLevel"
-										className="border-b dark:border-gray-500 border-gray-300 border last:border-b-0"
+										className="border-b  border last:border-b-0"
 									>
 										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
 											<div className="flex flex-col items-start justify-between w-full gap-2">
@@ -486,7 +486,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 												{testLevels.map((testLevel) => (
 													<div
 														key={testLevel.id}
-														className="border-b dark:border-gray-500 border-gray-300 last:border-b-0"
+														className="border-b  last:border-b-0"
 													>
 														{/* Test Level Header with Toggle */}
 														<button
@@ -566,7 +566,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 									{/* Questions Range */}
 									<AccordionItem
 										value="range"
-										className="border-b dark:border-gray-500 border-gray-300 last:border-b-0"
+										className="border-b  last:border-b-0"
 									>
 										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
 											<div className="flex flex-col items-start justify-between w-full gap-2">
@@ -586,7 +586,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 													<button
 														key={item.id}
 														onClick={() => setQuestionCount(item.label)}
-														className={`w-full text-left px-6 py-2 dark:border-gray-500 border-gray-300 border-t transition-all duration-200 flex 
+														className={`w-full text-left px-6 py-2  border-t transition-all duration-200 flex 
                              dark:text-white text-black items-center justify-between hover:bg-muted/50 ${
 																questionCount === item.label
 																	? "bg-primary/10"
@@ -606,7 +606,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 									{/* Timer/Duration */}
 									<AccordionItem
 										value="duration"
-										className="border-b dark:border-gray-500 border-gray-300 last:border-b-0"
+										className="border-b  last:border-b-0"
 									>
 										<AccordionTrigger className="hover:no-underline py-3 px-6 hover:bg-muted/50 transition-colors">
 											<div className="flex flex-col items-start justify-between w-full gap-2">
@@ -626,7 +626,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 													<button
 														key={item.id}
 														onClick={() => setTimer(item.label)}
-														className={`w-full text-left px-6 py-2 dark:border-gray-500 border-gray-300 border-t transition-all duration-200 flex 
+														className={`w-full text-left px-6 py-2  border-t transition-all duration-200 flex 
                              dark:text-white text-black items-center justify-between hover:bg-muted/50 font-medium ${
 																timer === item.label ? "bg-primary/5" : ""
 															}`}
@@ -643,7 +643,7 @@ type RewardFilter = 'cash' | 'points' | 'none';
 								<button
 									onClick={handleApply}
 									disabled={!allSelected}
-									className="w-full flex items-center px-6 dark:border-gray-500 border-gray-300 border-t h-10 justify-center hover:text-white hover:bg-black dark:text-white dark:hover:text-black dark:hover:bg-white text-black   font-semibold"
+									className="w-full flex items-center px-6  border-t h-10 justify-center hover:text-white hover:bg-black dark:text-white dark:hover:text-black dark:hover:bg-white text-black   font-semibold"
 								>
 									Apply Selection
 								</button>

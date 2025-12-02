@@ -25,7 +25,7 @@ const YorSelection = ({ onNext, onBack }: { onNext: () => void; onBack: () => vo
         }`}
       >
         <div className="  mt-2">{subject?.english}</div>
-        <div className="font-normal whitespace-pre-line mt-1">{subject?.yoruba}</div>
+        {/* <div className="font-normal whitespace-pre-line mt-1">{subject?.yoruba}</div> */}
       </button>
     );
   };

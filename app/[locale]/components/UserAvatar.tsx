@@ -441,11 +441,11 @@ const UserAvatar = () => {
 					</button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent
-					className="w-full border-gray-300 dark:border-gray-500"
+					className="w-full border-white/20"
 					align="end"
 				>
 					{/* User Info Section */}
-					<div className="p-4 border-b border-gray-300 dark:border-gray-500">
+					<div className="p-4 border-b border-white/20">
 						<div className="flex items-center gap-3">
 							<Avatar className="h-12 w-12">
 								<AvatarImage
@@ -468,7 +468,7 @@ const UserAvatar = () => {
 					{/* Manage Account Section */}
 					<div className="p-4">
 						<button
-							className="w-full h-10 mb-3 rounded-full flex items-center justify-center text-sm font-medium border dark:hover:bg-white hover:bg-black hover:text-white dark:hover:text-black border-gray-300 dark:border-gray-500"
+							className="w-full h-10 mb-3 rounded-full flex items-center justify-center text-sm font-medium border dark:hover:bg-white hover:bg-black hover:text-white dark:hover:text-black dark:border-white/20 border-gray-400/30 "
 							onClick={() => setManageAccountDialogOpen(true)}
 						>
 							Manage your account
@@ -489,7 +489,7 @@ const UserAvatar = () => {
 									</div>
 								</DropdownMenuSubTrigger>
 								<DropdownMenuPortal>
-									<DropdownMenuSubContent className="w-40 border-gray-300 dark:border-gray-500">
+									<DropdownMenuSubContent className="w-40 border-white/20">
 										<div className="py4">
 											<div className="space-y-3">
 												{/* 1 Month Plan */}
@@ -553,26 +553,26 @@ const UserAvatar = () => {
 									</div>
 								</DropdownMenuSubTrigger>
 								<DropdownMenuPortal>
-									<DropdownMenuSubContent className="w-20 border-gray-300 dark:border-gray-500">
+									<DropdownMenuSubContent className="w-20 focus-visible:ring-0 focus-visible:border-white/20">
 										<div className="p2 w-full">
 											<div className="w-full items-start flex flex-col gap-2 ">
 												<button
 													onClick={() => setSelectedAccountType("cash")}
-													className={`flex-1 py-1 px-2 text-sm w-full text-left dark:text-white text-black ${
+													className={`flex-1 py-1 px-2 text-sm w-full text-left  text-black ${
 														selectedAccountType === "cash"
 															? "dark:bg-white rounded-md bg-black/70 text-white dark:text-black"
-															: ""
+															: "dark:text-white"
 													}`}
 												>
 													Cash
 												</button>
-												<hr className="w-full border-gray-300 dark:border-gray-500" />
+												<hr className="w-full border-white/10" />
 												<button
 													onClick={() => setSelectedAccountType("points")}
-													className={`flex-1 py-1 px-2 text-sm w-full text-left dark:text-white text-black ${
+													className={`flex-1 py-1 px-2 text-sm w-full text-left  text-black ${
 														selectedAccountType === "points"
 															? "dark:bg-white bg-black/70 text-white rounded-md dark:text-black"
-															: ""
+															: "dark:text-white"
 													}`}
 												>
 													Point
@@ -617,7 +617,7 @@ const UserAvatar = () => {
 						</div>
 					</div>
 
-					<hr className="w-full border-gray-300 dark:border-gray-500" />
+					<hr className="w-full border-white/10" />
 
 					{/* Sign Out */}
 					<DropdownMenuItem className="p-4 cursor-pointer">
@@ -644,11 +644,11 @@ const UserAvatar = () => {
 			>
 				<DialogContent
 					showCloseButton={false}
-					className="sm:max-w-xl p-0 gap-0 overflow-hidden border-0"
+					className="sm:max-w-xl p-0 gap-0 overflow-hidden border-white/20"
 				>
-					<DialogHeader className="relative p-4 pb-4 flex flex-row justifybetween h-max items-center">
+					<DialogHeader className="relative p-4 pb-4 flex flex-row  justifybetween h-max items-center">
 						{/* Camera Icon on Far Right */}
-						<button className="h-14 w-14 rounded-full flex items-center justify-center border border-gray-300 dark:border-gray-500 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+						<button className="h-14 w-14 rounded-full flex items-center justify-center border border-gray-300 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
 							<svg
 								width="20"
 								height="20"
@@ -674,14 +674,14 @@ const UserAvatar = () => {
 						</DialogTitle>
 						<div className="absolute top-4 right-4">
 							<button
-								className="h-8 w-8 rounded-full flex items-center justify-center border-gray-300 dark:border-gray-500 hover:bg-gray-100 border"
+								className="h-8 w-8 rounded-full flex items-center justify-center border-gray-300 dark:border-gray-500 dark:hover:bg-inherit hover:bg-gray-100 border"
 								onClick={() => setManageAccountDialogOpen(false)}
 							>
 								<X />
 							</button>
 						</div>
 					</DialogHeader>
-					<hr className="w-full border-gray-300 dark:border-gray-500" />
+					<hr className="w-full border-white/10" />
 
 					<div className="px-6 pb-6 space-y-2">
 						{/* Profile Information - Two column layout */}
@@ -698,7 +698,7 @@ const UserAvatar = () => {
 									</Label>
 									<Input
 										id="name"
-										className="w-full border-gray-300 dark:border-gray-500"
+										className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 									/>
 								</div>
 
@@ -713,7 +713,7 @@ const UserAvatar = () => {
 									<div className="flex items-center gap-2">
 										<Input
 											id="email"
-											className="w-full border-gray-300 dark:border-gray-500"
+											className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 										/>
 									</div>
 								</div>
@@ -731,7 +731,7 @@ const UserAvatar = () => {
 									</Label>
 									<Input
 										id="username"
-										className="w-full border-gray-300 dark:border-gray-500"
+										className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 									/>
 								</div>
 
@@ -745,7 +745,7 @@ const UserAvatar = () => {
 									</Label>
 									<Input
 										id="phone"
-										className="w-full border-gray-300 dark:border-gray-500"
+										className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 									/>
 								</div>
 							</div>
@@ -764,7 +764,7 @@ const UserAvatar = () => {
 								<Input
 									id="currentPassword"
 									type="password"
-									className="w-full border-gray-300 dark:border-gray-500"
+									className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 								/>
 							</div>
 
@@ -779,21 +779,21 @@ const UserAvatar = () => {
 								<Input
 									id="newPassword"
 									type="password"
-									className="w-full border-gray-300 dark:border-gray-500"
+									className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 								/>
 							</div>
 						</div>
 					</div>
 					{/* Action Buttons - Reversed order as shown in image */}
-					<hr className="w-full border-gray-300 dark:border-gray-500" />
+					<hr className="w-full border-white/10" />
 					<div className="flex w-full py-2 justify-center gap-4 px-6">
-						<div className="w-full rounded-full border text-black dark:text-white border-gray-300 dark:border-gray-500   hover:bg-black !hover:text-white">
+						<div className="w-full rounded-full border  text-black dark:text-white border-gray-300 dark:border-white/20 dark:hover:bg-white dark:hover:text-black  hover:bg-black hover:text-white">
 							<button
 								onClick={() => {
 									console.log("Saving profile changes...");
 									setManageAccountDialogOpen(false);
 								}}
-								className="w-full dark:text-white  hover:text-white h-12  font-semibold"
+								className="w-full h-12  font-semibold"
 							>
 								Save changes
 							</button>
@@ -819,7 +819,7 @@ const UserAvatar = () => {
 			>
 				<DialogContent
 					showCloseButton={false}
-					className="border-0 sm:max-w-5xl p-0 gap-0 h-[400px] overflow-auto"
+					className="border0 sm:max-w-5xl p-0 gap-0 h-[400px] overflow-auto dark:border-white/20"
 				>
 					<DialogHeader className="relative p-6 pb-4">
 						<DialogTitle className="text-2xl font-bold text-center">
@@ -827,7 +827,7 @@ const UserAvatar = () => {
 						</DialogTitle>
 						<button
 							onClick={() => setScoreboardDialogOpen(false)}
-							className="absolute right-4 hover:bg-gray-300 top-4 h-8 w-8 flex items-center justify-center rounded-full"
+							className="absolute right-4 hover:bg-gray-300  dark:hover:bg-inherit top-4 h-8 w-8 flex items-center justify-center rounded-full"
 						>
 							<X />
 						</button>
@@ -867,7 +867,7 @@ const UserAvatar = () => {
 
 										{/* Dropdown Menu */}
 										{isDropdownOpen && (
-											<div className="absolute top-full left-0 mt1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-10 min-w-[120px]">
+											<div className="absolute top-full left-0 mt1 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-10 min-w-[120px]">
 												{rewardOptions.map((option) => (
 													<button
 														key={option.value}
@@ -875,7 +875,7 @@ const UserAvatar = () => {
 															setRewardFilter(option.value);
 															setIsDropdownOpen(false);
 														}}
-														className={`w-full border-b text-left px3 py2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 first:rounded-t-md last:rounded-b-md ${
+														className={`w-full border-b text-left px3 py2 text-sm hover:bg-gray-100 dark:hover:bg-gray-500 first:rounded-t-md last:rounded-b-md ${
 															rewardFilter === option.value
 																? "bg-black/80 dark:bg-white/10 white text-white dark:text-white"
 																: ""
@@ -889,7 +889,7 @@ const UserAvatar = () => {
 									</div>
 
 									{/* Current filter indicator */}
-									<div className="text-s font-normal text-gray-500 dark:text-gray-400 mt1">
+									<div className="text-s font-normal dark:bg-black text-gray-500 dark:text-white mt1">
 										{getCurrentFilterLabel()}
 									</div>
 								</div>
@@ -947,7 +947,7 @@ const UserAvatar = () => {
 
 							{/* Summary Section - Aligned under respective columns */}
 							{filteredData.length > 0 && (
-								<div className="grid grid-cols-10 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+								<div className="grid grid-cols-10 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-inherit">
 									<div className="p-4 border-gray-400 dark:border-gray-500 col-span-7"></div>
 									<div className="p-4 col-span-3 text-center font-medium">
 										<div className="flex flex-col gap-1">
@@ -980,7 +980,7 @@ const UserAvatar = () => {
 			>
 				<DialogContent
 					showCloseButton={false}
-					className="sm:max-w-md p-0 gap-0 overflow-hidden"
+					className="sm:max-w-md p-0 gap-0 overflow-hidden border-white/20"
 				>
 					<DialogHeader className="relative p-6 pb-4">
 						<DialogTitle className="text-2xl font-bold textcenter">
@@ -991,7 +991,7 @@ const UserAvatar = () => {
 						</DialogTitle>
 						<button
 							onClick={() => setWalletDialogOpen(false)}
-							className="absolute right-4 hover:bg-gray-300 top-4 h-8 w-8 flex items-center justify-center rounded-full"
+							className="absolute right-4 hover:bg-gray-300 top-4  dark:hover:bg-inherit h-8 w-8 flex items-center justify-center rounded-full"
 						>
 							<X />
 						</button>
@@ -1008,7 +1008,7 @@ const UserAvatar = () => {
 							</Button>
 							<Button
 								onClick={handleWithdraw}
-								className="w-full rounded-full border border-gray-900 hover:bg-white bg-transparent dark:bg-black/80 text-black dark:text-white h-12 text-lg font-semibold"
+								className="w-full rounded-full border dark:border-white border-gray-900 hover:bg-white bg-transparent dark:bg-black/80 text-black dark:text-white h-12 text-lg font-semibold"
 							>
 								Withdraw
 							</Button>
@@ -1024,7 +1024,7 @@ const UserAvatar = () => {
 								<div className="flex justify-between items-center">
 									<div className="flex h-max gap-2">
 										<p className="text-sm">2/11/23</p>
-										<p className="text-sm text-gray-500">
+										<p className="text-sm text-black dark:text-white">
 											Money added to wallet
 										</p>
 									</div>
@@ -1035,7 +1035,7 @@ const UserAvatar = () => {
 								<div className="flex justify-between items-center">
 									<div className="flex h-max gap-2">
 										<p className="text-sm">3/11/23</p>
-										<p className="text-sm text-gray-500">
+										<p className="text-sm text-black dark:text-white">
 											Money moved to bank account
 										</p>
 									</div>
@@ -1054,7 +1054,7 @@ const UserAvatar = () => {
 			>
 				<DialogContent
 					showCloseButton={false}
-					className="sm:max-w-md p-0 gap-0 overflow-hidden"
+					className="sm:max-w-md p-0 gap-0 overflow-hidden border-white/20"
 				>
 					<DialogHeader className="p-6 pb1 relative">
 						<button
@@ -1068,13 +1068,13 @@ const UserAvatar = () => {
 						</DialogTitle>
 						<button
 							onClick={() => setDepositDialogOpen(false)}
-							className="absolute right-4 hover:bg-gray-300 top-5 h-8 w-8 flex items-center justify-center rounded-full"
+							className="absolute right-4 hover:bg-gray-300 top-5 dark:hover:bg-inherit h-8 w-8 flex items-center justify-center rounded-full"
 						>
 							<X />
 						</button>
 					</DialogHeader>
 					{/* Divider */}
-					<hr className="w-full border-gray-200" />
+					<hr className="w-full border-white/10" />
 					<div className="px-6 pb-6 space-y-6 mt-1">
 						{/* Amount Input */}
 						<div className="space-y-2">
@@ -1088,14 +1088,14 @@ const UserAvatar = () => {
 								id="depositAmount"
 								placeholder="0"
 								className="w-full border-b border-t-0 border-l-0 border-r-0 rounded-none shadow-none focus:visible:ring-0 outline-0 focus-visible:outline-0
-                            focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-0 placeholder:text-3xl !text-3xl"
+                            focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-0 placeholder:text-3xl !text-3xl focus-visible:ring-0 focus-visible:border-white/20"
 								type="number"
 							/>
 						</div>
 
 						{/* Information Text */}
 						<div className="space-y-3">
-							<p className="text-sm text-gray-600">
+							<p className="text-sm dark: text-gray-600">
 								When you create a deposit, you will get bank transfer details
 								that must be submitted immediately. You can&apos;t create
 								another deposit until the first one is completed or expires.
@@ -1106,12 +1106,12 @@ const UserAvatar = () => {
 						</div>
 
 						{/* Divider */}
-						<hr className="w-full border-gray-200" />
+						<hr className="w-full border-white/10" />
 
 						{/* Submit Button */}
 						<Button
 							onClick={closeAllDialogs}
-							className="w-full rounded-full bg-gray-900 hover:bg-gray-800 h-12 text-lg font-semibold"
+							className="w-full rounded-full bg-gray-900 dark:text-white dark:bg-inherit dark:hover:text-black border dark:border-white/20 dark:hover:bg-white hover:text-white hover:bg-gray-800 h-12 text-lg font-semibold"
 						>
 							Submit
 						</Button>
@@ -1126,7 +1126,7 @@ const UserAvatar = () => {
 			>
 				<DialogContent
 					showCloseButton={false}
-					className="sm:max-w-md p-0 gap-0 overflow-hidden"
+					className="sm:max-w-md p-0 gap-0 overflow-hidden border-white/20"
 				>
 					<DialogHeader className="p-6 pb-4 relative">
 						<button
@@ -1144,13 +1144,13 @@ const UserAvatar = () => {
 						</DialogTitle>
 						<button
 							onClick={() => setWithdrawDialogOpen(false)}
-							className="absolute right-4 hover:bg-gray-300 top-5 h-8 w-8 flex items-center justify-center rounded-full"
+							className="absolute right-4 hover:bg-gray-300 dark:hover:bg-inherit top-5 h-8 w-8 flex items-center justify-center rounded-full"
 						>
 							<X />
 						</button>
 					</DialogHeader>
 					{/* Divider */}
-					<hr className="w-full border-gray-200" />
+					<hr className="w-full border-white/10" />
 					<div className="px-6 pb-6 space-y-6">
 						{!selectedBankAccount ? (
 							// Initial withdraw screen - choose bank account
@@ -1210,7 +1210,7 @@ const UserAvatar = () => {
 									<Input
 										id="withdrawAmount"
 										placeholder="0"
-										className="w-full !text-3xl border-b border-t-0 border-l-0 border-r-0 rounded-none textxl shadow-none focus:visible:ring-0 outline-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-0 placeholder:text-2xl"
+										className="w-full !text-3xl border-b border-t-0 border-l-0 border-r-0 rounded-none textxl shadow-none focus:visible:ring-0 outline-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-0 placeholder:text-2xl focus-visible:ring-0 focus-visible:border-white/20"
 										type="number"
 									/>
 								</div>
@@ -1225,12 +1225,12 @@ const UserAvatar = () => {
 								</div>
 
 								{/* Second Divider */}
-								<hr className="w-full border-gray-200" />
+								<hr className="w-full border-white/10" />
 
 								{/* Submit Button */}
 								<Button
 									onClick={closeAllDialogs}
-									className="w-full rounded-full bg-gray-900 hover:bg-gray-800 h-12 text-lg font-semibold"
+									className="w-full rounded-full bg-gray-900 dark:text-white dark:bg-inherit dark:hover:text-black border dark:border-white/20 dark:hover:bg-white hover:text-white hover:bg-gray-800 h-12 text-lg font-semibold"
 								>
 									Submit
 								</Button>
@@ -1247,7 +1247,7 @@ const UserAvatar = () => {
 			>
 				<DialogContent
 					showCloseButton={false}
-					className="sm:max-w-md p-0 gap-0 overflow-hidden"
+					className="sm:max-w-md p-0 gap-0 overflow-hidden border-white/20"
 				>
 					<DialogHeader className="relative p-6 pb-4">
 						<button
@@ -1261,12 +1261,12 @@ const UserAvatar = () => {
 						</DialogTitle>
 						<button
 							onClick={() => setAddBankDialogOpen(false)}
-							className="absolute right-4 hover:bg-gray-300 top-5 h-8 w-8 flex items-center justify-center rounded-full"
+							className="absolute right-4 hover:bg-gray-300 dark:hover:bg-inherit top-5 h-8 w-8 flex items-center justify-center rounded-full"
 						>
 							<X />
 						</button>
 					</DialogHeader>
-
+					<hr className="border-white/20" />
 					<div className="px-6 pb-6 space-y-6">
 						{/* Form Fields */}
 						<div className="space-y-4">
@@ -1303,13 +1303,13 @@ const UserAvatar = () => {
 								<Input
 									id="accountNumber"
 									placeholder="Enter your account number"
-									className="w-full"
+									className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 									type="number"
 								/>
 							</div>
 
 							{/* Account Name Display */}
-							<div className="px-4 h-10 flex items-center border rounded-lg">
+							<div className="px-4 h-10 flex items-center border dark:border-white/20 rounded-lg">
 								<p className="text-sm text-gray-600 text-center">
 									Account name automatically appears here
 								</p>
@@ -1319,7 +1319,7 @@ const UserAvatar = () => {
 						{/* Submit Button */}
 						<Button
 							onClick={closeAllDialogs}
-							className="w-full rounded-full bg-gray-900 hover:bg-gray-800 h-12 text-lg font-semibold"
+							className="w-full rounded-full bg-gray-900 dark:text-white dark:bg-inherit dark:hover:text-black border dark:border-white/20 dark:hover:bg-white hover:text-white hover:bg-gray-800 h-12 text-lg font-semibold"
 						>
 							Submit
 						</Button>
@@ -1332,7 +1332,7 @@ const UserAvatar = () => {
 				open={premiumDialogOpen}
 				onOpenChange={setPremiumDialogOpen}
 			>
-				<DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden">
+				<DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden border-white/20">
 					<DialogHeader className="p-6 pb-4">
 						<DialogTitle className="text-sm text-gray-400">
 							Pay {getPlanAmount()} - {getPlanText()}
@@ -1352,7 +1352,7 @@ const UserAvatar = () => {
 								<Input
 									id="cardNumber"
 									placeholder="Card number"
-									className="w-full pr-10"
+									className="w-full pr-10 focus-visible:ring-0 focus-visible:border-white/20"
 								/>
 
 								<button
@@ -1370,7 +1370,7 @@ const UserAvatar = () => {
 									<p className="px-3">
 										Unlocak your account to veiw auto suggestions
 									</p>
-									<hr className="border-[0.5px]" />
+									<hr className="border-[0.5px] border-white/10" />
 									<button
 										onClick={() => console.log("Unlock account clicked")}
 										className="text-blue-600 px-3 hover:underline flex h-max items-center"
@@ -1396,7 +1396,7 @@ const UserAvatar = () => {
 								<Input
 									id="expiry"
 									placeholder="Expiration date (MM/YY)"
-									className="w-full"
+									className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 								/>
 							</div>
 							<div className="space-y-2">
@@ -1409,7 +1409,7 @@ const UserAvatar = () => {
 								<Input
 									id="cvc"
 									placeholder="CVC"
-									className="w-full"
+									className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 								/>
 							</div>
 						</div>
@@ -1425,14 +1425,14 @@ const UserAvatar = () => {
 							<Input
 								id="cardName"
 								placeholder="Name on card"
-								className="w-full"
+								className="w-full focus-visible:ring-0 focus-visible:border-white/20"
 							/>
 						</div>
 
 						{/* Pay Now Button */}
 						<Button
 							onClick={confirmPremiumUpgrade}
-							className="w-full rounded-full bg-white border border-gray-300 dark:border-gray-500 hover:bg-black hover:text-white h-12 text-lg font-semibold dark:text-white text-black"
+							className="w-full rounded-full bg-white dark:bg-inherit border border-gray-300 dark:border-gray-500 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white h-12 text-lg font-semibold dark:text-white text-black"
 						>
 							Pay now
 						</Button>
