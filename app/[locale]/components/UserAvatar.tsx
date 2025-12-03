@@ -59,6 +59,7 @@ import PodcastIcon from "@/public/icons/PodcastIcon";
 import { usePodcast } from "../(dashboard)/context/PodcastContext";
 import Link from "next/link";
 import UserCircleIcon from "@/public/icons/UserCircleIcon";
+import SignoutIcon from "@/public/icons/SignoutIcon";
 
 
 // Define the scoreboard data type
@@ -623,14 +624,17 @@ const UserAvatar = () => {
 					<DropdownMenuItem className="p-4 cursor-pointer">
 						<button
 							onClick={() => router.push(`/${locale}`)}
-							className="flex items-center gap-2"
+							className="flex items-center gap-2 dark:text"
 						>
-							<Image
+							{/* <Image
 								src={"/sign-out-alt-solid-svgrepo-com.svg"}
 								alt="sign out"
 								height={20}
 								width={20}
-							/>
+							/> */}
+							<div className="h-4 w-4">
+								<SignoutIcon />
+							</div>
 							<span className="font-medium">Sign out</span>
 						</button>
 					</DropdownMenuItem>
@@ -974,6 +978,7 @@ const UserAvatar = () => {
 			</Dialog>
 
 			{/* Wallet Dialog - Updated with accumulated amount */}
+			{/* Wallet Dialog - Updated with Account Type dropdown */}
 			<Dialog
 				open={walletDialogOpen}
 				onOpenChange={setWalletDialogOpen}
@@ -983,10 +988,12 @@ const UserAvatar = () => {
 					className="sm:max-w-md p-0 gap-0 overflow-hidden border-white/20"
 				>
 					<DialogHeader className="relative p-6 pb-4">
-						<DialogTitle className="text-2xl font-bold textcenter">
+						<DialogTitle className="text-2xl font-bold text-center">
 							<span className="inline-flex items-baseline gap-1">
 								<span className="text-xs">₦</span>
-								<span className="text-2xl font-semibold">0.000</span>
+								<span className="text-2xl font-semibold">
+									{getAccumulatedAmount().replace("NGN ", "")}
+								</span>
 							</span>
 						</DialogTitle>
 						<button
@@ -998,6 +1005,114 @@ const UserAvatar = () => {
 					</DialogHeader>
 
 					<div className="px-6 pb-6 space-y-6">
+						{/* Account Type Dropdown */}
+						<div className="space-y-3">
+							<h3 className="font-semibold">Account Type</h3>
+							<div className="relative">
+								<button
+									onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+									className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600"
+								>
+									<div className="flex items-center gap-3">
+										{selectedAccountType === "cash" ? (
+											<div className="flex items-center gap-2">
+												<div className="w-2 h-2 rounded-full bg-blue-600"></div>
+												<span>Personal</span>
+												<span className="text-gray-500 dark:text-gray-400">
+													● NGN4
+												</span>
+											</div>
+										) : (
+											<div className="flex items-center gap-2">
+												<div className="w-2 h-2 rounded-full bg-blue-600"></div>
+												<span>Gold</span>
+												<span className="text-gray-500 dark:text-gray-400">
+													● NGN23
+												</span>
+											</div>
+										)}
+									</div>
+									<ChevronDown
+										className={`transition-transform ${
+											isDropdownOpen ? "rotate-180" : ""
+										}`}
+										size={16}
+									/>
+								</button>
+
+								{/* Dropdown Options */}
+								{isDropdownOpen && (
+									<div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-10">
+										{/* Personal Option */}
+										<button
+											onClick={() => {
+												setSelectedAccountType("cash");
+												setIsDropdownOpen(false);
+											}}
+											className={`flex items-center justify-between w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 ${
+												selectedAccountType === "cash"
+													? "bg-blue-50 dark:bg-blue-900/30"
+													: ""
+											}`}
+										>
+											<div className="flex items-center gap-3">
+												<div
+													className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+														selectedAccountType === "cash"
+															? "border-blue-600"
+															: "border-gray-300 dark:border-gray-600"
+													}`}
+												>
+													{selectedAccountType === "cash" && (
+														<div className="w-2 h-2 rounded-full bg-blue-600"></div>
+													)}
+												</div>
+												<div className="flex flex-col items-start">
+													<span>Personal</span>
+													<span className="text-xs text-gray-500 dark:text-gray-400">
+														● NGN4
+													</span>
+												</div>
+											</div>
+										</button>
+
+										{/* Gold Option */}
+										<button
+											onClick={() => {
+												setSelectedAccountType("points");
+												setIsDropdownOpen(false);
+											}}
+											className={`flex items-center justify-between w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 ${
+												selectedAccountType === "points"
+													? "bg-blue-50 dark:bg-blue-900/30"
+													: ""
+											}`}
+										>
+											<div className="flex items-center gap-3">
+												<div
+													className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+														selectedAccountType === "points"
+															? "border-blue-600"
+															: "border-gray-300 dark:border-gray-600"
+													}`}
+												>
+													{selectedAccountType === "points" && (
+														<div className="w-2 h-2 rounded-full bg-blue-600"></div>
+													)}
+												</div>
+												<div className="flex flex-col items-start">
+													<span>Gold</span>
+													<span className="text-xs text-gray-500 dark:text-gray-400">
+														● NGN23
+													</span>
+												</div>
+											</div>
+										</button>
+									</div>
+								)}
+							</div>
+						</div>
+
 						{/* Deposit and Withdraw Buttons */}
 						<div className="grid grid-cols-2 gap-4">
 							<Button
@@ -1016,7 +1131,7 @@ const UserAvatar = () => {
 
 						{/* Activity Section */}
 						<div className="space-y-4">
-							<h3 className="font-semibold">Activity</h3>
+							<h3 className="font-semibold">Withdraw</h3>
 
 							{/* Activity Items */}
 							<div className="space-y-3">

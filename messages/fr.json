@@ -1,58 +1,53 @@
 {
   "Home": {
     "title": "Bienvenue sur Next.js !",
-    "description": "Voici votre application localisée.",
+    "description": "Ceci est votre application localisée.",
     "getStarted": "Commencer",
     "alreadyHaveAccount": "J'AI DÉJÀ UN COMPTE",
-    "login": "Connexion",
+    "login": "Se connecter",
     "signUp": "S'inscrire",
-    "heroDescription": "Teste tes connaissances indigènes et ton aptitude au raisonnement de manière amusante !",
-    "loginWithAuth": "Connexion avec authentification sociale",
-    "signupWithAuth": "Inscription avec authentification sociale"
+    "heroDescription": "Testez vos connaissances indigènes et votre raisonnement de manière ludique !",
+    "loginWithAuth": "Se connecter avec une authentification sociale",
+    "signupWithAuth": "S'inscrire avec une authentification sociale"
   },
 
   "Login": {
     "title": "Connexion à Superfan",
-
     "password": "Mot de passe",
     "login": "Se connecter",
     "forgotPassword": "Mot de passe oublié ?",
     "dontHaveAccount": "Vous n'avez pas de compte ?",
-    "signUp": "Créer un compte",
-
+    "signUp": "S'inscrire",
     "emailLabel": "Email",
     "phoneLabel": "Téléphone",
-
-    "validation_contactRequired": "Ce champ est requis",
+    "validation_contactRequired": "Ce champ est obligatoire",
     "validation_invalidEmail": "Adresse email invalide",
-    "validation_invalidPhone": "Le téléphone doit contenir uniquement des chiffres",
-    "validation_passwordMin": "Le mot de passe doit comporter au moins 8 caractères",
+    "validation_invalidPhone": "Le téléphone ne doit contenir que des chiffres",
+    "validation_passwordMin": "Le mot de passe doit contenir au moins 8 caractères",
     "validation_selectContactType": "Veuillez sélectionner email ou téléphone"
   },
 
   "SignUp": {
-    "title": "Créer un compte Superfan",
+    "title": "Inscrivez-vous à Superfan",
     "username": "Nom d'utilisateur",
     "emailOrPhone": "Email ou numéro de téléphone",
     "password": "Mot de passe",
     "passwordHint": "Minimum 8 caractères.",
-    "submit": "Valider",
+    "submit": "Soumettre",
     "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "login": "Connectez-vous ici",
     "fullName": "Nom complet",
-
     "emailLabel": "Email",
     "phoneLabel": "Téléphone",
-
-    "validation_contactRequired": "Ce champ est requis",
+    "validation_contactRequired": "Ce champ est obligatoire",
     "validation_invalidEmail": "Adresse email invalide",
-    "validation_invalidPhone": "Le téléphone doit contenir uniquement des chiffres",
-    "validation_passwordMin": "Le mot de passe doit comporter au moins 8 caractères",
+    "validation_invalidPhone": "Le téléphone ne doit contenir que des chiffres",
+    "validation_passwordMin": "Le mot de passe doit contenir au moins 8 caractères",
     "validation_selectContactType": "Veuillez sélectionner email ou téléphone"
   },
 
   "ForgotPassword": {
-    "resetPassword": "Réinitialiser votre mot de passe",
+    "resetPassword": "Réinitialisez votre mot de passe",
     "enterContact": "Entrez le {contactType} associé à votre compte pour réinitialiser votre mot de passe,",
     "weWillSendCode": "nous vous enverrons un code",
     "phone": "téléphone",
@@ -67,12 +62,12 @@
   },
 
   "GetStarted": {
-    "title": "Quelle connaissance ou quel raisonnement veux-tu tester ?",
+    "title": "Quelle connaissance ou quel raisonnement souhaitez-vous tester ?",
     "continue": "CONTINUER"
   },
 
   "SubjectToTest": {
-    "title": "Sélectionnez une matière à tester"
+    "title": "Sélectionnez un sujet à tester"
   },
 
   "TestLevel": {
@@ -80,36 +75,36 @@
   },
 
   "QuestionCounter": {
-    "title": "Combien de questions souhaitez-vous résoudre ?"
+    "title": "Combien de questions voulez-vous résoudre ?"
   },
 
   "TimerCounter": {
-    "title": "En combien de temps voulez-vous les résoudre ?"
+    "title": "Dans quel temps voulez-vous les résoudre ?"
   },
 
   "BankDetails": {
     "title": "Ajoutez vos informations bancaires pour le paiement",
-    "accountName": "Nom du titulaire",
+    "accountName": "Nom du compte",
     "bankName": "Nom de la banque",
     "accountNumber": "Numéro de compte",
-    "placeholderAccountName": "Entrez le nom du titulaire",
+    "placeholderAccountName": "Entrez le nom du compte",
     "placeholderBankName": "Entrez le nom de la banque",
     "placeholderAccountNumber": "Entrez le numéro de compte",
     "next": "Suivant",
-    "skip": "Ignorer"
+    "skip": "Passer"
   },
 
   "Reward": {
-    "title": "Quelle est votre récompense pour une bonne réponse ?",
+    "title": "Quelle récompense souhaitez-vous pour une bonne réponse ?",
     "POINTS": "Points",
-    "CASH": "Cash"
+    "CASH": "Argent"
   },
 
   "Wallet": {
-    "title": "Approvisionnez votre portefeuille",
+    "title": "Alimentez votre portefeuille",
     "amountLabel": "Montant",
-    "description": "Lorsque vous créez un dépôt, votre portefeuille et les détails de virement bancaire doivent être traités immédiatement. Vous ne pouvez pas créer un autre dépôt tant que le premier n’est pas terminé ou expiré. Les fonds arrivent généralement en 1–2 heures.",
+    "description": "Lorsque vous créez un dépôt, votre portefeuille et les détails de transfert bancaire doivent être pris en compte immédiatement. Vous ne pouvez pas créer un autre dépôt tant que le premier n'est pas terminé ou expiré. Les fonds arrivent généralement en 1 à 2 heures.",
     "next": "Suivant",
-    "skip": "Ignorer"
+    "skip": "Passer"
   }
 }
