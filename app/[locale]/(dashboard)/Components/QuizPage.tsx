@@ -24,6 +24,7 @@ import Image from "next/image";
 import { useQuizStore } from "@/store/useQuizStore";
 import AngryfaceIcon from "@/public/icons/AngryfaceIcon";
 import InputVerificationModal from "./InputVerification";
+import CoinsIcon from "@/public/icons/CoinsIcon";
 
 export default function QuizPage() {
 	const [showColorPalette, setShowColorPalette] = useState<boolean>(false);
@@ -533,8 +534,11 @@ export default function QuizPage() {
 							<DropdownMenu>
 								<DropdownMenuTrigger asChild>
 									<button
-										className={`p-1 rounded-full dark:text-white text-black hover:bg-black/20 dark:hover:bg-white/20 transition-colors`}
+										className={`p-1 flex h-max gap-1 rounded-full dark:text-white text-black hover:bg-black/20 dark:hover:bg-white/20 transition-colors`}
 									>
+										<div className="h-4 w-4">
+											<CoinsIcon/>
+										</div>
 										<MoreHorizontal size={16} />
 									</button>
 								</DropdownMenuTrigger>
