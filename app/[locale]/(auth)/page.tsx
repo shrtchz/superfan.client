@@ -29,7 +29,7 @@ const router=useRouter();
 
         {/* Right side - Content */}
         <div className="flex-1 max-w-md">
-          <h1 className="text-xl  text-black font-bold text-center leading-tight mb-8">
+          <h1 className="text-xl  text-black font-bold text-center leading-tight px-4 mb-8">
             {t("heroDescription")}
           </h1>
 

@@ -1,115 +1,110 @@
 {
   "Home": {
-    "title": "Kaabo si Next.js!",
-    "description": "Eyi ni ohun elo rẹ ti a ti agbegbe.",
+    "title": "Kaabọ si Next.js!",
+    "description": "Eyi ni app ti a ti ṣe amúlò ni ede rẹ.",
     "getStarted": "Bẹrẹ",
-    "alreadyHaveAccount": "MO NI AKỌỌGBEṢI TẸLẸ",
-    "login": "Wọle",
+    "alreadyHaveAccount": "MO NÍ ÀKÀÚNTÌ RẸ",
+    "login": "Wọlé",
     "signUp": "Forukọsilẹ",
-    "heroDescription": "Ṣe idanwo imo abinibi ati oye ironu rẹ ni ọna ayọ!",
-    "loginWithAuth": "Wọle pẹlu àṣàyàn awujọ",
-    "signupWithAuth": "Forukọsilẹ pẹlu àṣàyàn awujọ"
+    "heroDescription": "Ṣayẹwo ìmọ ìbílẹ rẹ àti ìmọ ìmọ̀ràn ní ìrìn àjò ayọ̀!",
+    "loginWithAuth": "Wọlé pẹ̀lú ìforúkọsílẹ awujọ",
+    "signupWithAuth": "Forukọsilẹ pẹ̀lú ìforúkọsílẹ awujọ"
   },
 
   "Login": {
-    "title": "Wọle sí Superfan",
-
-    "password": "Ọrọigbaniwọle",
-    "login": "Wọle",
-    "forgotPassword": "Gbagbe ọrọigbaniwọle?",
-    "dontHaveAccount": "Ko ni akọọlẹ?",
+    "title": "Wọlé sí Superfan",
+    "password": "Ọ̀rọ̀ aṣínà",
+    "login": "Wọlé",
+    "forgotPassword": "Ṣe o gbagbe ọrọ aṣínà?",
+    "dontHaveAccount": "Ṣe o kò ní àkàúntì?",
     "signUp": "Forukọsilẹ",
-
     "emailLabel": "Imeeli",
     "phoneLabel": "Foonu",
-
-    "validation_contactRequired": "A nilo aaye yi",
-    "validation_invalidEmail": "Imeeli ko tọ",
-    "validation_invalidPhone": "Nọmba foonu gbọdọ jẹ awọn nọmba nikan",
-    "validation_passwordMin": "Ọrọigbaniwọle gbọdọ jẹ o kere ju awọn lẹta 8",
-    "validation_selectContactType": "Jọwọ yan imeeli tabi foonu"
+    "validation_contactRequired": "A nilo ààyè yìí",
+    "validation_invalidEmail": "Adirẹsi imeeli kò tọ́",
+    "validation_invalidPhone": "Foonu gbọdọ ní dígìtì nìkan",
+    "validation_passwordMin": "Ọ̀rọ̀ aṣínà gbọdọ jẹ́ o kere ju àwọn ohun kikọ 8 lọ",
+    "validation_selectContactType": "Jowo yan imeeli tàbí foonu"
   },
 
   "SignUp": {
     "title": "Forukọsilẹ sí Superfan",
     "username": "Orukọ olumulo",
-    "emailOrPhone": "Imeeli tabi Nọmba foonu",
-    "password": "Ọrọigbaniwọle",
-    "passwordHint": "O kere ju awọn lẹta 8.",
-    "submit": "Firanṣẹ",
-    "alreadyHaveAccount": "Ti o ba ti ni akọọlẹ tẹlẹ?",
-    "login": "Wọle nibi",
+    "emailOrPhone": "Imeeli tàbí Nọ́mbà foonu",
+    "password": "Ọ̀rọ̀ aṣínà",
+    "passwordHint": "O kere ju ohun kikọ 8 lọ.",
+    "submit": "Fọwọ́sowọpọ",
+    "alreadyHaveAccount": "Ṣe o ti ní àkàúntì?",
+    "login": "Wọlé nibi",
     "fullName": "Orukọ kikun",
-
     "emailLabel": "Imeeli",
     "phoneLabel": "Foonu",
-
-    "validation_contactRequired": "A nilo aaye yi",
-    "validation_invalidEmail": "Imeeli ko tọ",
-    "validation_invalidPhone": "Nọmba foonu gbọdọ jẹ awọn nọmba nikan",
-    "validation_passwordMin": "Ọrọigbaniwọle gbọdọ jẹ o kere ju awọn lẹta 8",
-    "validation_selectContactType": "Jọwọ yan imeeli tabi foonu"
+    "validation_contactRequired": "A nilo ààyè yìí",
+    "validation_invalidEmail": "Adirẹsi imeeli kò tọ́",
+    "validation_invalidPhone": "Foonu gbọdọ ní dígìtì nìkan",
+    "validation_passwordMin": "Ọ̀rọ̀ aṣínà gbọdọ jẹ́ o kere ju àwọn ohun kikọ 8 lọ",
+    "validation_selectContactType": "Jowo yan imeeli tàbí foonu"
   },
 
   "ForgotPassword": {
-    "resetPassword": "Tun ọrọigbaniwọle rẹ ṣe",
-    "enterContact": "Tẹ {contactType} tí ó so mọ akọọlẹ rẹ lati tun ọrọigbaniwọle rẹ ṣe,",
-    "weWillSendCode": "a ó fi koodu ranṣẹ sí ọ",
+    "resetPassword": "Tun ọrọ aṣínà rẹ ṣe",
+    "enterContact": "Tẹ {contactType} tí ó bá àkàúntì rẹ mu láti tun ọrọ aṣínà rẹ ṣe,",
+    "weWillSendCode": "a ó rán kóòdù sí ọ",
     "phone": "foonu",
     "email": "imeeli",
-    "phoneNumber": "Nọmba foonu",
+    "phoneNumber": "Nọ́mbà foonu",
     "emailAddress": "Adirẹsi imeeli",
-    "sendCode": "Fi koodu ranṣẹ",
-    "back": "Pada",
-    "enterCode": "Tẹ koodu rẹ sii",
-    "ifContactMatches": "Ti <strong>{contact}</strong> ba ba akọọlẹ rẹ mu, a ti fi koodu ranṣẹ.",
-    "noCodeReceived": "Ko gba koodu?"
+    "sendCode": "Firanṣẹ kóòdù",
+    "back": "Padà",
+    "enterCode": "Tẹ kóòdù rẹ",
+    "ifContactMatches": "Tí <strong>{contact}</strong> bá jẹ́ àkàúntì rẹ, a ti rán kóòdù kan.",
+    "noCodeReceived": "Ṣe o kò rí kóòdù?"
   },
 
   "GetStarted": {
-    "title": "Iru imo tabi ironu wo ni o fẹ lati danwo?",
-    "continue": "TẸSIWÁJU"
+    "title": "Ìmọ̀ tàbí ìmọ̀ràn wo ni o fẹ́ ṣàyẹwo?",
+    "continue": "TẸ̀SÍWÁJÚ"
   },
 
   "SubjectToTest": {
-    "title": "Yan koko tí o fẹ danwo"
+    "title": "Yan koko-ọrọ kan lati ṣayẹwo"
   },
 
   "TestLevel": {
-    "title": "Iru ipele idanwo wo ni o fẹ?"
+    "title": "Ìpele ìdánwò wo ni o fẹ́?"
   },
 
   "QuestionCounter": {
-    "title": "Melòò ni awọn ibeere tí o fẹ dahun?"
+    "title": "Meloo ni ìbéèrè tí o fẹ́ dahun?"
   },
 
   "TimerCounter": {
-    "title": "Ni igba melo ni o fẹ lati dahun wọn?"
+    "title": "Ní ìgbà wo ni o fẹ́ pari wọn?"
   },
 
   "BankDetails": {
-    "title": "Fi alaye ile-ifowopamọ rẹ kun fun isanwo",
-    "accountName": "Orukọ iroyin",
+    "title": "Fi alaye banki rẹ kun fún ìsanwó",
+    "accountName": "Orukọ akọọ́ntì",
     "bankName": "Orukọ banki",
-    "accountNumber": "Nọmba iroyin",
-    "placeholderAccountName": "Tẹ orukọ iroyin sii",
-    "placeholderBankName": "Tẹ orukọ banki sii",
-    "placeholderAccountNumber": "Tẹ nọmba iroyin sii",
-    "next": "Tẹle",
-    "skip": "Fo"
+    "accountNumber": "Nọ́mbà akọọ́ntì",
+    "placeholderAccountName": "Tẹ orukọ akọọ́ntì",
+    "placeholderBankName": "Tẹ orukọ banki",
+    "placeholderAccountNumber": "Tẹ nọmba akọọ́ntì",
+    "next": "Tẹ̀síwájú",
+    "skip": "Foju kọ"
   },
 
   "Reward": {
-    "title": "Kí ni ẹsan rẹ fun dahun tí ó pe?",
-    "POINTS": "Awọn ami-iranṣẹ",
+    "title": "Kí ni ẹ̀bùn tí o fẹ́ fún idahun tó tọ́?",
+    "POINTS": "Awọn ojuami",
     "CASH": "Owo"
   },
 
   "Wallet": {
-    "title": "Fọwọsi apamọwọ rẹ",
+    "title": "Fọwọ́ sí apamọwọ rẹ",
     "amountLabel": "Iye",
-    "description": "Nigbati o ba ṣẹda idogo, apamọwọ ati alaye gbigbe banki rẹ gbọdọ jẹ akiyesi lẹsẹkẹsẹ. O ko le ṣẹda idogo miiran títí ti akọkọ yoo fi pari tabi parí. Awọn owo maa n de ni wakati 1–2.",
-    "next": "Tẹle",
-    "skip": "Fo"
+    "description": "Nígbà tí o bá dá àfikún kan ṣẹ̀, apamọwọ rẹ àti awọn alaye gbigbe banki gbọdọ jẹ kó ròpọ lẹsẹkẹsẹ. O kò le dá àfikún míì ṣẹ̀ títí tí àkọ́kọ́ yóò fi parí tàbí pariwo. Awọn owó maa ń dé ní 1–2 wákàtí.",
+    "next": "Tẹ̀síwájú",
+    "skip": "Foju kọ"
   }
 }
