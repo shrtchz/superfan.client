@@ -100,7 +100,7 @@ export default function Podcastg() {
     <div className="flex flex-col justify-center gap-4 dark:text-white text-black items-center w-full flex-1 h-full border border-t-0 border-b-0  ">
     <div className="h-full w-[60%]">
     
-        <div className="w-full flex items-center justify-ccenter p-6 border-gray-200 dark:border-gray-700">
+        <div className="w-full flex items-center justify-ccenter p-6  ">
           <div className="w-full flex flex-col justify-center items-center">
        
        
@@ -117,7 +117,7 @@ export default function Podcastg() {
         {/* Content */}
         <div className="p-4 space-y-3">
           {/* Divider */}
-          <div className="border-t border-gray-200 dark:border-gray-700"></div>
+          <div className="border-t  "></div>
 
           {/* Episode Title */}
           <div className="space-y-1">

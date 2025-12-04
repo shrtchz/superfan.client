@@ -988,11 +988,10 @@ const UserAvatar = () => {
 					className="sm:max-w-md p-0 gap-0 overflow-hidden border-white/20"
 				>
 					<DialogHeader className="relative p-6 pb-4">
-						<DialogTitle className="text-2xl font-bold text-center">
+						<DialogTitle className="text-2xl font-bold textcenter">
 							<span className="inline-flex items-baseline gap-1">
-								<span className="text-xs">₦</span>
 								<span className="text-2xl font-semibold">
-									{getAccumulatedAmount().replace("NGN ", "")}
+									{getAccumulatedAmount()}
 								</span>
 							</span>
 						</DialogTitle>
@@ -1013,19 +1012,28 @@ const UserAvatar = () => {
 									onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 									className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600"
 								>
-									<div className="flex items-center gap-3">
+									<div className="flex items-center gap-3 w-[90%] ">
 										{selectedAccountType === "cash" ? (
-											<div className="flex items-center gap-2">
-												<div className="w-2 h-2 rounded-full bg-blue-600"></div>
-												<span>Personal</span>
+											<div className="flex items-center gap-2 w-full justify-between">
+												<div className="flex h-max items-center gap-2">
+													<div className="w-4 h-4 rounded-full border-2 flex items-center justify-center border-black">
+														<div className="w-2 h-2 rounded-full bg-black"></div>
+													</div>
+													<span>Personal</span>
+												</div>
 												<span className="text-gray-500 dark:text-gray-400">
 													● NGN4
 												</span>
 											</div>
 										) : (
-											<div className="flex items-center gap-2">
-												<div className="w-2 h-2 rounded-full bg-blue-600"></div>
-												<span>Gold</span>
+											<div className="flex items-center justify-between w-full ">
+												<div className="flex h-max items-center gap-2">
+													<div className="w-4 h-4 rounded-full border-2 flex items-center justify-center border-black">
+														<div className="w-2 h-2 rounded-full bg-black"></div>
+													</div>
+
+													<span>Gold</span>
+												</div>
 												<span className="text-gray-500 dark:text-gray-400">
 													● NGN23
 												</span>
@@ -1055,23 +1063,25 @@ const UserAvatar = () => {
 													: ""
 											}`}
 										>
-											<div className="flex items-center gap-3">
-												<div
-													className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-														selectedAccountType === "cash"
-															? "border-blue-600"
-															: "border-gray-300 dark:border-gray-600"
-													}`}
-												>
-													{selectedAccountType === "cash" && (
-														<div className="w-2 h-2 rounded-full bg-blue-600"></div>
-													)}
+											<div className="flex items-center gap-3 w-full justify-between">
+												<div className="flex h-max items-center gap-2">
+													<div
+														className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+															selectedAccountType === "cash"
+																? "border-black"
+																: "border-gray-300 dark:border-gray-600"
+														}`}
+													>
+														{selectedAccountType === "cash" && (
+															<div className="w-2 h-2 rounded-full bg-black"></div>
+														)}
+													</div>
+													<p>Personal</p>
 												</div>
 												<div className="flex flex-col items-start">
-													<span>Personal</span>
-													<span className="text-xs text-gray-500 dark:text-gray-400">
+													<p className="text-xs text-gray-500 dark:text-gray-400">
 														● NGN4
-													</span>
+													</p>
 												</div>
 											</div>
 										</button>
@@ -1088,23 +1098,25 @@ const UserAvatar = () => {
 													: ""
 											}`}
 										>
-											<div className="flex items-center gap-3">
-												<div
-													className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-														selectedAccountType === "points"
-															? "border-blue-600"
-															: "border-gray-300 dark:border-gray-600"
-													}`}
-												>
-													{selectedAccountType === "points" && (
-														<div className="w-2 h-2 rounded-full bg-blue-600"></div>
-													)}
+											<div className="flex items-center gap-3 w-full justify-between">
+												<div className="flex h-max items-center gap-2">
+													<div
+														className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+															selectedAccountType === "points"
+																? "border-black"
+																: "border-gray-300 dark:border-gray-600"
+														}`}
+													>
+														{selectedAccountType === "points" && (
+															<div className="w-2 h-2 rounded-full bg-black"></div>
+														)}
+													</div>
+													<p>Gold</p>
 												</div>
 												<div className="flex flex-col items-start">
-													<span>Gold</span>
-													<span className="text-xs text-gray-500 dark:text-gray-400">
+													<p className="text-xs text-gray-500 dark:text-gray-400">
 														● NGN23
-													</span>
+													</p>
 												</div>
 											</div>
 										</button>
@@ -1130,7 +1142,7 @@ const UserAvatar = () => {
 						</div>
 
 						{/* Activity Section */}
-						<div className="space-y-4">
+						<div className="space-y-4 h-[100px] overflow-y-auto">
 							<h3 className="font-semibold">Withdraw</h3>
 
 							{/* Activity Items */}
@@ -1146,6 +1158,16 @@ const UserAvatar = () => {
 									<div className="text-green-600 font-medium">500.00</div>
 								</div>
 
+								{/* Activity Item 2 */}
+								<div className="flex justify-between items-center">
+									<div className="flex h-max gap-2">
+										<p className="text-sm">3/11/23</p>
+										<p className="text-sm text-black dark:text-white">
+											Money moved to bank account
+										</p>
+									</div>
+									<div className="text-red-600 font-medium">1000.00</div>
+								</div>
 								{/* Activity Item 2 */}
 								<div className="flex justify-between items-center">
 									<div className="flex h-max gap-2">
