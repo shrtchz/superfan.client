@@ -7,13 +7,14 @@ const TimerCounter = ({ onNext, onBack }: { onNext: () => void; onBack?: () => v
   const router = useRouter();
   const { setTimer } = useQuizStore();
   const languages = [
-    "Time Free!",
-    "15 mins", 
-    "30 mins",
-    "45 mins",
-    "60 mins",
-    "90 mins"
-  ];
+		"5 mins",
+		"15 mins",
+		"30 mins",
+		"45 mins",
+		"60 mins",
+	
+		"Time Free!",
+	];
 
   return (
     <GetStartedSelection

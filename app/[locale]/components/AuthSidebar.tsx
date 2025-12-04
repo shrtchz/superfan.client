@@ -16,7 +16,7 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useQuizStore } from "@/store/useQuizStore";
-import { ArrowLeft, Check, ChevronDown, X } from "lucide-react";
+import { ArrowLeft, Check, ChevronDown, X, Plus, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -25,6 +25,14 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from "@/components/ui/dialog";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
+import XBox from "./XBox";
+import AdBadge from "@/public/icons/AdBadge";
+import CreateAdDialog from "./AdsModal";
 
 const links = [
 	{
@@ -47,6 +55,11 @@ const links = [
 		name: "Podcast",
 		href: "/podcast",
 	},
+	{
+		icon: <AdBadge />,
+		name: "Advertising",
+		href: "",
+	},
 ];
 
 const AuthSidebar = () => {
@@ -56,7 +69,7 @@ const AuthSidebar = () => {
 
 	// Test modal state
 	const [isTestMenuOpen, setIsTestMenuOpen] = useState(false);
-
+const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 	// Quiz store state
 	const {
 		language,
@@ -97,6 +110,10 @@ const AuthSidebar = () => {
 	);
 	const [scoreboardDialogOpen, setScoreboardDialogOpen] = useState(false);
 	const [manageAccountDialogOpen, setManageAccountDialogOpen] = useState(false);
+
+	// State for subjects
+	const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+	const [isMorePopoverOpen, setIsMorePopoverOpen] = useState(false);
 
 	const IBEERE_OPTIONS = ["1 - 25", "1 - 50", "1 - 100", "1 - 150"];
 	const TIMER_OPTIONS = ["10", "15", "25", "30"];
@@ -211,18 +228,8 @@ const AuthSidebar = () => {
 		);
 	};
 
-	// State for expanded test levels
-	const [expandedTestLevels, setExpandedTestLevels] = useState<
-		Record<string, boolean>
-	>({
-		basic: false,
-		intermediary: false,
-		advanced: false,
-	});
-
 	// State for multiple selections
 	const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
-	const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
 
 	const languages = [
 		{ id: "yoruba", label: "Yoruba" },
@@ -236,23 +243,31 @@ const AuthSidebar = () => {
 		{ id: "advanced", label: "Advanced" },
 	];
 
-	const levelOptions = {
-		basic: [
-			{ id: "isori", label: "General" },
-			{ id: "owe", label: "Proverbs" },
-			{ id: "alo", label: "FolkTales" },
-		],
-		intermediary: [
-			{ id: "isori", label: "General" },
-			{ id: "owe", label: "Proverbs" },
-			{ id: "alo", label: "FolkTales" },
-		],
-		advanced: [
-			{ id: "isori", label: "General" },
-			{ id: "owe", label: "Proverbs" },
-			{ id: "alo", label: "FolkTales" },
-		],
-	};
+	// Primary subjects (always visible)
+	const primarySubjects = [
+		{ id: "general", label: "General" },
+		{ id: "politics", label: "Politics" },
+		{ id: "sports", label: "Sports" },
+		{ id: "proverbs", label: "Proverbs" },
+		{ id: "folktale", label: "FolkTale" },
+		{ id: "more", label: "More", isMoreButton: true },
+	];
+
+	// Additional subjects in the "More" popover
+	const additionalSubjects = [
+		{ id: "movies", label: "Movies" },
+		{ id: "music", label: "Music" },
+		{ id: "history", label: "History" },
+		{ id: "culture", label: "Culture" },
+		{ id: "literature", label: "Literature" },
+		{ id: "business", label: "Business" },
+	];
+
+	// All subjects combined
+	const allSubjects = [
+		...primarySubjects.filter((s) => !s.isMoreButton),
+		...additionalSubjects,
+	];
 
 	const questionRanges = [
 		{ id: "1-25", label: "1-25" },
@@ -270,12 +285,6 @@ const AuthSidebar = () => {
 		{ id: "45", label: "45m" },
 		{ id: "60", label: "60m" },
 		{ id: "90", label: "90m" },
-	];
-
-	const allLevelOptions = [
-		...levelOptions.basic,
-		...levelOptions.intermediary,
-		...levelOptions.advanced,
 	];
 
 	const getLabel = (items: any[], id: string | null) => {
@@ -348,6 +357,7 @@ const AuthSidebar = () => {
 		setManageAccountDialogOpen(false);
 		setSelectedBankAccount(null);
 		setIsTestMenuOpen(false);
+		setIsMorePopoverOpen(false);
 	};
 
 	const handleBankAccountSelect = (account: string) => {
@@ -384,12 +394,28 @@ const AuthSidebar = () => {
 	// Map question types to display names
 	const getQuestionTypeDisplayName = (type: string) => {
 		switch (type) {
-			case "isori":
+			case "general":
 				return <span>General</span>;
-			case "owe":
+			case "proverbs":
 				return <span>Proverbs</span>;
-			case "alo":
-				return <span>Fairytale</span>;
+			case "folktale":
+				return <span>FolkTale</span>;
+			case "politics":
+				return <span>Politics</span>;
+			case "sports":
+				return <span>Sports</span>;
+			case "movies":
+				return <span>Movies</span>;
+			case "music":
+				return <span>Music</span>;
+			case "history":
+				return <span>History</span>;
+			case "culture":
+				return <span>Culture</span>;
+			case "literature":
+				return <span>Literature</span>;
+			case "business":
+				return <span>Business</span>;
 			default:
 				return <span>General</span>;
 		}
@@ -405,31 +431,27 @@ const AuthSidebar = () => {
 		}
 	};
 
-	// Toggle test level expansion
-	const toggleTestLevelExpansion = (levelId: string) => {
-		setExpandedTestLevels((prev) => ({
-			...prev,
-			basic: false,
-			intermediary: false,
-			advanced: false,
-			[levelId]: !prev[levelId],
-		}));
-
-		// single-select
-		setLevel(levelId);
-		setSelectedSubjects([]); // reset subjects when changing level
-	};
-
 	// Toggle language selection
 	const toggleLanguageSelection = (languageId: string) => {
 		setSelectedLanguages([languageId]); // overwrite array
 		setLanguage(languageId); // update store
 	};
 
+	// Toggle level selection
+	const toggleLevelSelection = (levelId: string) => {
+		setLevel(levelId); // update store
+	};
+
 	// Toggle subject selection
 	const toggleSubjectSelection = (subjectId: string) => {
-		setSelectedSubjects([subjectId]); // overwrite array to enforce single selection
-		setSubject(subjectId); // store in quiz store
+		if (selectedSubjects.includes(subjectId)) {
+			// Remove subject if already selected
+			const newSubjects = selectedSubjects.filter((id) => id !== subjectId);
+			setSelectedSubjects(newSubjects);
+		} else {
+			// Add subject if not selected
+			setSelectedSubjects([...selectedSubjects, subjectId]);
+		}
 	};
 
 	// Check if a language is selected
@@ -437,52 +459,76 @@ const AuthSidebar = () => {
 		return selectedLanguages.includes(languageId);
 	};
 
+	// Check if a level is selected
+	const isLevelSelected = (levelId: string) => {
+		return level === levelId;
+	};
+
 	// Check if a subject is selected
 	const isSubjectSelected = (subjectId: string) => {
 		return selectedSubjects.includes(subjectId);
 	};
 
+	// Get selected subjects count for display
+	const getSelectedSubjectsCount = () => {
+		return selectedSubjects.length;
+	};
+
+	// Get display text for the "More" button
+	const getMoreButtonText = () => {
+		const selectedAdditionalCount = additionalSubjects.filter((subject) =>
+			selectedSubjects.includes(subject.id)
+		).length;
+
+		if (selectedAdditionalCount > 0) {
+			return `More (${selectedAdditionalCount})`;
+		}
+		return "More";
+	};
+
 	const handleApply = () => {
-		if (language && level && subject && questionCount && timer) {
+		// Update the subject in store with comma-separated string
+		const subjectsString = selectedSubjects.join(",");
+		setSubject(subjectsString);
+
+		if (
+			language &&
+			level &&
+			selectedSubjects.length > 0 &&
+			questionCount &&
+			timer
+		) {
 			setIsTestMenuOpen(false);
 			router.push(`/${locale}/dashboard`);
 			console.log("[v0] Selections applied:", {
 				language,
 				level,
-				subject,
+				subjects: selectedSubjects,
+				subject: subjectsString,
 				questionCount,
 				timer,
 				selectedLanguages,
-				selectedSubjects,
 			});
 		}
 	};
 
-	const allSelected = language && level && subject && questionCount && timer;
-
-	// Get subjects for the selected level
-	const getSubjectsForLevel = (levelId: string) => {
-		return levelOptions[levelId as keyof typeof levelOptions] || [];
-	};
-
-	// Check if a level is selected (has a subject selected)
-	const isLevelSelected = (levelId: string) => {
-		return level === levelId && subject !== null;
-	};
-
-	// Get selected subject label for a level
-	const getSelectedSubjectLabel = (levelId: string) => {
-		const subjects = getSubjectsForLevel(levelId);
-		const selectedSubject = subjects.find((s) =>
-			selectedSubjects.includes(s.id)
-		);
-		return selectedSubject?.label || "";
-	};
+	const allSelected =
+		language && level && selectedSubjects.length > 0 && questionCount && timer;
 
 	return (
 		<div className="w-40 translate-x-8 2xl:-translate-x-2 text-black">
 			<div className="gap-2 flex flex-col">
 				{links.map((link, id) => {
+					if (link.name === "Advertising") {
+						return (
+							<CreateAdDialog key={id}>
+								<div className="flex items-center dark:text-white dark:hover:text-black gap-2 py-2 hover:bg-gray-100 rounded w-full text-left cursor-pointer">
+									<div className="h-6 w-6">{link.icon}</div>
+									<p>{link.name}</p>
+								</div>
+							</CreateAdDialog>
+						);
+					}
 					return (
 						<Link
 							href={`/${locale}${link.href}`}
@@ -515,9 +561,9 @@ const AuthSidebar = () => {
 			>
 				<DialogContent
 					showCloseButton={false}
-					className="sm:max-w-md rounded-2xl max-h-[90vh] p-0 pt-2 border-gray-400/30 overflow-y-auto"
+					className="sm:max-w-md rounded-2xl max-h-[90vh] gap-0 p-0 pt2 border-gray-400/30 overflow-y-auto"
 				>
-					<DialogHeader className="px-3 flex flex-row justify-between">
+					<DialogHeader className="px-3 flex h-10  items-center flex-row justify-between">
 						<button onClick={() => setIsTestMenuOpen(false)}>
 							<ArrowLeft />
 						</button>
@@ -545,15 +591,11 @@ const AuthSidebar = () => {
 									>
 										<div className="flex items-center gap-3">
 											{/* Checkbox with X */}
-											<div
-												className={`w-5 h-5 rounded border flex items-center justify-center `}
-											>
-												{isLanguageSelected(lang.id) && (
-													<X
-														size={12}
-														className="dark:text-white font-bold"
-													/>
-												)}
+											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
+												<XBox
+													checked={isLanguageSelected(lang.id)}
+													className="dark:border-gray-400 border-gray-600"
+												/>
 											</div>
 											<span className="text-black dark:text-white">
 												{lang.label}
@@ -563,100 +605,125 @@ const AuthSidebar = () => {
 								))}
 							</div>
 						</div>
+						{/* SUBJECT SECTION - WITH MORE POPOVER */}
+						<div className="w-full space-y-1">
+							<div className="flex justify-between items-center">
+								<h3 className="text-lg font-semibold">Subject</h3>
+							
+							</div>
+							<div className="grid grid-cols-3 gap-2 w-full space-y-1">
+								{primarySubjects.map((subjectItem) => {
+									if (subjectItem.isMoreButton) {
+										return (
+											<Popover
+												key="more"
+												open={isMorePopoverOpen}
+												onOpenChange={setIsMorePopoverOpen}
+											>
+												<PopoverTrigger asChild>
+													<button
+														className={`flex items-center justifycenter rounded-lg transition-colors w-full 
+															`}
+													>
+														<div className="flex items-center gap-2">
+															<MoreHorizontal size={16} />
+															<span className="text-black dark:text-white">
+																{getMoreButtonText()}
+															</span>
+														</div>
+													</button>
+												</PopoverTrigger>
+												<PopoverContent
+													className="w-40 p-4 border border-gray-400/30"
+													align="start"
+												>
+													<div className="space-y-2">
+														
+														{additionalSubjects.map((additionalSubject) => (
+															<button
+																key={additionalSubject.id}
+																onClick={() =>
+																	toggleSubjectSelection(additionalSubject.id)
+																}
+																className="flex items-center justify-between w-full rounded-lg text-left transition-colors"
+															>
+																<div className="flex items-center gap-3">
+																	<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
+																		<XBox
+																			checked={isSubjectSelected(
+																				additionalSubject.id
+																			)}
+																			className="dark:border-gray-400 border-gray-600"
+																		/>
+																	</div>
+																	<span className="text-black dark:text-white">
+																		{additionalSubject.label}
+																	</span>
+																</div>
+															</button>
+														))}
+													</div>
+												</PopoverContent>
+											</Popover>
+										);
+									}
 
-						{/* TEST LEVEL SECTION - CHECKBOXES WITH DROPDOWN */}
+									return (
+										<button
+											key={subjectItem.id}
+											onClick={() => toggleSubjectSelection(subjectItem.id)}
+											className={`flex items-center justifycenter rounded-lg transition-colors w-full`}
+										>
+											<div className="flex items-center gap-3">
+												{/* Checkbox with X */}
+												<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
+													<XBox
+														checked={isSubjectSelected(subjectItem.id)}
+														className="dark:border-gray-400 border-gray-600"
+													/>
+												</div>
+												<span className="text-black dark:text-white">
+													{subjectItem.label}
+												</span>
+											</div>
+										</button>
+									);
+								})}
+							</div>
+						</div>
+						{/* TEST LEVEL SECTION - STANDALONE CHECKBOXES */}
 						<div className="w-full space-y-1">
 							<h3 className="text-lg font-semibold">Test Level</h3>
 							<div className="grid grid-cols-3 gap-2 w-full space-y-1">
-								{testLevels.map((levelItem) => {
-									const subjects = getSubjectsForLevel(levelItem.id);
-									const isExpanded = expandedTestLevels[levelItem.id];
-									const isSelected = isLevelSelected(levelItem.id);
-									const selectedSubjectLabel = getSelectedSubjectLabel(
-										levelItem.id
-									);
-
-									return (
-										<div
-											key={levelItem.id}
-											className="w-full space-y-1"
-										>
-											{/* Level button */}
-											<button
-												onClick={() => toggleTestLevelExpansion(levelItem.id)}
-												className={`flex items-center  justifybetween   rounded-lg transition-colors w-full`}
-											>
-												<div className="flex items-center gap-3">
-													{/* Checkbox with X */}
-													<div
-														className={`w-5 h-5 rounded  border flex items-center justify-center `}
-													>
-														{isSelected && (
-															<X
-																size={12}
-																className="dark:text-white font-bold"
-															/>
-														)}
-													</div>
-													<div className="flex flex-col items-start">
-														<span className="text-black dark:text-white">
-															{levelItem.label}
-														</span>
-														{/* {isSelected && selectedSubjectLabel && (
-															<span className="text-xs text-black dark:">
-																{selectedSubjectLabel}
-															</span>
-														)} */}
-													</div>
-												</div>
-												<ChevronDown
-													className={`transition-transform ${
-														isExpanded ? "rotate-180" : ""
-													}`}
-													size={16}
+								{testLevels.map((levelItem) => (
+									<button
+										key={levelItem.id}
+										onClick={() => toggleLevelSelection(levelItem.id)}
+										className={`flex items-center justifycenter rounded-lg transition-colors w-full`}
+									>
+										<div className="flex items-center gap-3">
+											{/* Checkbox with X */}
+											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
+												<XBox
+													checked={isLevelSelected(levelItem.id)}
+													className="dark:border-gray-400 border-gray-600"
 												/>
-											</button>
-
-											{/* Subjects dropdown - CHECKBOXES */}
-											{isExpanded && (
-												<div className="ml8 w-full space-y-1">
-													{subjects.map((subjectItem) => (
-														<button
-															key={subjectItem.id}
-															onClick={() =>
-																toggleSubjectSelection(subjectItem.id)
-															}
-															className={`flex items-center w-full  rounded-lg text-left `}
-														>
-															<div className="flex items-center gap-3">
-																{/* Checkbox with X for subjects */}
-																<div
-																	className={`w-4 h-4 rounded border flex items-center justify-center `}
-																>
-																	{isSubjectSelected(subjectItem.id) && (
-																		<X
-																			size={10}
-																			className="dark:text-white font-bold"
-																		/>
-																	)}
-																</div>
-																<span className="text-sm">
-																	{subjectItem.label}
-																</span>
-															</div>
-														</button>
-													))}
-												</div>
-											)}
+											</div>
+											<span className="text-black dark:text-white">
+												{levelItem.label}
+											</span>
 										</div>
-									);
-								})}
+									</button>
+								))}
 							</div>
 						</div>
 
 						{/* QUESTIONS COUNT SECTION - CHECKBOXES */}
 						<div className="w-full space-y-1">
+							<div className="flex h-max items-center gap-2">
 							<h3 className="text-lg font-semibold">Questions Count</h3>
+								<p>(in range)</p>
+							</div>
 							<div className="grid grid-cols-3 gap-2">
 								{questionRanges.map((range) => (
 									<button
@@ -670,13 +737,13 @@ const AuthSidebar = () => {
 									>
 										<div className="flex items-center gap-2 col-span-1">
 											{/* Checkbox with X */}
-											<div
-												className={`w-4 h-4 rounded border  flex items-center justify-center`}
-											>
+											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
 												{questionCount === range.label && (
-													<X
-														size={10}
-														className="text-black dark: font-bold"
+													<XBox
+														checked={true}
+														color="black"
+														borderColor="border-gray-300"
+														className="dark:text-white dark:border-gray-400"
 													/>
 												)}
 											</div>
@@ -689,7 +756,11 @@ const AuthSidebar = () => {
 
 						{/* DURATION SECTION - CHECKBOXES */}
 						<div className="w-full space-y-2">
-							<h3 className="text-lg font-semibold">Duration</h3>
+							<div className="flex h-max items-center gap-2">
+
+								<h3 className="text-lg font-semibold">Duration</h3>
+							<p>(in minutes)</p>	
+							</div>
 							<div className="grid grid-cols-3 gap-2">
 								{durations.map((duration) => (
 									<button
@@ -703,13 +774,13 @@ const AuthSidebar = () => {
 									>
 										<div className="flex items-center gap-2">
 											{/* Checkbox with X */}
-											<div
-												className={`w-4 h-4 rounded border flex items-center justify-center  }`}
-											>
+											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
 												{timer === duration.label && (
-													<X
-														size={10}
-														className="text-black font-bold"
+													<XBox
+														checked={true}
+														color="black"
+														borderColor="border-gray-300"
+														className="dark:text-white dark:border-gray-400"
 													/>
 												)}
 											</div>

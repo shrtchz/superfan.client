@@ -79,7 +79,7 @@ export default function MessageInput() {
       <form onSubmit={handleSubmit} className="relative w-full max-w-md ">
         <Input
           type="text"
-          placeholder="How can I help you today? Ask anything..."
+          placeholder="Prompt an aptitude test in indigenous language"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className="pr-12 h-12 text-base rounded-full"

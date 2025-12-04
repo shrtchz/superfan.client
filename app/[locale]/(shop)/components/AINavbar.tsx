@@ -381,7 +381,7 @@ export default function AINavbar() {
   };
 
   return (
-		<div className=" w-full bordert border-b dark:border-gray-500  border-gray-300 h-[80px] text-black flex items-center justify-center py4">
+		<div className=" w-full bordert border-b   h-[80px] text-black flex items-center justify-center py4">
 			<div className="w-full xl:w-[90%]  py-4 flex ">
 				<div className=" grid  grid-cols-4 w-full ">
 					<div className="col-span-1 w-full h-full flex items-center">
