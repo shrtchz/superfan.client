@@ -10,9 +10,9 @@ const LanguageSelection = ({ onNext, onBack }: { onNext: () => void; onBack?: ()
     "Yoruba",
     "Igbo", 
     "Hausa",
-    "Tiv",
-    "Ibibio",
-    "Efik"
+    // "Tiv",
+    // "Ibibio",
+    // "Efik"
   ];
 
   return (
