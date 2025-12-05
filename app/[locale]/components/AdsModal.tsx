@@ -217,7 +217,7 @@ export function AdsModal({ onClose, openAd }: Props) {
 										onChange={(e) => setDescription(e.target.value)}
 									/>
 								</div>
-
+{/* fffff */}
 								<div className="flex items-center gap-2">
 									<label className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
 										<ImageIcon size={16} />
