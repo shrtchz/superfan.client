@@ -30,7 +30,7 @@ export default function AuthLayout({
           {/* Main Content - Takes up remaining space */}
           <main className="flex-1 w-full flex justify-center  ">
             <div className="w-full xl:w-[90%] grid gap-2 grid-cols-4">
-            <div className="col-span-1">
+            <div className="col-span-1 bgblue-400">
               <AuthSidebar />
             </div>
             <div className="col-span-3 w-full">

@@ -99,21 +99,21 @@ export function AllAds({ onClose, open }: Props) {
 									/>
 								</TableHead>
 								<TableHead className="w-32 border-r border-gray-400/30">
-									<Button
-										variant="ghost"
-										className="h-8 px-2 font-medium"
+									<button
+									
+										className=" px-0 flex h-max gap-1  w-fit  text-left p-0 font-medium"
 									>
 										Off / On
-										<ArrowUpDown className="ml-1 h-4 w-4" />
-									</Button>
+										<ArrowUpDown className="ml1 h-4 w-4" />
+									</button>
 								</TableHead>
 								<TableHead className="border-r w-[250px] border-gray-400/30">
 									<DropdownMenu>
 										<DropdownMenuTrigger asChild>
-											<Button
-												variant="ghost"
-												className="h-8 px2 font-medium w-full flex justify-between items-center"
-											>
+										<button
+									
+									className=" px-0 flex h-max gap-1  w-full  justify-between text-left p-0 font-medium"
+								>
 												<span className="flex gap-2">
 													Ad
 													<ArrowUpDown className="ml-1 h-4 w-4" />
@@ -121,7 +121,7 @@ export function AllAds({ onClose, open }: Props) {
 
 												<ChevronDown className="mr-1 h-4 w-4" />
 												{/* {filterType === "all" ? "All ads" : "Active ads"} */}
-											</Button>
+											</button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent
 											align="end"
@@ -144,13 +144,13 @@ export function AllAds({ onClose, open }: Props) {
 								<TableHead className="w-20 border-gray-400/30">
 									<DropdownMenu>
 										<DropdownMenuTrigger asChild>
-											<Button
-												variant="ghost"
-												className="h-8 px-2 w-full flex justify-between items-center font-medium"
+											<button
+												
+												className="h-8 px2 gap-1 w-full flex justify-between items-center font-medium"
 											>
 												<span>Actions</span>
 												<ChevronDown className="h-4 w-4" />
-											</Button>
+											</button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent align="end" >
 											<DropdownMenuItem>Pause</DropdownMenuItem>

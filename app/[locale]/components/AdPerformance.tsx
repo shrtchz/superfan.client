@@ -85,8 +85,8 @@ export function AdPerformance({ onClose, open }: Props) {
 								<CardHeader className="pb-3">
 									<CardTitle className="text-lg font-medium">Views</CardTitle>
 								</CardHeader>
-                            <CardContent className="space-y-4">
-                                <p>Views</p>
+								<CardContent className="space-y-4">
+									<p>Views</p>
 									<div className="flex h-max items-center gap-3">
 										<div className="text-3xl font-bold">0</div>
 										<div className="text-sm  mt-1">0%</div>
@@ -94,55 +94,45 @@ export function AdPerformance({ onClose, open }: Props) {
 
 									<div className="space-y-2">
 										<div className="flex justify-between text-sm">
-											<span className="">
-												From registered users
-											</span>
+											<span className="">From registered users</span>
 											<span>&lt;0.1%</span>
 										</div>
-										
 									</div>
 
 									<div className="space-y-2 border-t">
-                                    <div className="flex gap-4 h-max items-center justifybetween text-sm">
+										<div className="flex gap-4 h-max items-center justifybetween text-sm">
 											<span className="">Viewers</span>
-                                        <div className="flex gap-2 h-max items-center">
-                                        <p className="text-xl font-medium">0</p>
-											<p>0%</p>
-                                        </div>
+											<div className="flex gap-2 h-max items-center">
+												<p className="text-xl font-medium">0</p>
+												<p>0%</p>
+											</div>
 										</div>
-										
 									</div>
 								</CardContent>
 							</Card>
 
 							{/* Interactions Card */}
-							<Card className="border border-gray-400/30 shadow-none gap-0 ">
+							<Card className="border border-gray-400/30 shadow-none gap-0">
 								<CardHeader className="pb-3">
 									<CardTitle className="text-lg font-medium">
 										Interactions
 									</CardTitle>
 								</CardHeader>
 								<CardContent className="space-y-4">
-									<div>
-										<div className="text-sm  mb-1">
-											Content interactions
-                                    </div>
-                                    <div className="h-max flex gap-3 items-center">
-
+									<p> Content interactions	</p>
+									<div className="flex h-max items-center gap-3">
 										<div className="text-3xl font-bold">0</div>
 										<div className="text-sm  mt-1">0%</div>
 									</div>
-                                    </div>
 
 									<div className="space-y-2">
 										<div className="flex justify-between text-sm">
-											<span className="">
-												From registered users
-											</span>
-											<span className="text-gray-400">—</span>
+											<span className="">From registered users</span>
+											<span></span>
 										</div>
-										{/* No progress bar shown for empty data */}
 									</div>
+
+								
 								</CardContent>
 							</Card>
 						</div>

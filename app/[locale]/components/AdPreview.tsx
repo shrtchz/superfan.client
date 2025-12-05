@@ -33,7 +33,7 @@ export function AdPreview({ onClose, open }: Props) {
 								<div className="flex items-center gap-1 text-xs text-gray-500">
 									<span>Sponsored</span>
 									<span>·</span>
-									<Globe2Icon />
+						
 								</div>
 							</div>
 						</div>
@@ -41,20 +41,28 @@ export function AdPreview({ onClose, open }: Props) {
 							<button className="rounded-full p-1.5 hover:bg-gray-100">
 								<MoreHorizontal className="h-5 w-5 text-gray-600" />
 							</button>
-							<button className="rounded-full p-1.5 hover:bg-gray-100">
+							<button
+								onClick={onClose}
+								className="rounded-full p-1.5 hover:bg-gray-100">
 								<X className="h-5 w-5 text-gray-600" />
 							</button>
 						</div>
 					</div>
-
+					<hr className="border border-gray-400/30"/>
+					<div className="p-2">
+						<p>Own every step of the customer journey.Equifax Health keeps customer on your platform by delivering instant credit scores and reports...more</p>
+</div>
 					{/* Main Image */}
-					<div className="relative">
+					<div className="p-3">
+
+					<div className="relative border border-gray-400/30  rounded-xl">
 						<img
 							src="/shortchase_logo.jpeg"
 							alt="Park scene with people running and cycling"
-							className="w-full object-cover"
+							className="w-full object-cover p-2"
 							style={{ aspectRatio: "1/1" }}
 						/>
+					</div>
 					</div>
 
 					{/* Footer */}

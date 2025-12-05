@@ -381,7 +381,8 @@ export default function AINavbar() {
   };
 
   return (
-		<div className=" w-full bordert border-b   h-[80px] text-black flex items-center justify-center py4">
+	
+		<div className=" w-full bordert border-b h-[80px] text-black flex items-center justify-center py4">
 			<div className="w-full xl:w-[90%]  py-4 flex ">
 				<div className=" grid  grid-cols-4 w-full ">
 					<div className="col-span-1 w-full h-full flex items-center">
@@ -390,9 +391,8 @@ export default function AINavbar() {
 							className="flex mt-3 xlmt-0    flex1 items-center p-0 gap-0 m-0 "
 						>
 							<div className="h-16 w-54 2xl:-translate-x-10 xl:-translate-x-0 ">
-								<div className="h-16 w-54 2xl:-translate-x-10 xl:-translate-x-0 ">
-									{theme === "dark" ? <DarkLogo /> : <Logo />}
-								</div>
+								{/* <Logo /> */}
+								{theme === "dark" ? <DarkLogo /> : <Logo />}
 							</div>
 						</Link>
 					</div>

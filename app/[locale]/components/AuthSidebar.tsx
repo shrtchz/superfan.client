@@ -30,9 +30,10 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
-import XBox from "./XBox";
 import AdBadge from "@/public/icons/AdBadge";
-import CreateAdDialog from "./AdsModal";
+// import CreateAdDialog from "./AdsModal";
+import { RadioBtn } from "./RadioBtn";
+import CreateAdDialog from "./CreateDialog";
 
 const links = [
 	{
@@ -57,7 +58,7 @@ const links = [
 	},
 	{
 		icon: <AdBadge />,
-		name: "Advertising",
+		name: "Advertise",
 		href: "",
 	},
 ];
@@ -279,12 +280,12 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 	];
 
 	const durations = [
-		{ id: "timefree", label: "Time Free" },
+		{ id: "10", label: "10m" },
 		{ id: "25", label: "25m" },
 		{ id: "30", label: "30m" },
 		{ id: "45", label: "45m" },
 		{ id: "60", label: "60m" },
-		{ id: "90", label: "90m" },
+		{ id: "timefree", label: "Time Free" },
 	];
 
 	const getLabel = (items: any[], id: string | null) => {
@@ -485,7 +486,30 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 		}
 		return "More";
 	};
+	const selectAllSubjects = () => {
+		const allIds = [
+			...primarySubjects.filter((s) => !s.isMoreButton).map((s) => s.id),
+			...additionalSubjects.map((s) => s.id),
+		];
+		setSelectedSubjects(allIds);
+	};
+	const toggleAll = () => {
+		const allIds = [
+			...primarySubjects.filter((s) => !s.isMoreButton).map((s) => s.id),
+			...additionalSubjects.map((s) => s.id),
+		];
 
+		const allSelected = allIds.every((id) => selectedSubjects.includes(id));
+
+		if (allSelected) {
+			// unselect all
+			setSelectedSubjects([]);
+		} else {
+			// select all
+			setSelectedSubjects(allIds);
+		}
+	};
+	  
 	const handleApply = () => {
 		// Update the subject in store with comma-separated string
 		const subjectsString = selectedSubjects.join(",");
@@ -512,14 +536,19 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 		}
 	};
 
-	const allSelected =
-		language && level && selectedSubjects.length > 0 && questionCount && timer;
+	const allSelected = !!(
+		language &&
+		level &&
+		selectedSubjects.length > 0 &&
+		questionCount &&
+		timer
+	);
 
 	return (
 		<div className="w-40 translate-x-8 2xl:-translate-x-2 text-black">
 			<div className="gap-2 flex flex-col">
 				{links.map((link, id) => {
-					if (link.name === "Advertising") {
+					if (link.name === "Advertise") {
 						return (
 							<CreateAdDialog key={id}>
 								<div className="flex items-center dark:text-white dark:hover:text-black gap-2 py-2 hover:bg-gray-100 rounded w-full text-left cursor-pointer">
@@ -581,8 +610,8 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 					<div className=" space-y-2 py-2 w-full px-3">
 						{/* LANGUAGE SECTION - CHECKBOXES */}
 						<div className="w-full space-y-1 p">
-							<h3 className="text-lg font-semibold">Language</h3>
-							<div className="flex flexcol space-y-1 w-full justify-between">
+							<h3 className=" font-semibold">Language</h3>
+							<div className="grid grid-cols-3 space-y-1 w-full ">
 								{languages.map((lang) => (
 									<button
 										key={lang.id}
@@ -591,8 +620,8 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 									>
 										<div className="flex items-center gap-3">
 											{/* Checkbox with X */}
-											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
-												<XBox
+											<div className="w-5 h-5  flex items-center justify-center p-0 overflow-visible">
+												<RadioBtn
 													checked={isLanguageSelected(lang.id)}
 													className="dark:border-gray-400 border-gray-600"
 												/>
@@ -605,68 +634,179 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 								))}
 							</div>
 						</div>
+						<hr className="border-gray-400/20" />
+
 						{/* SUBJECT SECTION - WITH MORE POPOVER */}
 						<div className="w-full space-y-1">
-							<div className="flex justify-between items-center">
-								<h3 className="text-lg font-semibold">Subject</h3>
-							
+							<div className="flex gap-2 items-center">
+								<h3 className=" font-semibold">Subject</h3>
+								<Popover
+									key="more"
+									open={isMorePopoverOpen}
+									onOpenChange={setIsMorePopoverOpen}
+								>
+									<PopoverTrigger asChild>
+										<button
+											className={`flex items-center justifycenter rounded-lg transition-colors w-full 
+															`}
+										>
+											<div className="flex items-center gap-2">
+												{/* <MoreHorizontal size={16} /> */}
+												<span className="text-black dark:text-white">
+													{getMoreButtonText()}
+												</span>
+											</div>
+										</button>
+									</PopoverTrigger>
+									<PopoverContent
+										className="w-40 py-4 p-0 border border-gray-400/30"
+										align="start"
+									>
+										<div className="space-y-2">
+											<button
+												onClick={() => {
+													const additionalIds = additionalSubjects.map(
+														(s) => s.id
+													);
+													const allAdditionalSelected = additionalIds.every(
+														(id) => selectedSubjects.includes(id)
+													);
+
+													if (allAdditionalSelected) {
+														// Unselect only the additional subjects (leave primary selections intact)
+														setSelectedSubjects((prev) =>
+															prev.filter((id) => !additionalIds.includes(id))
+														);
+													} else {
+														// Select all additional subjects (keep any existing primary selections)
+														setSelectedSubjects((prev) =>
+															Array.from(new Set([...prev, ...additionalIds]))
+														);
+													}
+												}}
+												className="flex items-center gap-3 h-6   px-2 w-full rounded-lg"
+											>
+												<RadioBtn
+													checked={additionalSubjects
+														.map((s) => s.id)
+														.every((id) => selectedSubjects.includes(id))}
+													className="dark:border-gray-400 border-gray-600"
+												/>
+												<span>All subjects</span>
+											</button>
+											<hr className=" border-gray-400/20" />
+
+											{additionalSubjects.map((additionalSubject) => (
+												<button
+													key={additionalSubject.id}
+													onClick={() =>
+														toggleSubjectSelection(additionalSubject.id)
+													}
+													className="flex items-center px-2 justify-between w-full rounded-lg text-left transition-colors"
+												>
+													<div className="flex items-center gap-3">
+														<div className="w-5 h-5  flex items-center justify-center p-0 overflow-visible">
+															<RadioBtn
+																checked={isSubjectSelected(
+																	additionalSubject.id
+																)}
+																className="dark:border-gray-400 border-gray-600"
+															/>
+														</div>
+														<span className="text-black dark:text-white">
+															{additionalSubject.label}
+														</span>
+													</div>
+												</button>
+											))}
+										</div>
+									</PopoverContent>
+								</Popover>
 							</div>
 							<div className="grid grid-cols-3 gap-2 w-full space-y-1">
 								{primarySubjects.map((subjectItem) => {
-									if (subjectItem.isMoreButton) {
-										return (
-											<Popover
-												key="more"
-												open={isMorePopoverOpen}
-												onOpenChange={setIsMorePopoverOpen}
-											>
-												<PopoverTrigger asChild>
-													<button
-														className={`flex items-center justifycenter rounded-lg transition-colors w-full 
-															`}
-													>
-														<div className="flex items-center gap-2">
-															<MoreHorizontal size={16} />
-															<span className="text-black dark:text-white">
-																{getMoreButtonText()}
-															</span>
-														</div>
-													</button>
-												</PopoverTrigger>
-												<PopoverContent
-													className="w-40 p-4 border border-gray-400/30"
-													align="start"
-												>
-													<div className="space-y-2">
-														
-														{additionalSubjects.map((additionalSubject) => (
-															<button
-																key={additionalSubject.id}
-																onClick={() =>
-																	toggleSubjectSelection(additionalSubject.id)
-																}
-																className="flex items-center justify-between w-full rounded-lg text-left transition-colors"
-															>
-																<div className="flex items-center gap-3">
-																	<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
-																		<XBox
-																			checked={isSubjectSelected(
-																				additionalSubject.id
-																			)}
-																			className="dark:border-gray-400 border-gray-600"
-																		/>
-																	</div>
-																	<span className="text-black dark:text-white">
-																		{additionalSubject.label}
-																	</span>
-																</div>
-															</button>
-														))}
-													</div>
-												</PopoverContent>
-											</Popover>
-										);
-									}
+									// if (subjectItem.isMoreButton) {
+									// 	return (
+									// 		<Popover
+									// 			key="more"
+									// 			open={isMorePopoverOpen}
+									// 			onOpenChange={setIsMorePopoverOpen}
+									// 		>
+									// 			<PopoverTrigger asChild>
+									// 				<button
+									// 					className={`flex items-center justifycenter rounded-lg transition-colors w-full
+									// 						`}
+									// 				>
+									// 					<div className="flex items-center gap-2">
+									// 						<MoreHorizontal size={16} />
+									// 						<span className="text-black dark:text-white">
+									// 							{getMoreButtonText()}
+									// 						</span>
+									// 					</div>
+									// 				</button>
+									// 			</PopoverTrigger>
+									// 			<PopoverContent
+									// 				className="w-40 p-4 border border-gray-400/30"
+									// 				align="start"
+									// 			>
+									// 				<div className="space-y-2">
+									// 					<button
+									// 						onClick={() => {
+									// 							const additionalIds = additionalSubjects.map((s) => s.id);
+									// 							const allAdditionalSelected = additionalIds.every((id) =>
+									// 								selectedSubjects.includes(id)
+									// 							);
+
+									// 							if (allAdditionalSelected) {
+									// 								// Unselect only the additional subjects (leave primary selections intact)
+									// 								setSelectedSubjects((prev) =>
+									// 									prev.filter((id) => !additionalIds.includes(id))
+									// 								);
+									// 							} else {
+									// 								// Select all additional subjects (keep any existing primary selections)
+									// 								setSelectedSubjects((prev) =>
+									// 									Array.from(new Set([...prev, ...additionalIds]))
+									// 								);
+									// 							}
+									// 						}}
+									// 						className="flex items-center gap-3 w-full rounded-lg"
+									// 					>
+									// 						<RadioBtn
+									// 							checked={additionalSubjects
+									// 								.map((s) => s.id)
+									// 								.every((id) => selectedSubjects.includes(id))}
+									// 						/>
+									// 						<span>Select all</span>
+									// 					</button>
+
+									// 					{additionalSubjects.map((additionalSubject) => (
+									// 						<button
+									// 							key={additionalSubject.id}
+									// 							onClick={() =>
+									// 								toggleSubjectSelection(additionalSubject.id)
+									// 							}
+									// 							className="flex items-center justify-between w-full rounded-lg text-left transition-colors"
+									// 						>
+									// 							<div className="flex items-center gap-3">
+									// 								<div className="w-5 h-5  flex items-center justify-center p-0 overflow-visible">
+									// 									<RadioBtn
+									// 										checked={isSubjectSelected(
+									// 											additionalSubject.id
+									// 										)}
+									// 										className="dark:border-gray-400 border-gray-600"
+									// 									/>
+									// 								</div>
+									// 								<span className="text-black dark:text-white">
+									// 									{additionalSubject.label}
+									// 								</span>
+									// 							</div>
+									// 						</button>
+									// 					))}
+									// 				</div>
+									// 			</PopoverContent>
+									// 		</Popover>
+									// 	);
+									// }
 
 									return (
 										<button
@@ -676,8 +816,8 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 										>
 											<div className="flex items-center gap-3">
 												{/* Checkbox with X */}
-												<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
-													<XBox
+												<div className="w-5 h-5  flex items-center justify-center p-0 overflow-visible">
+													<RadioBtn
 														checked={isSubjectSelected(subjectItem.id)}
 														className="dark:border-gray-400 border-gray-600"
 													/>
@@ -691,9 +831,11 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 								})}
 							</div>
 						</div>
+						<hr className="border-gray-400/20" />
+
 						{/* TEST LEVEL SECTION - STANDALONE CHECKBOXES */}
 						<div className="w-full space-y-1">
-							<h3 className="text-lg font-semibold">Test Level</h3>
+							<h3 className=" font-semibold">Test Level</h3>
 							<div className="grid grid-cols-3 gap-2 w-full space-y-1">
 								{testLevels.map((levelItem) => (
 									<button
@@ -703,8 +845,8 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 									>
 										<div className="flex items-center gap-3">
 											{/* Checkbox with X */}
-											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
-												<XBox
+											<div className="w-5 h-5  flex items-center justify-center p-0 overflow-visible">
+												<RadioBtn
 													checked={isLevelSelected(levelItem.id)}
 													className="dark:border-gray-400 border-gray-600"
 												/>
@@ -717,11 +859,12 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 								))}
 							</div>
 						</div>
+						<hr className="border-gray-400/20" />
 
 						{/* QUESTIONS COUNT SECTION - CHECKBOXES */}
 						<div className="w-full space-y-1">
 							<div className="flex h-max items-center gap-2">
-							<h3 className="text-lg font-semibold">Questions Count</h3>
+								<h3 className=" font-semibold">Questions Count</h3>
 								<p>(in range)</p>
 							</div>
 							<div className="grid grid-cols-3 gap-2">
@@ -737,13 +880,15 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 									>
 										<div className="flex items-center gap-2 col-span-1">
 											{/* Checkbox with X */}
-											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
+											<div
+												className={`w-5 h-5  border rounded-full flex items-center justify-center p-0 overflow-visible `}
+											>
 												{questionCount === range.label && (
-													<XBox
+													<RadioBtn
 														checked={true}
 														color="black"
-														borderColor="border-gray-300"
-														className="dark:text-white dark:border-gray-400"
+														// borderColor="border-gray-300"
+														className="dark:border-gray-400 border-gray-600"
 													/>
 												)}
 											</div>
@@ -753,13 +898,13 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 								))}
 							</div>
 						</div>
+						<hr className="border-gray-400/20" />
 
 						{/* DURATION SECTION - CHECKBOXES */}
 						<div className="w-full space-y-2">
 							<div className="flex h-max items-center gap-2">
-
-								<h3 className="text-lg font-semibold">Duration</h3>
-							<p>(in minutes)</p>	
+								<h3 className=" font-semibold">Duration</h3>
+								<p>(in minutes)</p>
 							</div>
 							<div className="grid grid-cols-3 gap-2">
 								{durations.map((duration) => (
@@ -774,13 +919,11 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 									>
 										<div className="flex items-center gap-2">
 											{/* Checkbox with X */}
-											<div className="w-5 h-5 rounded border flex items-center justify-center p-0 overflow-visible">
+											<div className="w-5 h-5 border rounded-full flex items-center justify-center p-0 overflow-visible">
 												{timer === duration.label && (
-													<XBox
+													<RadioBtn
 														checked={true}
-														color="black"
-														borderColor="border-gray-300"
-														className="dark:text-white dark:border-gray-400"
+														className="dark:border-gray-400 border-gray-600"
 													/>
 												)}
 											</div>
@@ -797,7 +940,7 @@ const [isAdvertisingOpen, setIsAdvertisingOpen] = useState(false);
 						<Button
 							onClick={handleApply}
 							disabled={!allSelected}
-							className="w-full py-3 text-lg font-semibold roundedfull bg-transparent text-black  dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-none rounded-bl-xl rounded-br-xl"
+							className="w-full py-3  font-semibold roundedfull bg-transparent text-black  dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed rounded-none rounded-bl-xl rounded-br-xl"
 						>
 							Start
 						</Button>
