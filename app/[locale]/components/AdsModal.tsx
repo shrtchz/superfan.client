@@ -232,7 +232,7 @@ export function AdsModal({ onClose, openAd }: Props) {
 									</label>
 									<button
 										onClick={() => setEditMode(!editMode)}
-										className="px-3 py-2 border hover:bg-red-600 hover:text-white border-gray-300 rounded-md text-sm font-medium hover:b0"
+										className="px-3 py-2 border hover:bg-red-6git00 hover:text-white border-gray-300 rounded-md text-sm font-medium hover:b0"
 									>
 										Edit
 									</button>
