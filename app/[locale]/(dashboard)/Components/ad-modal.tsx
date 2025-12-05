@@ -21,7 +21,7 @@ export default function AdModal({ isOpen, onClose, onComplete }: AdModalProps) {
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const skipTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-	const videoSrc = "/football.mp4";
+	const videoSrc = "/foot.mp4";
 
 	useEffect(() => {
 		if (isOpen) {
