@@ -22,7 +22,7 @@ export default function AdModal({ isOpen, onClose, onComplete }: AdModalProps) {
 	const skipTimerRef = useRef<NodeJS.Timeout | null>(null);
 
 	const videoSrc = "/foot.mp4";
-
+// asss
 	useEffect(() => {
 		if (isOpen) {
 			setCurrentAd(1);
